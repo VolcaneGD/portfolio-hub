@@ -1,0 +1,34 @@
+# セッションサマリー: VOLCANE ポートフォリオサイト構築 (2026-03-13)
+
+## 完了したタスク
+- **ポートフォリオサイトの新規構築**: `scratch/portfolio-hub` に HTML/CSS/JS ベースのサイトを作成。
+- **ブランディング**: プロジェクト名を「VOLCANE」に統一。
+- **デザイン**: プレミアムなダークモード、グラスモルフィズム、Outfit & Noto Sans JP フォントを採用。
+- **アセット**: ユーザー提供の高品質アイコンを配置。一部 Nano Banana による補完。
+- **デプロイ**: Cloudflare Pages (Workers + Assets 方式) へのデプロイ完了。
+  - 公開URL: https://volcane-portfolio.volcratier.workers.dev/
+- **GitHub連携 (CI/CD)**: GitHubリポジトリ `VolcaneGD/portfolio-hub` と連携し、プッシュによる自動更新環境を構築。
+
+## プロジェクト構成
+- **リポジトリ**: `https://github.com/VolcaneGD/portfolio-hub`
+- **主要ファイル**:
+  - `index.html`: サイト本体（スマホアプリ3種、拡張機能1種）
+  - `style.css`: プレミアムアニメーション & スタイル
+  - `script.js`: インタラクション
+  - `wrangler.jsonc`: Cloudflare Assets デプロイ設定
+  - `app-ads.txt`: AdMobクローラー用（`pub-8213002078497168`）
+
+## アプリケーション一覧 (サイト掲載順)
+1. **ボンボンアンテナ** (Android App)
+2. **Inner Compass** (Android App)
+3. **Inner Compass Kids** (Android App)
+4. **JP Translator for Google** (Chrome Extension)
+
+## 次回への申し送り
+- **独自ドメイン設定**: 必要に応じて Cloudflare 管理画面から独自ドメインの紐付けを支援。
+- **広告申請**: AdSense/AdMobの審査状況に応じたコードの埋め込み。
+- **拡張機能URL**: JP Translator のストアURLが確定次第、`index.html` のリンクを更新。
+- **ビルド環境**: 今後はローカルで編集し `git push origin main` するだけで自動デプロイされる状態。
+
+---
+**Status**: SUCCESS (Deployed & Integrated with GitHub)
