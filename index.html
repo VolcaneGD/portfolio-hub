@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Project Hub | Innovative Apps & Extensions</title>
+    <meta name="description" content="AndroidアプリやChrome拡張機能など、個人開発プロジェクトのショーケース。">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+    <header id="header">
+        <nav class="container">
+            <div class="logo">VOLCANE</div>
+            <ul class="nav-links">
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-bg" style="background-image: url('images/hero-bg.png');"></div>
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h1 class="fade-in">Crafting the Future,<br><span class="highlight">One App at a Time.</span></h1>
+                <p class="subtitle fade-in delay-1">Androidストア、Chromeウェブストアで公開中のプロダクトを紹介します。</p>
+                <div class="cta-group fade-in delay-2">
+                    <a href="#projects" class="btn btn-primary">VIEW PROJECTS</a>
+                    <a href="#contact" class="btn btn-secondary">GET IN TOUCH</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">FEATURED PROJECTS</h2>
+                
+                <div class="category-section">
+                    <h3 class="category-title text-center" style="margin-bottom: 2rem; color: var(--accent);">SMARTPHONE APPS</h3>
+                    <div class="project-grid">
+                        <!-- Project 1: Bon Bon Antenna -->
+                        <div class="project-card fade-in-up">
+                            <div class="card-image">
+                                <img src="images/BonBonIcon.png" alt="Bon Bon Antenna">
+                            </div>
+                            <div class="card-content">
+                                <span class="badge">ANDROID APP</span>
+                                <h3>ボンボンアンテナ</h3>
+                                <p>爆速で情報をキャッチアップ。シンプルで高機能なRSS・ニュースまとめリーダー。</p>
+                                <div class="card-footer">
+                                    <a href="https://play.google.com/store/apps/details?id=com.bonbonantenna.app" class="view-link" target="_blank">Play Store &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2: Inner Compass -->
+                        <div class="project-card fade-in-up delay-1">
+                            <div class="card-image">
+                                <img src="images/mbti-diagnosis-icon.png" alt="Inner Compass">
+                            </div>
+                            <div class="card-content">
+                                <span class="badge">ANDROID APP</span>
+                                <h3>Inner Compass</h3>
+                                <p>精密なアルゴリズムによる16タイプ診断。あなた自身の深層心理を紐解きます。</p>
+                                <div class="card-footer">
+                                    <a href="https://play.google.com/store/apps/details?id=jp.innercompass.app" class="view-link" target="_blank">Play Store &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3: Inner Compass Kids -->
+                        <div class="project-card fade-in-up delay-2">
+                            <div class="card-image">
+                                <img src="images/inner-compass-kids.png" alt="Inner Compass Kids">
+                            </div>
+                            <div class="card-content">
+                                <span class="badge">ANDROID APP</span>
+                                <h3>Inner Compass Kids</h3>
+                                <p>親子で学べる性格診断＆自己改善アプリ。子どもの可能性を広げるインナーコンパス。</p>
+                                <div class="card-footer">
+                                    <a href="https://play.google.com/store/apps/details?id=jp.innercompass.kids" class="view-link" target="_blank">Play Store &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-section" style="margin-top: 80px;">
+                    <h3 class="category-title text-center" style="margin-bottom: 2rem; color: var(--accent);">BROWSER EXTENSIONS</h3>
+                    <div class="project-grid">
+                        <!-- Project 4: JP Translator -->
+                        <div class="project-card fade-in-up">
+                            <div class="card-image">
+                                <img src="images/google-services-jp-translator.png" alt="JP Translator for Google">
+                            </div>
+                            <div class="card-content">
+                                <span class="badge">CHROME EXTension</span>
+                                <h3>JP Translator for Google</h3>
+                                <p>Google AI Studioなど、日本語未対応のサービスを最適に翻訳する拡張機能。</p>
+                                <div class="card-footer">
+                                    <a href="#" class="view-link">Chrome Web Store &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="about-flex">
+                    <div class="about-text">
+                        <h2 class="section-title">VISION</h2>
+                        <p>テクノロジーとデザインの力で、日常の課題を解決するツールを開発しています。Antigravity(反重力)のように、ユーザーの思考を軽くし、より高く、遠くへ導くことを目指しています。</p>
+                        <p>Android、Web、ブラウザ拡張機能まで、プラットフォームに縛られない自由な開発を続けています。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container contact-container">
+                <div class="contact-box">
+                    <h2>LET'S CONNECT</h2>
+                    <p>プロダクトに関するご要望や、新しいプロジェクトの相談など、お気軽にお問い合わせください。</p>
+                    <a href="mailto:volcane.gd@gmail.com" class="btn btn-primary">SEND AN EMAIL</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Volcane. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="https://x.com/Volcane_GD" target="_blank">X (Twitter)</a>
+                    <a href="https://github.com/VolcaneGD" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
