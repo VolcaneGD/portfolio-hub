@@ -57,15 +57,23 @@ nav {
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 800;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     color: var(--text-primary);
+    text-decoration: none;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+}
+
+.logo:hover {
+    opacity: 0.8;
 }
 
 .logo span {
-    color: var(--accent);
-    margin-left: 2px;
+    color: #ff3b3b; /* 鮮やかな赤 */
+    margin-right: 1px;
 }
 
 .nav-links {
