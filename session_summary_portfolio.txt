@@ -1,0 +1,41 @@
+# セッションサマリー: VOLCANE ポートフォリオサイト構築
+
+## 更新履歴
+### 2026-03-14: サイトの最適化と機能追加（Cloudflare Pages移行）
+- **Cloudflare Pages移行**: URLをよりシンプルにするため、WorkersからPagesへ移行。
+  - 新URL: `https://volcane.pages.dev/`
+- **デザイン微調整 (スマホ対応)**: スマホ閲覧時、「VIEW PROJECTS」と「GET IN TOUCH」ボタンの間に間隔（gap）を追加し、縦並びに最適化。
+- **UI/UX向上 (ロゴ)**: ヘッダーロゴ「VOLCANE」の文字サイズを拡大し、「V」のみ赤色へ変更。さらにリンク化し、クリックでページ最上部（TOP）へスムーズスクロールで戻るよう設定。
+- **ブランディング**: favicon（`images/favicon.ico`）を追加し、ブラウザのタブにアイコンを表示。
+- **AdSense & GDPR対応**: Google AdSenseの自動広告コードを設置確認済み。また、欧州向けGDPR同意メッセージ導入のため、専用の「プライバシーポリシーページ（`privacy-policy.html`）」を新規作成し、フッターにリンクを追加。
+
+### 2026-03-13: 初回構築とGitHub自動デプロイ設定
+- **ポートフォリオサイトの新規構築**: `scratch/portfolio-hub` に HTML/CSS/JS ベースのサイトを作成。
+- **ブランディング**: プロジェクト名を「VOLCANE」に統一。
+- **デザイン**: プレミアムなダークモード、グラスモルフィズム、Outfit & Noto Sans JP フォントを採用。
+- **アセット**: ユーザー提供の高品質アイコンを配置。一部 Nano Banana による補完。
+- **GitHub連携 (CI/CD)**: GitHubリポジトリ `VolcaneGD/portfolio-hub` と連携し、プッシュによる自動更新環境を構築。
+
+## プロジェクト構成
+- **リポジトリ**: `https://github.com/VolcaneGD/portfolio-hub`
+- **主要ファイル**:
+  - `index.html`: サイト本体（スマホアプリ3種、拡張機能1種）
+  - `style.css`: プレミアムアニメーション & スタイル
+  - `script.js`: インタラクション
+  - `privacy-policy.html`: プライバシーポリシーページ
+  - `wrangler.jsonc`: (Cloudflare Workers用。Pages移行に伴い現在は不要)
+  - `app-ads.txt`: AdMobクローラー用（`pub-8213002078497168`）
+
+## アプリケーション一覧 (サイト掲載順)
+1. **ボンボンアンテナ** (Android App)
+2. **Inner Compass** (Android App)
+3. **Inner Compass Kids** (Android App)
+4. **JP Translator for Google** (Chrome Extension)
+
+## 次回への申し送り
+- **独自ドメイン設定**: 必要に応じて Cloudflare 管理画面から独自ドメイン（例：`.com` など）の紐付けを支援。
+- **拡張機能URL**: JP Translator のストアURLが確定次第、`index.html` のリンクを更新。
+- **ビルド環境**: 今後はローカルで編集し `git push origin main` するだけで自動デプロイされる状態。
+
+---
+**Status**: SUCCESS (Deployed to Cloudflare Pages & Integrated with GitHub)
