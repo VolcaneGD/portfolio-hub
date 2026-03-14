@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inner Compass | VOLCANE</title>
+    <meta name="description" content="16タイプ診断アプリ Inner Compass。これって自分だけ？を共有。">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="app-details.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        .mbti-badge {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .reaction-item {
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <header id="header" style="background: rgba(10, 12, 16, 0.95); padding: 0.5rem 0;">
+        <nav class="container">
+            <a href="index.html" class="logo"><span>V</span>OLCANE</a>
+            <ul class="nav-links">
+                <li><a href="index.html#projects">PROJECTS</a></li>
+                <li><a href="index.html#about">ABOUT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="app-detail-main">
+        <section class="container app-hero">
+            <div class="app-icon-large">
+                <img src="images/mbti-diagnosis-icon.png" alt="Inner Compass">
+            </div>
+            <h1 class="highlight" style="font-size: 3rem;">Inner Compass</h1>
+            <p class="app-subtitle">精密なアルゴリズムによる16タイプ診断。あなた自身の深層心理を紐解きます。</p>
+            <a href="https://play.google.com/store/apps/details?id=jp.innercompass.app" class="btn btn-primary" target="_blank">Google Play で入手</a>
+        </section>
+
+        <section class="container review-section">
+            <h2 class="section-title">これって自分だけ？ <span class="emoji-icon">💭</span></h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                あなたのMBTIタイプならではの「あるある」をシェアしたり、他のみんなの投稿に「わかる！」と共感をつなげよう。
+            </p>
+            
+            <div class="bbs-container">
+                <div id="bbs-list" class="bbs-posts-list">
+                    <div class="loading-msg">読み込み中...</div>
+                </div>
+
+                <form id="bbs-form" class="bbs-form">
+                    <div class="input-group">
+                        <select id="bbs-mbti" required>
+                            <option value="">あなたのMBTIタイプを選択（必須）</option>
+                            <option value="ISTJ">ISTJ (管理者)</option>
+                            <option value="ISFJ">ISFJ (擁護者)</option>
+                            <option value="INFJ">INFJ (提唱者)</option>
+                            <option value="INTJ">INTJ (建築家)</option>
+                            <option value="ISTP">ISTP (巨匠)</option>
+                            <option value="ISFP">ISFP (冒険家)</option>
+                            <option value="INFP">INFP (仲介者)</option>
+                            <option value="INTP">INTP (論理学者)</option>
+                            <option value="ESTP">ESTP (起業家)</option>
+                            <option value="ESFP">ESFP (エンターテイナー)</option>
+                            <option value="ENFP">ENFP (広報運動家)</option>
+                            <option value="ENTP">ENTP (討論者)</option>
+                            <option value="ESTJ">ESTJ (幹部)</option>
+                            <option value="ESFJ">ESFJ (領事館)</option>
+                            <option value="ENFJ">ENFJ (主人公)</option>
+                            <option value="ENTJ">ENTJ (指揮官)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <textarea id="bbs-content" placeholder="例：映画のエンディングロール、最後まで誰も立たないかハラハラしながら見守るのって自分だけ？" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" id="bbs-submit" class="bbs-submit-btn">投稿する</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Volcane. <a href="privacy-policy.html" style="color: var(--text-secondary); text-decoration: underline; margin-left: 10px;">Privacy Policy</a></p>
+                <div class="social-links">
+                    <a href="https://x.com/Volcane_GD" target="_blank">X (Twitter)</a>
+                    <a href="https://github.com/VolcaneGD" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const GAS_URL = 'https://script.google.com/macros/s/AKfycbym-pnTyE7ImzLzgnnJgfWPHk9gshFGyC_IAKs-PFHUNLuVzUs_t5PhIpmTaeZX1Gru/exec';
+            const bbsList = document.getElementById('bbs-list');
+            const bbsForm = document.getElementById('bbs-form');
+            const submitBtn = document.getElementById('bbs-submit');
+
+            // Save selected MBTI locally
+            const selectEl = document.getElementById('bbs-mbti');
+            const savedMbti = localStorage.getItem('my_mbti');
+            if(savedMbti) selectEl.value = savedMbti;
+
+            selectEl.addEventListener('change', (e) => {
+                localStorage.setItem('my_mbti', e.target.value);
+            });
+
+            const formatDate = (isoString) => {
+                try {
+                    const date = new Date(isoString);
+                    return `${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
+                } catch { return '??/??'; }
+            };
+
+            const loadPosts = async () => {
+                try {
+                    const res = await fetch(GAS_URL);
+                    if (!res.ok) throw new Error('API Error');
+                    const posts = await res.json();
+                    
+                    if (posts.length === 0) {
+                        bbsList.innerHTML = '<div class="empty-message">まだ投稿がありません。最初のひとりになりませんか？</div>';
+                        return;
+                    }
+
+                    bbsList.innerHTML = posts.map(post => {
+                        // リアクションの集計
+                        const reactStats = post.reactions || {};
+                        const totalReacts = Object.values(reactStats).reduce((a, b) => a + b, 0);
+                        const topTypes = Object.entries(reactStats)
+                            .sort((a,b) => b[1] - a[1])
+                            .slice(0, 3)
+                            .map(([type, count]) => `<span class="reaction-item">${type}: ${count}</span>`)
+                            .join('');
+
+                        return `
+                        <div class="bbs-post-card">
+                            <div class="post-header">
+                                <div class="post-user">
+                                    <span class="mbti-badge">${post.mbti}</span>
+                                </div>
+                                <div class="post-time">${formatDate(post.timestamp)}</div>
+                            </div>
+                            <div class="post-content">${post.content}</div>
+                            
+                            <div style="margin-top: 15px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 10px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <button class="reaction-btn" onclick="handleReact('${post.id}')">わかる！ ❤️</button>
+                                    </div>
+                                    <div class="reactions-count">
+                                        ${totalReacts > 0 ? `共感: ${totalReacts}人 (${topTypes})` : '最初の「わかる！」になろう'}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `}).join('');
+                } catch (e) {
+                    bbsList.innerHTML = '<div class="empty-message error">読み込みに失敗しました。</div>';
+                }
+            };
+
+            // React function needs to be global to be called from inline onclick
+            window.handleReact = async (postId) => {
+                const mbti = document.getElementById('bbs-mbti').value;
+                if(!mbti) {
+                    alert('画面のプルダウンからあなたの「MBTI」を選択してから「わかる！」を押してください。');
+                    return;
+                }
+                
+                // Optimistic UI could be implemented here, but we'll do simple fetch then reload
+                alert('「わかる！」を送信しました！');
+                try {
+                    await fetch(GAS_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            action: 'react',
+                            postId: postId,
+                            mbti: mbti
+                        })
+                    });
+                    setTimeout(loadPosts, 800);
+                } catch (e) {
+                    console.error(e);
+                }
+            };
+
+            bbsForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                submitBtn.disabled = true;
+                submitBtn.textContent = '投稿中...';
+
+                const mbti = document.getElementById('bbs-mbti').value;
+                const content = document.getElementById('bbs-content').value.trim();
+
+                try {
+                    await fetch(GAS_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            action: 'createPost',
+                            mbti,
+                            content
+                        })
+                    });
+                    
+                    document.getElementById('bbs-content').value = '';
+                    setTimeout(loadPosts, 1000); 
+                } catch (err) {
+                    alert('投稿に失敗しました。');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '投稿する';
+                }
+            });
+
+            loadPosts();
+        });
+    </script>
+</body>
+</html>

@@ -1,6 +1,14 @@
 # セッションサマリー: VOLCANE ポートフォリオサイト構築
 
 ## 更新履歴
+### 2026-03-14: アプリ個別詳細ページ＆コミュニティ機能実装
+- **個別ページ作成**: これまで `index.html` に直リンクだった3つのAndroidアプリに対し、専用の詳細ページを作成（`bonbon.html`, `inner-compass.html`, `inner-compass-kids.html`）。
+- **コミュニティ機能 (GAS連携)**:
+  - ボンボンアンテナ: レビュー・口コミ投稿掲示板を `bonbon.html` に統合。
+  - Inner Compass & Kids: MBTIベースの「これって自分だけ？」共有フィードと、「わかる！」リアクション機能を統合。（未診断ユーザが投稿できるようMBTI選択プルダウンを配置）
+- **スタイル追加**: 詳細ページおよび掲示板UI用の `app-details.css` を新規追加。
+- **メインページ動線**: `index.html` のリンクを各種詳細ページへ向くよう変更。
+  
 ### 2026-03-14: サイトの最適化と機能追加（Cloudflare Pages移行）
 - **Cloudflare Pages移行**: URLをよりシンプルにするため、WorkersからPagesへ移行。
   - 新URL: `https://volcane.pages.dev/`
