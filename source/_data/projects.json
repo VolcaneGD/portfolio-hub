@@ -84,7 +84,7 @@
     {
       "title": "Quota Glance",
       "badge": "WINDOWS APP",
-      "description": "Codexの残りクレジット、週間使用率、次回リセットをコンパクトに確認できる常駐ユーティリティ。",
+      "description": "Codexの残りクレジット、5時間・週間使用率、それぞれの次回リセットを確認できる常駐ユーティリティ。",
       "icon": "images/quota-glance-icon.png",
       "url": "quota-glance.html"
     },
