@@ -1,0 +1,27 @@
+{
+  "name": "VOLCANE Innovative Tools",
+  "short_name": "VOLCANE",
+  "description": "AI背景透過やWebP変換など、ブラウザで完結する無料WEBサービス。",
+  "start_url": "/",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0c10",
+  "theme_color": "#22d3ee",
+  "icons": [
+    {
+      "src": "./icon-bg-remover.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "./icon-bg-remover.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

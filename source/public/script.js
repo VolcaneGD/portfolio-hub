@@ -1,0 +1,76 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // PWA Service Worker Registration
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW reg error:', err));
+        });
+    }
+
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.style.background = 'rgba(10, 12, 16, 0.95)';
+            header.style.padding = '0.5rem 0';
+        } else {
+            header.style.background = 'rgba(10, 12, 16, 0.8)';
+            header.style.padding = '0';
+        }
+    });
+
+    // Simple Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Add smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const href = this.getAttribute('href');
+            
+            if (href === "#") {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                return;
+            }
+
+            const target = document.querySelector(href);
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Web Share API implementation
+    window.sharePage = function() {
+        const shareData = {
+            title: document.title,
+            text: document.querySelector('meta[name="description"]')?.content || '便利な無料Webツールを見つけました！',
+            url: window.location.href
+        };
+
+        if (navigator.share) {
+            navigator.share(shareData).catch(err => console.log('Share cancelled', err));
+        } else {
+            const xUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareData.text + ' ' + shareData.url)}`;
+            window.open(xUrl, '_blank');
+        }
+    };
+});
