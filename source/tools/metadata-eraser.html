@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metadata Eraser | VOLCANE</title>
+    <meta name="description" content="写真から位置情報(GPS)やカメラ情報を完全に除去。ブラウザ完結で外部サーバーに画像を送らないため、プライバシーリスクを安全に回避できます。完全無料。">
+    <link rel="canonical" href="https://volcane.pages.dev/metadata-cleaner.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-metadata-cleaner.png">
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Metadata Eraser",
+      "operatingSystem": "Windows, macOS, Android, iOS",
+      "applicationCategory": "MultimediaApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Design & Utilities", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 3, "name": "Metadata Eraser"
+      }]
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles/tool-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+    <style>
+        #status { color: var(--color-primary); margin: 20px 0; font-weight: 700; display: none; }
+    </style>
+    <script src="../public/sidebar.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside id="sidebar-placeholder" class="sidebar"></aside>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="tools-index.html">Home</a> <span>/</span> <span>Design & Utilities</span> <span>/</span> Metadata Eraser
+            </nav>
+
+            <div class="tool-container">
+                <header class="tool-header">
+                    <img src="../public/icon-metadata-cleaner.png" alt="Metadata Eraser" class="tool-icon-large">
+                    <h1>Metadata Eraser</h1>
+                    <p class="tool-description">写真から位置情報(GPS)やカメラ情報を完全に除去。SNS投稿前のプライバシー保護に。</p>
+                </header>
+
+                <div class="workspace-surface">
+                    <div id="dropZone" class="upload-zone">
+                        <p>ここに画像をドラッグ、またはクリック</p>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+                    
+                    <div id="status">✓ メタデータを削除しました</div>
+                    
+                    <canvas id="canvas" style="display: none;"></canvas>
+                    
+                    <div style="margin-top: 24px;">
+                        <a id="downloadBtn" class="btn-execute" style="display: none; width: 100%; text-decoration: none;">クリーンな画像を保存</a>
+                    </div>
+                </div>
+
+                <div class="share-btn-container" style="text-align: center;">
+                    <button onclick="sharePage()" style="background: none; border: 1px solid var(--color-border); padding: 10px 24px; border-radius: 50px; cursor: pointer; color: var(--color-text-muted); font-size: 0.9rem; font-weight: 600;">このツールをシェアする</button>
+                </div>
+            </div>
+
+            <!-- 強化された詳細コンテンツセクション -->
+            <section class="tool-footer-info">
+                <h2>Metadata Eraser の技術と設計思想</h2>
+                <p>
+                    VOLC TOOLSの「Metadata Eraser（メタデータ・クリーナー）」は、写真の背後に隠されたプライバシーのリスクを完全に取り除くために開発されました。
+                    スマートフォンやデジタルカメラで撮影された写真には、目に見える画像データ以外に「EXIF（イグジフ）」と呼ばれる膨大な付加情報が自動的に記録されています。
+                    当ツールは、これらの情報を物理的に切り離し、純粋な画像ピクセルのみを抽出することで、安全な情報発信をサポートします。
+                </p>
+
+                <h3>デジタル写真に潜む「EXIF情報」の正体</h3>
+                <p>
+                    EXIF情報には、撮影日時やカメラの機種設定だけでなく、GPSによる詳細な撮影場所（緯度経度）が含まれることが多々あります。
+                    自宅で撮影した写真をそのままSNSやフリマアプリにアップロードすると、意図せず正確な住所が第三者に知られてしまう危険性があります。
+                    当ツールは、画像を一度ブラウザ上の仮想キャンバス（Canvas API）に再描画し、そこから新しい画像ファイルを生成する手法を採用しています。
+                </p>
+
+                <h3>物理的な「分離」による100%の安全性</h3>
+                <p>
+                    一般的なメタデータ削除ツールは、ファイルから特定のタグを削除する方式ですが、これでは削除漏れや独自の拡張タグが残るリスクがあります。
+                    VOLC TOOLSは、**「画像を一度描き直す」**という最も確実なアプローチをとっています。
+                </p>
+                <ul>
+                    <li><strong>物理的なデータ分離:</strong> メタデータが含まれる元のファイルを編集するのではなく、画像ピクセルのみをコピーして新しいファイルを作成するため、付加情報が混入する余地がありません。</li>
+                    <li><strong>ブラウザ完結処理:</strong> 画像の読み込み、描画、書き出しのすべてがあなたのブラウザ内で行われます。サーバーに画像が送信されることはないため、プライバシーは完全に守られます。</li>
+                    <li><strong>追跡不可能なファイル:</strong> 書き出された画像は、撮影日時や位置情報が完全に消去されたクリーンな状態となり、安心して共有可能です。</li>
+                </ul>
+
+                <h3>よくある質問 (FAQ)</h3>
+                <div class="faq-section" style="text-align: left; margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 画質は劣化しますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 当ツールは標準で高品質なJPEGとして書き出しを行っています。目視で確認できるほどの劣化はほぼありませんが、極限まで画質を維持したい場合は、別途「画像リサイズ・圧縮」ツールでの調整を検討してください。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 動画のメタデータも消せますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 現在のバージョンは静止画（JPG, PNG, WebP）に特化しています。動画ファイルに含まれるメタデータの削除については、今後のアップデートを検討しています。</p>
+                    </div>
+                </div>
+
+                <div class="changelog" style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+                    <h4 style="margin-bottom: 10px;">更新履歴 (Changelog)</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 5px;"><strong>2026.05.01</strong> - UIを VOLC TOOLS デザインシステムに刷新。技術解説コンテンツを追加。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.04.15</strong> - Canvas再描画ロジックを最適化し、処理速度を向上。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.03.27</strong> - Metadata Eraser をβ公開。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <style>
+                .tool-footer-info h3 { margin-top: 32px; margin-bottom: 12px; font-size: 1.3rem; color: var(--color-text-main); }
+                .tool-footer-info ul { text-align: left; margin-bottom: 24px; }
+                .tool-footer-info li { margin-bottom: 12px; line-height: 1.6; }
+            </style>
+
+            <div id="footer-placeholder"></div>
+        </main>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const canvas = document.getElementById('canvas');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const status = document.getElementById('status');
+        let currentFileName = "cleaned_image.jpg";
+
+        dropZone.onclick = () => fileInput.click();
+
+        // ドラッグ＆ドロップの制御
+        window.addEventListener('dragover', e => e.preventDefault(), false);
+        window.addEventListener('drop', e => e.preventDefault(), false);
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-primary)";
+            dropZone.style.background = "var(--color-hover)";
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-border)";
+            dropZone.style.background = "transparent";
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-border)";
+            dropZone.style.background = "transparent";
+            if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+        });
+
+        fileInput.onchange = (e) => {
+            if (e.target.files.length > 0) handleFile(e.target.files[0]);
+        };
+
+        function handleFile(file) {
+            if (!file || !file.type.startsWith('image/')) return;
+            
+            currentFileName = "cleaned_" + file.name;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const img = new Image();
+                img.onload = () => {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+                    
+                    downloadBtn.href = canvas.toDataURL('image/jpeg', 0.9);
+                    downloadBtn.download = currentFileName;
+                    downloadBtn.style.display = 'block';
+                    status.style.display = 'block';
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>

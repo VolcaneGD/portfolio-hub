@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quota Glance | VOLCANE</title>
+    <meta name="description" content="Codexの残りクレジット、週間使用率、次回リセットをコンパクトに表示するWindows向けデスクトップユーティリティ。">
+    <link rel="canonical" href="https://volcane.pages.dev/quota-glance.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <link rel="apple-touch-icon" href="../public/quota-glance-icon.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Quota Glance",
+      "operatingSystem": "Windows 10, Windows 11",
+      "applicationCategory": "UtilitiesApplication",
+      "softwareVersion": "1.0.0",
+      "author": { "@type": "Organization", "name": "VOLCANE" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Quota Glance"
+      }]
+    }
+    </script>
+
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/app-details.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+</head>
+<body class="dark-mode">
+    <header id="header" style="background: rgba(10, 12, 16, 0.95); padding: 0.5rem 0;">
+        <nav class="container">
+            <a href="/" class="logo"><span>V</span>OLCANE</a>
+            <ul class="nav-links">
+                <li><a href="/#projects">PROJECTS</a></li>
+                <li><a href="/#about">ABOUT</a></li>
+                <li><a href="/#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="app-detail-main">
+        <nav class="container breadcrumb">
+            <a href="/">Home</a> <span>/</span> Quota Glance
+        </nav>
+
+        <section class="container app-hero">
+            <div class="app-icon-large">
+                <img src="../public/quota-glance-icon.png" alt="Quota Glance Icon">
+            </div>
+            <h1 class="highlight" style="font-size: 2.5rem;">Quota Glance</h1>
+            <p class="app-subtitle">Codexの残りクレジット、週間使用率、次回リセットを小さく見やすく表示するデスクトップユーティリティ。</p>
+
+            <div style="margin-top: 2rem;">
+                <a href="https://github.com/VolcaneGD/quota-glance/releases/latest/download/Quota-Glance-Windows-x64.exe" class="btn btn-primary">
+                    <span style="margin-right: 8px;">⬇</span> Download for Windows
+                </a>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-secondary);">※インストール不要。未署名のため、初回実行時にWindows SmartScreenの警告が表示される場合があります。</p>
+            </div>
+        </section>
+
+        <div class="share-btn-container" style="text-align: center; margin-top: 2rem;">
+            <button onclick="sharePage()" class="btn btn-share" aria-label="このツールをSNSで共有する">このツールをシェアする</button>
+        </div>
+
+        <section class="container" style="max-width: 1000px; margin-top: 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; align-items: start;">
+                <img src="../public/quota-glance-screenshot-ja.png" alt="Quota Glance 日本語画面" style="width: 100%; border-radius: 12px; border: 1px solid var(--card-border); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <img src="../public/quota-glance-screenshot-en.png" alt="Quota Glance English interface" style="width: 100%; border-radius: 12px; border: 1px solid var(--card-border); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            </div>
+        </section>
+
+        <section class="container" style="max-width: 800px; margin-top: 4rem; padding-bottom: 4rem;">
+            <h2 class="section-title">Overview</h2>
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; line-height: 1.8;">
+                <p>「Quota Glance」は、Codexがローカルに記録した残りクレジット、週間利用上限、次回リセット日時を、コンパクトなウィンドウで確認するためのWindows向けフリーソフトです。ウィンドウは常に手前に表示でき、閉じたり最小化したりしてもタスクトレイへ常駐します。</p>
+
+                <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">主な機能</h3>
+                <ul style="margin-left: 1.5rem; color: var(--text-secondary);">
+                    <li style="margin-bottom: 0.5rem;"><strong>クレジット残高</strong>: Codexが記録した最新の残りクレジットを表示。</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>週間利用上限</strong>: 使用率と残り割合をプログレスバーで表示。</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>次回リセット</strong>: 日本時間の日時とリセットまでの残り時間を表示。</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>日本語・英語</strong>: ワンクリックで切り替え、選択内容を端末内に保存。</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>タスクトレイ常駐</strong>: 使用率に応じたインジケータと、クリックによる再表示に対応。</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>ローカル完結</strong>: 広告、テレメトリー、アクセス解析、外部へのデータ送信なし。</li>
+                </ul>
+
+                <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">使い方</h3>
+                <ol style="margin-left: 1.5rem; color: var(--text-secondary);">
+                    <li style="margin-bottom: 0.8rem;"><strong>ダウンロード</strong>: 「Download for Windows」からポータブル版EXEを保存します。</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>起動</strong>: ダウンロードしたEXEを任意の場所から実行します。</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>言語切替</strong>: 右上の「EN」または「JA」を押します。</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>常駐</strong>: 閉じるまたは最小化でタスクトレイへ格納します。</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>再表示・終了</strong>: トレイアイコンをクリックして再表示し、右クリックメニューから完全終了できます。</li>
+                </ol>
+
+                <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">データについて</h3>
+                <p style="color: var(--text-secondary);">Quota GlanceはCodexの認証トークンやAPIキーを読みません。端末内のCodexセッションから利用状況に関する情報だけを読み取り、画面へ表示します。公式APIへ独自に問い合わせるアプリではないため、表示はCodexが最後にローカルへ記録した時点の情報です。</p>
+
+                <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">動作環境</h3>
+                <p style="color: var(--text-secondary);">Windows 10 / 11（64bit）。CodexデスクトップアプリまたはCodex CLIを利用し、ローカルセッションが保存されている環境。</p>
+
+                <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">免責事項</h3>
+                <p style="color: var(--text-secondary);">Quota GlanceはVOLCANEが独立して開発した非公式ツールであり、OpenAIによる提供、承認、後援、提携、サポートを受けた製品ではありません。</p>
+            </div>
+        </section>
+
+        <section class="container more-services">
+            <h2 class="more-services-title">MORE DESKTOP APPS</h2>
+            <div class="mini-grid">
+                <a href="volc-icon-editor.html" class="mini-card">
+                    <img src="../public/IconEditor_icon.png" alt="Icon Editor">
+                    <span>VOLC Icon Editor</span>
+                </a>
+                <a href="volc-sprite-converter.html" class="mini-card">
+                    <img src="../public/VOLC_Sprite_Sheet_Converter_icon.png" alt="Sprite Converter">
+                    <span>VOLC Sprite Sheet Converter</span>
+                </a>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="/#projects" class="view-link" style="font-size: 0.9rem;">すべてのプロジェクトを見る &rarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 VOLCANE. <a href="privacy-policy.html" style="color: var(--text-secondary); text-decoration: underline; margin-left: 10px;">Privacy Policy</a></p>
+                <div class="social-links">
+                    <a href="https://x.com/Volcane_GD" target="_blank">X (Twitter)</a>
+                    <a href="https://github.com/VolcaneGD" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>

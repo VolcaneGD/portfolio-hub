@@ -1,0 +1,113 @@
+<section id="hero">
+    <div class="hero-bg" style="background-image: url('<%- url_for('images/hero-bg.png') %>');"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <h1 class="fade-in"><%- site.data.site_config.hero_title || 'Crafting the Future,' %><br><span class="highlight"><%- site.data.site_config.hero_subtitle || 'One App at a Time.' %></span></h1>
+        <p class="subtitle fade-in delay-1">Androidストア、Chromeウェブストアで公開中のプロダクトを紹介します。</p>
+        <div class="cta-group fade-in delay-2">
+            <a href="#projects" class="btn btn-primary">VIEW PROJECTS</a>
+            <a href="#contact" class="btn btn-secondary">GET IN TOUCH</a>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <div class="container">
+        <h2 class="section-title"><%- site.data.site_config.projects_title || 'FEATURED PROJECTS' %></h2>
+        
+        <!-- VOLC TOOLS Portal Section -->
+        <div class="category-section" style="margin-bottom: 80px;">
+            <h3 class="category-title text-center" style="margin-bottom: 2rem; color: var(--accent); opacity: 0.8;">VOLC TOOLS</h3>
+            <a href="<%- url_for('/tools/') %>" class="project-card tools-hero-card fade-in-up">
+                <div class="card-content">
+                    <span class="badge">NEW PRODUCT HUB</span>
+                    <img src="<%- url_for('images/VOLCANE_BRAND.png') %>" alt="VOLCANE Brand" class="tools-hero-logo">
+                    <h2>VOLC TOOLS</h2>
+                    <p style="margin-bottom: 0; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; max-width: 600px; text-align: center;">
+                        クリエイティブを、もっと身近に。<br>
+                        AI背景透過、WebP変換、画像編集など、インターフェースを刷新した<br>
+                        新しいWebツールサイト「VOLC TOOLS」が誕生しました。
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div class="category-section">
+            <h3 class="category-title text-center" style="margin-bottom: 2rem; color: var(--accent);">SMARTPHONE APPS</h3>
+            <div class="project-grid">
+                <% site.data.projects.smartphone_apps.forEach(function(app){ %>
+                    <a href="<%- url_for(app.url) %>" class="project-card fade-in-up">
+                        <div class="card-image">
+                            <img src="<%- url_for(app.icon) %>" alt="<%- app.title %>">
+                        </div>
+                        <div class="card-content">
+                            <span class="badge"><%- app.badge %></span>
+                            <h3><%- app.title %></h3>
+                            <p style="margin-bottom: 0;"><%- app.description %></p>
+                        </div>
+                    </a>
+                <% }) %>
+            </div>
+        </div>
+
+        <div class="category-section" style="margin-top: 80px;">
+            <h3 class="category-title text-center" style="margin-bottom: 2rem; color: var(--accent);">BROWSER EXTENSIONS</h3>
+            <div class="project-grid">
+                <% site.data.projects.browser_extensions.forEach(function(ext){ %>
+                    <a href="<%- url_for(ext.url) %>" class="project-card fade-in-up">
+                        <div class="card-image">
+                            <img src="<%- url_for(ext.icon) %>" alt="<%- ext.title %>">
+                        </div>
+                        <div class="card-content">
+                            <span class="badge"><%- ext.badge %></span>
+                            <h3><%- ext.title %></h3>
+                            <p style="margin-bottom: 0;"><%- ext.description %></p>
+                        </div>
+                    </a>
+                <% }) %>
+            </div>
+        </div>
+
+        <div class="category-section" style="margin-top: 80px;">
+            <h3 class="category-title text-center" style="margin-bottom: 2rem; color: var(--accent);">DESKTOP APPS</h3>
+            <div class="project-grid">
+                <% site.data.projects.desktop_apps.forEach(function(app){ %>
+                    <a href="<%- url_for(app.url) %>" class="project-card fade-in-up">
+                        <div class="card-image">
+                            <img src="<%- url_for(app.icon) %>" alt="<%- app.title %>">
+                        </div>
+                        <div class="card-content">
+                            <span class="badge"><%- app.badge %></span>
+                            <h3><%- app.title %></h3>
+                            <p style="margin-bottom: 0;"><%- app.description %></p>
+                        </div>
+                    </a>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- page.content %>
+
+<section id="about">
+    <div class="container">
+        <div class="about-flex">
+            <div class="about-text">
+                <h2 class="section-title">VISION</h2>
+                <p>テクノロジーとデザインの力で、日常の課題を解決するツールを開発しています。Antigravity(反重力)のように、ユーザーの思考を軽くし、より高く、遠くへ導くことを目指しています。</p>
+                <p>Android、Web、ブラウザ拡張機能まで、プラットフォームに縛られない自由な開発を続けています。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container contact-container">
+        <div class="contact-box">
+            <h2>LET'S CONNECT</h2>
+            <p>プロダクトに関するご要望や、新しいプロジェクトの相談など、お気軽にお問い合わせください。</p>
+            <a href="mailto:volcane.gd@gmail.com" class="btn btn-primary">SEND AN EMAIL</a>
+        </div>
+    </div>
+</section>

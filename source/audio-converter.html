@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Converter | VOLCANE</title>
+    <meta name="description" content="WAVとMP3の相互変換をブラウザ上で高速に処理。大容量ファイルもサーバーにアップロードせず、プライバシーを保護したまま安全に変換できます。完全無料。">
+    <link rel="canonical" href="https://volcane.pages.dev/audio-converter.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-audio-converter.png">
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Audio Converter",
+      "operatingSystem": "Windows, macOS, Android, iOS",
+      "applicationCategory": "MultimediaApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Converters", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 3, "name": "Audioコンバーター"
+      }]
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles/tool-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+    <!-- MP3エンコーダーライブラリ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lamejs/1.2.1/lame.min.js"></script>
+    <script src="../public/sidebar.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside id="sidebar-placeholder" class="sidebar"></aside>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="tools-index.html">Home</a> <span>/</span> <span>Converters</span> <span>/</span> Audioコンバーター
+            </nav>
+
+            <div class="tool-container">
+                <header class="tool-header">
+                    <img src="../public/icon-audio-converter.png" alt="Audio Converter" class="tool-icon-large">
+                    <h1>Audio Converter</h1>
+                    <p class="tool-description">WAV ↔ MP3 の相互変換。サーバー送信なしで安全に処理します。</p>
+                </header>
+
+                <div class="workspace-surface">
+                    <div id="dropZone" class="upload-zone">
+                        <p id="dropText">WAVまたはMP3ファイルをドラッグ、またはクリックして選択</p>
+                        <input type="file" id="fileInput" accept="audio/wav,audio/x-wav,audio/mpeg,audio/mp3" style="display: none;">
+                    </div>
+
+                    <div id="progressContainer" class="result-preview" style="margin: 24px 0;">
+                        <p id="statusText" style="margin-bottom: 12px; font-size: 0.95rem; color: var(--color-primary); font-weight: 600;">準備中...</p>
+                        <div style="width: 100%; height: 10px; background: #eee; border-radius: 5px; overflow: hidden;">
+                            <div id="progressFill" style="width: 0%; height: 100%; background: var(--color-primary); transition: width 0.1s;"></div>
+                        </div>
+                    </div>
+
+                    <div id="resultArea" class="result-preview">
+                        <p style="margin-bottom: 20px; font-weight: 600; color: #22c55e;">✓ 変換が完了しました！</p>
+                        <a id="downloadLink" class="btn-execute">ダウンロードを開始</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 強化された詳細コンテンツセクション -->
+            <section class="tool-footer-info">
+                <h2>Audioコンバーターの技術と設計思想</h2>
+                <p>
+                    VOLC TOOLSのAudioコンバーターは、音声データの利便性と品質を両立させ、かつユーザーのプライバシーを最優先に守るために構築されました。
+                    高品質な録音データ（WAV）を、共有しやすい軽量な形式（MP3）に変換する作業は日常的に発生しますが、その過程で貴重な音声データが外部サーバーに蓄積されるリスクを排除することに成功しました。
+                </p>
+
+                <h3>WAVとMP3：なぜ変換が必要なのか</h3>
+                <p>
+                    音声形式にはそれぞれ明確な役割があります。
+                </p>
+                <ul>
+                    <li><strong>WAV (Waveform Audio File Format):</strong> 非圧縮のフォーマットであり、音質が一切劣化しません。マスター音源や編集用として最適ですが、ファイルサイズが非常に大きくなる欠点があります。</li>
+                    <li><strong>MP3 (MPEG-1 Audio Layer III):</strong> 人間の聴覚特性を利用した「不可逆圧縮」形式です。聞き取れない周波数成分をカットすることで、音質を保ちながらファイルサイズを約10分の1程度にまで軽量化でき、Webでの共有や配布に最適です。</li>
+                </ul>
+
+                <h3>ブラウザ上でのMP3エンコーディング「lamejs」</h3>
+                <p>
+                    通常、MP3へのエンコード（圧縮処理）はサーバー側のプログラム（LAMEなど）で行われますが、当ツールはJavaScript実装のエンコーダー「lamejs」を使用しています。
+                    これにより、大容量の音声データをサーバーへアップロードすることなく、あなたのデバイスのCPUパワーを直接活用して変換を行います。
+                    WebAssemblyやWeb Audio APIの進化により、かつては不可能だった「ブラウザ内での高速オーディオ処理」が可能になりました。
+                </p>
+
+                <h3>究極のプライバシー保護：音声はあなたのデバイスの外へ出ない</h3>
+                <p>
+                    会議の議事録、プライベートなボイスメモ、未発表の楽曲データなど、音声ファイルには機密性の高い情報が含まれることが多々あります。
+                    VOLC TOOLSは、**「データの物理的な分離」**を掲げています。
+                </p>
+                <ul>
+                    <li><strong>ゼロ・サーバー・アップロード:</strong> 変換ボタンを押しても、データはインターネットを介して送信されません。処理はすべてメモリ内（RAM）で行われます。</li>
+                    <li><strong>通信制限の影響を受けない:</strong> アップロードが発生しないため、格安SIMなどの低速な回線環境でも、デバイスの性能が許す限り瞬時に処理が完了します。</li>
+                </ul>
+
+                <h3>よくある質問 (FAQ)</h3>
+                <div class="faq-section" style="text-align: left; margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 変換できるファイルサイズに制限はありますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 理論上の制限はありませんが、お使いのデバイスのメモリ（RAM）容量に依存します。数時間を超えるような極端に巨大なファイルの場合、ブラウザがクラッシュする可能性があるため、適切な長さに分割しての利用を推奨します。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. ビットレートの指定はできますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 現在は、音質とファイルサイズのバランスが最も良い「128kbps / ステレオ」に固定してエンコードされます。今後のアップデートで高品質な320kbps設定などの追加を検討しています。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. MP3以外の形式への変換はできますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 現在は WAV ↔ MP3 の変換に特化しています。今後、M4AやOGGなどの要望が多い形式についても、ブラウザ内処理が可能なライブラリの選定を進めています。</p>
+                    </div>
+                </div>
+
+                <div class="changelog" style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+                    <h4 style="margin-bottom: 10px;">更新履歴 (Changelog)</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 5px;"><strong>2026.05.01</strong> - UIを VOLC TOOLS デザインシステムに刷新。プログレスバーの精度を向上。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.04.12</strong> - MP3 ↔ WAV の相互変換ロジックを最適化し、処理速度を約15%改善。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.03.28</strong> - 汎用オーディオコンバーターとして初期公開。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <style>
+                .tool-footer-info h3 { margin-top: 32px; margin-bottom: 12px; font-size: 1.3rem; color: var(--color-text-main); }
+                .tool-footer-info ul { text-align: left; margin-bottom: 24px; }
+                .tool-footer-info li { margin-bottom: 12px; line-height: 1.6; }
+                /* モバイル対応の調整 */
+                @media (max-width: 768px) {
+                    .tool-icon-large {
+                        width: 160px;
+                        height: 160px;
+                        border-radius: 32px;
+                    }
+                }
+            </style>
+
+            <div id="footer-placeholder"></div>
+        </main>
+    </div>
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressFill = document.getElementById('progressFill');
+        const statusText = document.getElementById('statusText');
+        const resultArea = document.getElementById('resultArea');
+        const downloadLink = document.getElementById('downloadLink');
+
+        dropZone.onclick = () => fileInput.click();
+
+        // ドラッグ＆ドロップの制御
+        window.addEventListener('dragover', e => e.preventDefault(), false);
+        window.addEventListener('drop', e => e.preventDefault(), false);
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-primary)";
+            dropZone.style.background = "var(--color-hover)";
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-border)";
+            dropZone.style.background = "transparent";
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-border)";
+            dropZone.style.background = "transparent";
+            const files = e.dataTransfer.files;
+            if (files.length > 0) handleFile(files[0]);
+        });
+
+        fileInput.onchange = (e) => {
+            if (e.target.files.length > 0) handleFile(e.target.files[0]);
+        };
+
+        async function handleFile(file) {
+            if (!file) return;
+            
+            const isWavToMp3 = file.type.includes('wav');
+            resultArea.style.display = "none";
+            progressContainer.style.display = "block";
+            
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const arrayBuffer = await file.arrayBuffer();
+            
+            statusText.textContent = "音声データを解析中...";
+            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+            
+            if (isWavToMp3) {
+                await encodeToMp3(audioBuffer, file.name);
+            } else {
+                await encodeToWav(audioBuffer, file.name);
+            }
+        }
+
+        async function encodeToMp3(audioBuffer, originalName) {
+            const channels = audioBuffer.numberOfChannels;
+            const sampleRate = audioBuffer.sampleRate;
+            const mp3encoder = new lamejs.Mp3Encoder(channels, sampleRate, 128);
+            const mp3Data = [];
+
+            const samplesL = audioBuffer.getChannelData(0);
+            const samplesR = channels > 1 ? audioBuffer.getChannelData(1) : new Float32Array(samplesL.length);
+
+            // UI更新
+            progressFill.style.width = "0%";
+            statusText.textContent = "MP3へ変換中...";
+
+            const convertToSubArray = (samples) => {
+                const Int16Samples = new Int16Array(samples.length);
+                for (let i = 0; i < samples.length; i++) {
+                    Int16Samples[i] = samples[i] < 0 ? samples[i] * 0x8000 : samples[i] * 0x7FFF;
+                }
+                return Int16Samples;
+            };
+
+            const rawL = convertToSubArray(samplesL);
+            const rawR = convertToSubArray(samplesR);
+
+            const sampleBlockSize = 1152;
+            for (let i = 0; i < rawL.length; i += sampleBlockSize) {
+                const leftChunk = rawL.subarray(i, i + sampleBlockSize);
+                const rightChunk = rawR.subarray(i, i + sampleBlockSize);
+                const mp3buf = mp3encoder.encodeBuffer(leftChunk, rightChunk);
+                if (mp3buf.length > 0) mp3Data.push(mp3buf);
+                
+                const progress = Math.round((i / rawL.length) * 100);
+                progressFill.style.width = progress + "%";
+                statusText.textContent = `変換中... ${progress}%`;
+                if (i % (sampleBlockSize * 10) === 0) await new Promise(r => setTimeout(r, 0)); // UIフリーズ防止
+            }
+
+            const finish = mp3encoder.flush();
+            if (finish.length > 0) mp3Data.push(finish);
+
+            const blob = new Blob(mp3Data, { type: 'audio/mp3' });
+            const url = URL.createObjectURL(blob);
+            downloadLink.href = url;
+            downloadLink.download = originalName.replace(/\.[^/.]+$/, "") + ".mp3";
+            downloadLink.textContent = "MP3をダウンロード";
+            
+            progressContainer.style.display = "none";
+            resultArea.style.display = "block";
+        }
+
+        async function encodeToWav(audioBuffer, originalName) {
+            statusText.textContent = "WAVへ変換中...";
+            let numOfChan = audioBuffer.numberOfChannels,
+                  length = audioBuffer.length * numOfChan * 2 + 44,
+                  buffer = new ArrayBuffer(length),
+                  view = new DataView(buffer),
+                  channels = [], i, sample, offset = 0, pos = 0;
+
+            const setUint16 = (data) => { view.setUint16(pos, data, true); pos += 2; };
+            const setUint32 = (data) => { view.setUint32(pos, data, true); pos += 4; };
+
+            setUint32(0x46464952); // "RIFF"
+            setUint32(length - 8);
+            setUint32(0x45564157); // "WAVE"
+            setUint32(0x20746d66); // "fmt "
+            setUint32(16); setUint16(1); setUint16(numOfChan);
+            setUint32(audioBuffer.sampleRate);
+            setUint32(audioBuffer.sampleRate * 2 * numOfChan);
+            setUint16(numOfChan * 2); setUint16(16);
+            setUint32(0x61746164); // "data"
+            setUint32(length - pos - 4);
+
+            for(i=0; i<audioBuffer.numberOfChannels; i++) channels.push(audioBuffer.getChannelData(i));
+            while(pos < length) {
+                for(i=0; i<numOfChan; i++) {
+                    sample = Math.max(-1, Math.min(1, channels[i][offset]));
+                    view.setInt16(pos, sample < 0 ? sample * 0x8000 : sample * 0x7FFF, true);
+                    pos += 2;
+                }
+                offset++;
+            }
+
+            const blob = new Blob([buffer], {type: "audio/wav"});
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = originalName.replace(/\.[^/.]+$/, "") + ".wav";
+            downloadLink.textContent = "WAVをダウンロード";
+            progressContainer.style.display = "none";
+            resultArea.style.display = "block";
+        }
+
+        window.sharePage = function() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        };
+    </script>
+</body>
+</html>

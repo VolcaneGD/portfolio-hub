@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator | VOLCANE</title>
+    <meta name="description" content="URLやテキストを、ブラウザ完結で安全にQRコードへ変換。サーバーへのデータ送信なしでプライバシーを保護する無料QR生成ツール。">
+    <link rel="canonical" href="https://volcane.pages.dev/qr-generator.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-qr-generator.png">
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "QR Code Generator",
+      "operatingSystem": "Windows, macOS, Android, iOS",
+      "applicationCategory": "MultimediaApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Design & Utilities", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 3, "name": "QRコード作成"
+      }]
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles/tool-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="../public/sidebar.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside id="sidebar-placeholder" class="sidebar"></aside>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="tools-index.html">Home</a> <span>/</span> <span>Design & Utilities</span> <span>/</span> QRコード作成
+            </nav>
+
+            <div class="tool-container">
+                <header class="tool-header">
+                    <img src="../public/icon-qr-generator.png" alt="QR Code Generator" class="tool-icon-large">
+                    <h1>QR Code Generator</h1>
+                    <p class="tool-description">URLやテキストを、ブラウザ完結で安全にQRコードへ変換。サーバー送信なしで作成します。</p>
+                </header>
+
+                <div class="workspace-surface">
+                    <input type="text" id="textInput" placeholder="URLまたはテキストを入力..." style="width: 100%; padding: 16px; background: var(--color-hover); border: 1px solid var(--color-border); border-radius: 12px; color: var(--color-text-main); margin-bottom: 24px; font-size: 1rem; outline: none;">
+                    
+                    <div style="text-align: center; margin-bottom: 24px;">
+                        <div id="qrcode" style="background: #fff; padding: 20px; border-radius: 12px; display: inline-block; box-shadow: var(--shadow-soft);"></div>
+                    </div>
+
+                    <button id="downloadBtn" class="btn-execute" style="width: 100%;">QRコードをダウンロード</button>
+                </div>
+
+                <div class="share-btn-container" style="text-align: center;">
+                    <button onclick="sharePage()" style="background: none; border: 1px solid var(--color-border); padding: 10px 24px; border-radius: 50px; cursor: pointer; color: var(--color-text-muted); font-size: 0.9rem; font-weight: 600;">このツールをシェアする</button>
+                </div>
+            </div>
+
+            <!-- 強化された詳細コンテンツセクション -->
+            <section class="tool-footer-info">
+                <h2>QRコード作成の技術と設計思想</h2>
+                <p>
+                    VOLC TOOLSのQRコード生成器は、情報のデジタル化を最も安全かつ効率的に行うために設計されました。
+                    QRコード（Quick Response Code）は、1994年に日本のデンソーウェーブによって開発され、現在では世界中で情報を橋渡しする重要なインフラとなっています。
+                    当ツールは、その便利な仕組みを**「完全プライベート」**な環境で提供することに特化しています。
+                </p>
+
+                <h3>QRコードの仕組みと「エラー訂正能力」</h3>
+                <p>
+                    QRコードが汚れや破損に強い理由は、内部に「リード・ソロモン符号」と呼ばれるエラー訂正機能が組み込まれているからです。
+                    当ツールでは、この訂正レベルを最高ランクの「Level H（約30%の面積が損なわれても復元可能）」に設定しています。
+                    これにより、印刷物としての耐久性が高まり、少々の汚れやデザインの重ね合わせがあっても、スマートフォンで確実に読み取ることが可能になっています。
+                </p>
+
+                <h3>なぜ「ブラウザ完結」での生成なのか</h3>
+                <p>
+                    QRコードには、時に機密性の高いURLや、個人の連絡先、プライベートなメッセージが含まれます。
+                    多くの無料生成サイトでは、生成した情報をサーバーに記録し、アクセス解析や広告に利用することが一般的ですが、VOLC TOOLSは**「ゼロ・データ・トラフィック」**を掲げています。
+                </p>
+                <ul>
+                    <li><strong>プライバシーの絶対守護:</strong> あなたが入力した文字列は、1バイトもインターネットへ送信されません。生成処理はすべてあなたのブラウザ内のメモリ上で行われます。</li>
+                    <li><strong>オフライン対応:</strong> 一度ページを読み込めば、インターネットが切断された状態でもQRコードを生成し続けることが可能です。</li>
+                    <li><strong>永久に有効なコード:</strong> 当ツールで生成されたQRコードは、特定のサーバーを経由しない「直接リンク」です。そのため、生成サービスが終了してもQRコードが無効になることはありません。</li>
+                </ul>
+
+                <h3>スマートな活用シーン</h3>
+                <div style="text-align: left; margin-bottom: 24px;">
+                    <div style="margin-bottom: 15px;">
+                        <strong style="display: block; color: var(--color-text-main);">1. ビジネスツールとして</strong>
+                        <p style="font-size: 0.95rem;">名刺やポートフォリオに、LinkedInやGitHubへのリンクを掲載。プロフェッショナルな印象を与えます。</p>
+                    </div>
+                    <div>
+                        <strong style="display: block; color: var(--color-text-main);">2. 物理的な場所での情報共有</strong>
+                        <p style="font-size: 0.95rem;">イベントのチラシや店頭のPOPに配置し、地図やメニュー、Wi-Fi設定情報を即座に共有。手入力の手間をゼロにします。</p>
+                    </div>
+                </div>
+
+                <h3>よくある質問 (FAQ)</h3>
+                <div class="faq-section" style="text-align: left; margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 生成したQRコードに有効期限はありますか？</strong>
+                        <p style="font-size: 0.95rem;">A. いいえ、ありません。当ツールは入力データを直接QRコードのパターンに変換しているため、物理的に読み取り不可能な状態にならない限り、永久にご利用いただけます。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. どのような情報をQR化できますか？</strong>
+                        <p style="font-size: 0.95rem;">A. WebサイトのURL、テキスト、メールアドレス、電話番号など、あらゆるテキスト情報をコード化できます。文字数が多すぎるとパターンが細かくなり読み取りづらくなるため、適度な長さを推奨します。</p>
+                    </div>
+                </div>
+
+                <div class="changelog" style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+                    <h4 style="margin-bottom: 10px;">更新履歴 (Changelog)</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 5px;"><strong>2026.05.01</strong> - UIを VOLC TOOLS デザインシステムに刷新。エラー訂正レベルを最高設定（Level H）に固定。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.04.20</strong> - リアルタイム生成のレスポンスを改善し、入力と同時に即座に反映されるように。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.03.27</strong> - QRコード作成ツールを新規公開。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <style>
+                .tool-footer-info h3 { margin-top: 32px; margin-bottom: 12px; font-size: 1.3rem; color: var(--color-text-main); }
+                .tool-footer-info ul { text-align: left; margin-bottom: 24px; }
+                .tool-footer-info li { margin-bottom: 12px; line-height: 1.6; }
+            </style>
+
+            <div id="footer-placeholder"></div>
+        </main>
+    </div>
+
+    <script>
+        const textInput = document.getElementById('textInput');
+        const qrcodeDiv = document.getElementById('qrcode');
+        const downloadBtn = document.getElementById('downloadBtn');
+        
+        let qrcode = new QRCode(qrcodeDiv, {
+            text: "https://volcane.pages.dev/",
+            width: 256,
+            height: 256,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+
+        textInput.oninput = (e) => {
+            qrcode.clear();
+            if(e.target.value) qrcode.makeCode(e.target.value);
+        };
+
+        downloadBtn.onclick = () => {
+            const img = qrcodeDiv.querySelector('img');
+            const link = document.createElement('a');
+            link.download = 'qrcode.png';
+            link.href = img.src;
+            link.click();
+        };
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>

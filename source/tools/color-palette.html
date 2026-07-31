@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配色抽出 | VOLCANE</title>
+    <meta name="description" content="画像から主要な配色をAIが自動抽出。デザインのインスピレーションを即座にカラーパレット化。ブラウザ完結でプライバシーも安心。">
+    <link rel="canonical" href="https://volcane.pages.dev/color-palette.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-color-palette.png">
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Color Palette Extractor",
+      "operatingSystem": "Windows, macOS, Android, iOS",
+      "applicationCategory": "MultimediaApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Design & Utilities", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 3, "name": "配色抽出"
+      }]
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles/tool-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <script src="../public/sidebar.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside id="sidebar-placeholder" class="sidebar"></aside>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="tools-index.html">Home</a> <span>/</span> <span>Design & Utilities</span> <span>/</span> 配色抽出
+            </nav>
+
+            <div class="tool-container">
+                <header class="tool-header">
+                    <img src="../public/icon-color-palette.png" alt="Color Palette" class="tool-icon-large">
+                    <h1>配色抽出</h1>
+                    <p class="tool-description">画像から主要な色を自動抽出。カラーコードをクリックで即座にコピーできます。</p>
+                </header>
+
+                <div class="workspace-surface">
+                    <div id="dropZone" class="upload-zone">
+                        <p>画像をアップロードして開始</p>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+
+                    <div id="previewArea" style="margin-top: 24px;">
+                        <img id="previewImg" style="max-width: 100%; max-height: 400px; border-radius: 12px; display: none; margin: 0 auto; box-shadow: var(--shadow-soft);">
+                    </div>
+
+                    <div id="palette" class="palette-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 16px; margin-top: 32px;"></div>
+                </div>
+
+                <div class="share-btn-container" style="text-align: center;">
+                    <button onclick="sharePage()" style="background: none; border: 1px solid var(--color-border); padding: 10px 24px; border-radius: 50px; cursor: pointer; color: var(--color-text-muted); font-size: 0.9rem; font-weight: 600;">このツールをシェアする</button>
+                </div>
+            </div>
+
+            <!-- 強化された詳細コンテンツセクション -->
+            <section class="tool-footer-info">
+                <h2>配色抽出の技術と設計思想</h2>
+                <p>
+                    VOLC TOOLSの配色抽出ツールは、日常の風景や美しい写真から「感性」を数値化し、クリエイティブな制作に役立てるために開発されました。
+                    デザインにおいて配色は、ブランドの第一印象やユーザーの感情を左右する極めて重要な要素です。
+                    当ツールは、画像の中に含まれる膨大なピクセルデータを瞬時に解析し、その作品を象徴するカラーパレットを導き出します。
+                </p>
+
+                <h3>アルゴリズム：ColorThiefと中央値カット法</h3>
+                <p>
+                    当ツールの心臓部には、定評のあるJavaScriptライブラリ「ColorThief」を採用しています。
+                    画像から「主要な色」を選び出すのは、単に色の出現頻度を数えるだけでは不十分です（例えば、背景の白が最も多くても、それが主題の色とは限りません）。
+                </p>
+                <p>
+                    内部では「中央値カット法（Median Cut Quantization）」というアルゴリズムを使用し、色の空間を立方体として分割・収束させていくことで、人間の目に「その画像を象徴する」と認識されやすい代表色を抽出しています。
+                    この高度な計算をすべてあなたのブラウザ上で行うため、サーバーの負荷に左右されず高速な解析が可能です。
+                </p>
+
+                <h3>なぜ「ブラウザ完結」にこだわるのか</h3>
+                <p>
+                    制作過程のデザイン案や、プライベートなスナップ写真には、公開前の機密情報や個人情報が含まれていることがあります。
+                    VOLC TOOLSは、**「データの物理的な分離」**を設計の根幹に置いています。
+                </p>
+                <ul>
+                    <li><strong>100%プライバシー保護:</strong> 画像データはインターネットを介して送信されません。あなたのデバイスの外へデータが出ることは決してありません。</li>
+                    <li><strong>ゼロ・レイテンシ:</strong> アップロードやダウンロードの待ち時間がゼロなため、画像を選択した瞬間にパレットが生成されます。</li>
+                    <li><strong>安全な開発環境:</strong> 企業の機密ガイドラインに触れることなく、社内のデザイン素材から安心して配色を検討いただけます。</li>
+                </ul>
+
+                <h3>よくある質問 (FAQ)</h3>
+                <div class="faq-section" style="text-align: left; margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 抽出される色の数は変更できますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 現在は、デザインのバランスが最も取りやすい「9色」を抽出するように最適化されています。メインカラー、アクセントカラー、ベースカラーを網羅するのに最適な数となっています。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 写真の一部からだけ色を抜くことはできますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 現在は画像全体を解析対象としています。特定の部分の色を抽出したい場合は、あらかじめその部分をトリミング（切り抜き）した画像を読み込ませることで、精度の高いパレットが得られます。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 対応している画像形式は？</strong>
+                        <p style="font-size: 0.95rem;">A. JPG, PNG, WebP, GIFなど、ブラウザで表示可能な主要な画像形式に対応しています。</p>
+                    </div>
+                </div>
+
+                <div class="changelog" style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+                    <h4 style="margin-bottom: 10px;">更新履歴 (Changelog)</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 5px;"><strong>2026.05.01</strong> - UIを VOLC TOOLS デザインシステムに刷新。技術解説コンテンツを拡充。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.04.18</strong> - カラーコードのコピー機能を強化。完了時に視覚的なフィードバックを追加。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.03.27</strong> - 配色抽出ツールをβ公開。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <style>
+                .tool-footer-info h3 { margin-top: 32px; margin-bottom: 12px; font-size: 1.3rem; color: var(--color-text-main); }
+                .tool-footer-info ul { text-align: left; margin-bottom: 24px; }
+                .tool-footer-info li { margin-bottom: 12px; line-height: 1.6; }
+                .color-box {
+                    padding: 24px 12px;
+                    border-radius: 12px;
+                    color: #fff;
+                    font-weight: 700;
+                    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+                    cursor: pointer;
+                    transition: var(--transition);
+                    font-size: 0.9rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 80px;
+                }
+                .color-box:hover {
+                    transform: translateY(-4px);
+                    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+                }
+            </style>
+
+            <div id="footer-placeholder"></div>
+        </main>
+    </div>
+
+    <script>
+        const colorThief = new ColorThief();
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const previewImg = document.getElementById('previewImg');
+        const palette = document.getElementById('palette');
+
+        dropZone.onclick = () => fileInput.click();
+
+        // ドラッグ＆ドロップの制御
+        window.addEventListener('dragover', e => e.preventDefault(), false);
+        window.addEventListener('drop', e => e.preventDefault(), false);
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-primary)";
+            dropZone.style.background = "var(--color-hover)";
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-border)";
+            dropZone.style.background = "transparent";
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-border)";
+            dropZone.style.background = "transparent";
+            const files = e.dataTransfer.files;
+            if (files.length > 0) handleFile(files[0]);
+        });
+
+        fileInput.onchange = (e) => {
+            if (e.target.files.length > 0) handleFile(e.target.files[0]);
+        };
+
+        function handleFile(file) {
+            if (!file || !file.type.startsWith('image/')) return;
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                previewImg.src = event.target.result;
+                previewImg.style.display = 'inline-block';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        previewImg.onload = () => {
+            const colors = colorThief.getPalette(previewImg, 9);
+            palette.innerHTML = '';
+            colors.forEach(rgb => {
+                const hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
+                const div = document.createElement('div');
+                div.className = 'color-box';
+                div.style.backgroundColor = hex;
+                div.innerText = hex;
+                div.onclick = () => {
+                    navigator.clipboard.writeText(hex);
+                    const originalText = div.innerText;
+                    div.innerText = 'COPIED!';
+                    setTimeout(() => div.innerText = originalText, 1000);
+                };
+                palette.appendChild(div);
+            });
+        };
+
+        function rgbToHex(r, g, b) {
+            return "#" + [r, g, b].map(x => {
+                const hex = x.toString(16);
+                return hex.length === 1 ? "0" + hex : hex;
+            }).join("");
+        }
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>

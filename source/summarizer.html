@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>感情分析・要約AI | VOLCANE</title>
+    <meta name="description" content="長いニュースや論文をAIが瞬時に要約。ポジティブ・ネガティブの感情分析も可能。ブラウザ内処理でセキュアな無料AI要約ツール。">
+    <link rel="canonical" href="https://volcane.pages.dev/summarizer.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-summarizer.png">
+
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 2, "name": "AI Magic", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 3, "name": "感情分析・要約AI"
+      }]
+    }
+    </script>
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "感情分析・要約AI",
+      "operatingSystem": "Windows, macOS, Android, iOS",
+      "applicationCategory": "BusinessApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles/tool-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+    <script src="../public/sidebar.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside id="sidebar-placeholder" class="sidebar"></aside>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="tools-index.html">Home</a> <span>/</span> <span>AI Magic</span> <span>/</span> 感情分析・要約AI
+            </nav>
+
+            <div class="tool-container">
+                <header class="tool-header">
+                    <img src="../public/icon-summarizer.png" alt="Summarizer" class="tool-icon-large">
+                    <h1>感情分析・要約AI</h1>
+                    <p class="tool-description">長い文章を瞬時に要約。トーン（ポジティブ/ネガティブ）もAIが判定します。</p>
+                </header>
+
+                <div class="workspace-surface">
+                    <textarea id="textInput" placeholder="分析したい文章をここに入力またはペーストしてください..." style="width: 100%; height: 240px; padding: 20px; border: 1px solid var(--color-border); border-radius: 12px; font-family: inherit; font-size: 1rem; margin-bottom: 24px; resize: vertical;"></textarea>
+                    
+                    <div id="status" class="status" style="margin-bottom: 20px; font-weight: 600; color: var(--color-primary);"></div>
+
+                    <div id="progressWrap" style="display: none; margin-bottom: 30px;">
+                        <div style="width: 100%; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; margin-bottom: 10px;">
+                            <div id="progressFill" style="width: 0%; height: 100%; background: var(--color-primary); transition: width 0.25s ease;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--color-text-muted);">
+                            <span>AIモデルをロード中...</span>
+                            <span id="progressPct">0%</span>
+                        </div>
+                    </div>
+
+                    <button id="processBtn" class="btn-execute" style="width: 100%;">AI分析を開始</button>
+
+                    <div id="resultBox" class="result-preview" style="text-align: left; background: var(--color-hover); padding: 24px; border-radius: 12px; margin-top: 32px; border: 1px solid var(--color-primary);">
+                        <div id="sentiment" style="display: inline-block; padding: 4px 12px; border-radius: 20px; color: white; font-size: 0.8rem; font-weight: 700; margin-bottom: 16px;"></div>
+                        <h4 style="font-size: 1rem; margin-bottom: 8px; color: var(--color-primary);">要約結果:</h4>
+                        <p id="summaryText" style="line-height: 1.7; color: var(--color-text-main);"></p>
+                    </div>
+                </div>
+
+                <div class="share-btn-container" style="text-align: center;">
+                    <button onclick="sharePage()" style="background: none; border: 1px solid var(--color-border); padding: 10px 24px; border-radius: 50px; cursor: pointer; color: var(--color-text-muted); font-size: 0.9rem; font-weight: 600;">このツールをシェアする</button>
+                </div>
+            </div>
+
+            <!-- 強化された詳細コンテンツセクション -->
+            <section class="tool-footer-info">
+                <h2>感情分析・要約AIの技術と設計思想</h2>
+                <p>
+                    VOLC TOOLSの感情分析・要約AIは、膨大な情報の中から「本質」と「感情のトーン」を瞬時に抽出するために設計されました。
+                    ニュース記事、SNSの投稿、長いメールなど、現代人は日々大量のテキストデータに曝されています。
+                    当ツールは、最新の自然言語処理（NLP）技術をブラウザ上で直接動作させることで、情報の効率的な消費をサポートします。
+                </p>
+
+                <h3>「知識の蒸留」による高速な推論の実現</h3>
+                <p>
+                    当ツールが採用しているモデル「DistilBART」および「DistilBERT」は、巨大なAIモデルの能力を維持したまま、サイズを劇的に軽量化した「蒸留（Distillation）」モデルです。
+                    通常、数GBにおよぶ巨大なモデルをブラウザで動かすことは困難ですが、これらの軽量モデルをWebAssembly（WASM）を通じて動作させることで、数秒〜数十秒での文章解析を可能にしました。
+                    これにより、高性能なGPUサーバーを用意することなく、あなたのデバイスのCPU/GPUパワーだけで高度な知能を体験いただけます。
+                </p>
+
+                <h3>「感情分析」と「要約」のメカニズム</h3>
+                <div style="text-align: left; margin-bottom: 24px;">
+                    <div style="margin-bottom: 15px;">
+                        <strong style="display: block; color: var(--color-text-main);">1. 感情分析 (Sentiment Analysis)</strong>
+                        <p style="font-size: 0.95rem;">入力されたテキストが、発信者のどのような感情に基づいているかを「多次元ベクトル」として解析します。文中の肯定的なニュアンスや否定的な表現のバランスを計算し、最終的に「POSITIVE」または「NEGATIVE」の判定と、その信頼度を算出します。</p>
+                    </div>
+                    <div>
+                        <strong style="display: block; color: var(--color-text-main);">2. 抽象的要約 (Abstractive Summarization)</strong>
+                        <p style="font-size: 0.95rem;">従来の「重要そうな単語を抜き出す」手法とは異なり、AIが文章の文脈を一度「理解」し、それをもとに新しい文章として再構成する手法を採用しています。これにより、自然な日本語としての繋がりを保ったまま、要点を簡潔にまとめ上げます。</p>
+                    </div>
+                </div>
+
+                <h3>開発の背景</h3>
+                <p>
+                    「VOLCANE」のプロジェクト理念は、テクノロジーを特権的なものから「個人のための道具」へ戻すことです。
+                    多くの要約ツールが入力データをサーバーに送信し、学習データとして再利用する中で、当ツールはプライバシーを物理的に分離した「ゼロ・サーバー」モデルを貫いています。
+                    機密性の高いビジネス文書、プライベートな日記、未公開の下書きなど、あらゆるテキストを誰の目も気にすることなく、あなたの手元で安全に解析できます。
+                </p>
+
+                <h3>よくある質問 (FAQ)</h3>
+                <div class="faq-section" style="text-align: left; margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 日本語の精度はどうですか？</strong>
+                        <p style="font-size: 0.95rem;">A. 現在のモデルは主に英語での学習に基づいているため、日本語の文章は内部でトークン化される際に効率が落ちる場合があります。意味の把握は可能ですが、要約文の自然さについては今後の日本語特化モデルの導入をお待ちください。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. なぜモデルのダウンロードが必要なのですか？</strong>
+                        <p style="font-size: 0.95rem;">A. ブラウザ完結で動作させるために、AIの「知能」にあたる計算モデルをお使いのブラウザに一時的に保存します。これにより、次回からはオフラインに近い環境でも高速に動作させることが可能になります。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 解析できる文字数に制限はありますか？</strong>
+                        <p style="font-size: 0.95rem;">A. モデルが一度に処理できる「コンテキスト・ウィンドウ」には制限（約1024トークン）があります。極端に長い論文などの場合は、数回に分けて入力いただくことで、より精度の高い要約が得られます。</p>
+                    </div>
+                </div>
+
+                <div class="changelog" style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+                    <h4 style="margin-bottom: 10px;">更新履歴 (Changelog)</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 5px;"><strong>2026.05.01</strong> - モデルダウンロードのプログレスバーを実装。UIの視認性を向上。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.03.28</strong> - Transformers.js v3 を実装し、感情分析・要約機能のプロトタイプを公開。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.03.25</strong> - UI/UXを VOLC TOOLS デザインシステムに刷新。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <style>
+                .tool-footer-info h3 { margin-top: 32px; margin-bottom: 12px; font-size: 1.3rem; color: var(--color-text-main); }
+                .tool-footer-info ul { text-align: left; margin-bottom: 24px; }
+                .tool-footer-info li { margin-bottom: 12px; line-height: 1.6; }
+            </style>
+
+            <div id="footer-placeholder"></div>
+        </main>
+    </div>
+
+    <script type="module">
+        // Transformers.js v3 を使用したNLP処理の土台
+        import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.1.2';
+
+        env.allowLocalModels = false;
+        env.useBrowserCache = true;
+
+        const processBtn = document.getElementById('processBtn');
+        const resultBox = document.getElementById('resultBox');
+        const summaryText = document.getElementById('summaryText');
+        const sentimentBadge = document.getElementById('sentiment');
+        const status = document.getElementById('status');
+        const progressWrap = document.getElementById('progressWrap');
+        const progressFill = document.getElementById('progressFill');
+        const progressPct = document.getElementById('progressPct');
+
+        let summarizer = null;
+        let classifier = null;
+
+        // 進捗状況を管理するマップ
+        const dlMap = new Map();
+
+        const onProgress = (p) => {
+            if (p.status !== 'progress') return;
+            const key = (p.name || '') + '/' + (p.file || '');
+            dlMap.set(key, { current: p.loaded || 0, total: p.total || 0 });
+
+            let sumCurrent = 0, sumTotal = 0;
+            for (const v of dlMap.values()) { sumCurrent += v.current; sumTotal += v.total; }
+            const pct = sumTotal > 0 ? Math.min(100, Math.round(sumCurrent / sumTotal * 100)) : 0;
+
+            progressFill.style.width = pct + '%';
+            progressPct.textContent = pct + '%';
+        };
+
+        processBtn.onclick = async () => {
+            const text = document.getElementById('textInput').value.trim();
+            if (!text) return;
+            
+            processBtn.disabled = true;
+            status.textContent = 'AIモデルをロード中... (初回はDLに時間がかかります)';
+            progressWrap.style.display = 'block';
+            
+            try {
+                const opts = { progress_callback: onProgress };
+                
+                if (!summarizer) {
+                    summarizer = await pipeline('summarization', 'Xenova/distilbart-cnn-6-1', opts);
+                }
+                if (!classifier) {
+                    classifier = await pipeline('sentiment-analysis', 'Xenova/distilbert-base-uncased-finetuned-sst-2-english', opts);
+                }
+
+                progressWrap.style.display = 'none';
+                status.textContent = '文章を分析中...';
+
+                resultBox.style.display = 'block';
+                
+                // 並列実行
+                const [summaryOutput, sentimentOutput] = await Promise.all([
+                    summarizer(text, { max_new_tokens: 100, length_penalty: 2.0, num_beams: 4 }),
+                    classifier(text)
+                ]);
+
+                const sentiment = sentimentOutput[0];
+                const score = Math.round(sentiment.score * 100);
+                sentimentBadge.textContent = `${sentiment.label} / 信頼度: ${score}%`;
+                sentimentBadge.style.background = sentiment.label === 'POSITIVE' ? '#22c55e' : '#ef4444';
+                
+                summaryText.textContent = summaryOutput[0].summary_text;
+                status.textContent = "✓ 分析完了！";
+            } catch (err) {
+                console.error(err);
+                status.textContent = "";
+                summaryText.textContent = "解析中にエラーが発生しました。ブラウザのコンソールを確認してください。";
+            } finally {
+                processBtn.disabled = false;
+            }
+        };
+
+        window.sharePage = function() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        };
+    </script>
+</body>
+</html>

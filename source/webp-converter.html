@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebP Converter | VOLCANE</title>
+    <meta name="description" content="画像を軽量なWebP形式へ、またはWebPをPNGへ瞬時に変換。ブラウザ完結でプライバシーも安心な無料コンバーター。">
+    <link rel="canonical" href="https://volcane.pages.dev/webp-converter.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-webp-converter.png">
+    
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "WebP Converter",
+      "operatingSystem": "Windows, macOS, Android, iOS",
+      "applicationCategory": "MultimediaApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+    
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Converters", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 3, "name": "WebPコンバーター"
+      }]
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles/tool-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+    <script src="../public/sidebar.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside id="sidebar-placeholder" class="sidebar"></aside>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="tools-index.html">Home</a> <span>/</span> <span>Converters</span> <span>/</span> WebPコンバーター
+            </nav>
+
+            <div class="tool-container">
+                <header class="tool-header">
+                    <img src="../public/icon-webp-converter.png" alt="WebP Converter" class="tool-icon-large">
+                    <h1>WebPコンバーター</h1>
+                    <p class="tool-description">JPEG/PNGを軽量なWebPへ、またはWebPをPNGへ即座に変換します。サーバー送信なしで安全です。</p>
+                </header>
+
+                <div class="workspace-surface">
+                    <div id="dropZone" class="upload-zone">
+                        <p id="dropText">ここに画像をドラッグ、またはクリックして選択</p>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+
+                    <div id="resultArea" class="result-preview" style="text-align: center;">
+                        <canvas id="canvas" style="max-width: 100%; border-radius: 8px; margin-bottom: 24px; box-shadow: var(--shadow-soft);"></canvas>
+                        <br>
+                        <a id="downloadLink" class="btn-execute" style="text-decoration: none; display: inline-block;">WebPを保存</a>
+                    </div>
+                </div>
+
+                <div class="share-btn-container" style="text-align: center;">
+                    <button onclick="sharePage()" style="background: none; border: 1px solid var(--color-border); padding: 10px 24px; border-radius: 50px; cursor: pointer; color: var(--color-text-muted); font-size: 0.9rem; font-weight: 600;">このツールをシェアする</button>
+                </div>
+            </div>
+
+            <!-- 強化された詳細コンテンツセクション -->
+            <section class="tool-footer-info">
+                <h2>WebPコンバーターの技術と設計思想</h2>
+                <p>
+                    VOLC TOOLSのWebPコンバーターは、Webサイトのパフォーマンス最適化をすべての人に開放するために開発されました。
+                    現在、Webサイトの読み込み速度はユーザー体験（UX）だけでなく、検索エンジン最適化（SEO）においても極めて重要な指標となっています。
+                    当ツールは、画像を次世代の画像形式であるWebPへと安全かつ瞬時に変換することで、Webサイトの軽量化をサポートします。
+                </p>
+
+                <h3>次世代画像形式「WebP」を採用する理由</h3>
+                <p>
+                    WebPはGoogleによって開発された画像フォーマットで、従来のJPEGやPNGと比較して、同等の画質を保ちながらファイルサイズを25%〜35%程度削減できます。
+                    これにより、モバイル環境でのデータ通信量を節約し、サイトの表示速度を劇的に向上させることが可能です。
+                    当ツールでは、この変換プロセスをクラウドサーバーへアップロードすることなく、あなたのブラウザ内（ローカル環境）で行うことにこだわりました。
+                </p>
+
+                <h3>ブラウザ完結型処理のメカニズム</h3>
+                <p>
+                    当コンバーターは、ブラウザ標準のCanvas APIを活用して画像データを再描画し、ネイティブの画像エンコード機能を呼び出しています。
+                    サーバーサイドで処理を行う一般的なサービスとは異なり、以下の3つの大きなメリットがあります。
+                </p>
+                <ul>
+                    <li><strong>100%プライバシー保護:</strong> 画像データはインターネットを通じてどこにも送信されません。機密性の高い素材やプライベートな写真も安心して変換できます。</li>
+                    <li><strong>ゼロ待機時間:</strong> アップロードとダウンロードの待ち時間が発生しないため、大容量の画像でもローカルの計算リソースを使って瞬時に処理が完了します。</li>
+                    <li><strong>無料・無制限:</strong> サーバー維持コストがかからないため、ユーザーに対して利用回数やファイルサイズの制限を設ける必要がありません。</li>
+                </ul>
+
+                <h3>開発の背景</h3>
+                <p>
+                    「テクノロジーを個人の手に取り戻す」というVOLCANEプロジェクトの理念に基づき、専門的な知識や高価なソフトを必要とせず、誰でも簡単に「Webの高速化」という恩恵を受けられるようにしたいと考えました。
+                    多くのコンバーターが「有料版への誘導」や「広告による視認性の低下」を抱える中、本ツールは究極のシンプルさと機能美を追求し、プロの開発者からブログ初心者までが直感的に使えるUIを実現しました。
+                </p>
+
+                <h3>よくある質問 (FAQ)</h3>
+                <div class="faq-section" style="text-align: left; margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. WebPからPNGに戻すことはできますか？</strong>
+                        <p style="font-size: 0.95rem;">A. はい、可能です。当ツールは双方向の変換に対応しており、WebPファイルをアップロードした場合は自動的にPNGとして書き出すように設計されています。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 変換後の画質はどうなりますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 標準ではバランスの良い「品質0.8」の設定でエンコードされます。これにより、視覚的な劣化を最小限に抑えつつ、大幅なファイルサイズの削減を実現しています。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. ブラウザが対応していない場合はありますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 最新のChrome, Edge, Safari, Firefoxなど、主要なモダンブラウザであれば問題なく動作します。WebP形式自体が現在のWeb標準となっているため、安心してご利用いただけます。</p>
+                    </div>
+                </div>
+
+                <div class="changelog" style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+                    <h4 style="margin-bottom: 10px;">更新履歴 (Changelog)</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 5px;"><strong>2026.05.01</strong> - UIを VOLC TOOLS デザインシステムに刷新。モバイル環境での操作性を向上。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.04.10</strong> - WebP ↔ PNG の相互変換ロジックを最適化。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.03.27</strong> - WebPコンバーターをβ公開。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <style>
+                .tool-footer-info h3 { margin-top: 32px; margin-bottom: 12px; font-size: 1.3rem; color: var(--color-text-main); }
+                .tool-footer-info ul { text-align: left; margin-bottom: 24px; }
+                .tool-footer-info li { margin-bottom: 12px; line-height: 1.6; }
+            </style>
+
+            <div id="footer-placeholder"></div>
+        </main>
+    </div>
+
+    <script>
+        // AIが把握しやすいよう日本語コメントを残します
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const canvas = document.getElementById('canvas');
+        const downloadLink = document.getElementById('downloadLink');
+        const resultArea = document.getElementById('resultArea');
+        const dropText = document.getElementById('dropText');
+
+        dropZone.onclick = () => fileInput.click();
+
+        // ドラッグ＆ドロップの制御
+        window.addEventListener('dragover', e => e.preventDefault(), false);
+        window.addEventListener('drop', e => e.preventDefault(), false);
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-primary)";
+            dropZone.style.background = "var(--color-hover)";
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-border)";
+            dropZone.style.background = "transparent";
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-border)";
+            dropZone.style.background = "transparent";
+            const files = e.dataTransfer.files;
+            if (files.length > 0) handleFile(files[0]);
+        });
+
+        fileInput.onchange = (e) => {
+            if (e.target.files.length > 0) handleFile(e.target.files[0]);
+        };
+
+        function handleFile(file) {
+            if (!file) return;
+            dropText.textContent = "処理中...";
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const img = new Image();
+                img.onload = () => {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+                    
+                    // 入力がWebPならPNG、それ以外ならWebPに変換
+                    const isWebPInput = file.type === 'image/webp';
+                    const targetType = isWebPInput ? 'image/png' : 'image/webp';
+                    const targetExt = isWebPInput ? '.png' : '.webp';
+                    
+                    canvas.toBlob((blob) => {
+                        const url = URL.createObjectURL(blob);
+                        downloadLink.href = url;
+                        downloadLink.download = file.name.replace(/\.[^/.]+$/, "") + targetExt;
+                        
+                        const typeLabel = isWebPInput ? "PNG" : "WebP";
+                        downloadLink.textContent = `${typeLabel}をダウンロード (${(blob.size / 1024).toFixed(1)} KB)`;
+                        
+                        resultArea.style.display = "block";
+                        dropText.textContent = `${typeLabel}への変換完了！別の画像を選択`;
+                    }, targetType, 0.8);
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>

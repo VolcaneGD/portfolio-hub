@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOLC PDFリーダー | VOLCANE</title>
+    <meta name="description" content="シンプルで直感的な操作が可能なAndroid用PDF閲覧アプリ。複雑な設定なしで、デバイス内のドキュメントを素早く開いて快適に閲覧できます。">
+    <link rel="canonical" href="https://volcane.pages.dev/pdf-reader.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/pdf_reader.png">
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "VOLC PDFリーダー",
+      "operatingSystem": "Android",
+      "applicationCategory": "UtilityApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "VOLC PDFリーダー"
+      }]
+    }
+    </script>
+
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/app-details.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+</head>
+<body class="dark-mode">
+    <header id="header" style="background: rgba(10, 12, 16, 0.95); padding: 0.5rem 0;">
+        <nav class="container">
+            <a href="/" class="logo"><span>V</span>OLCANE</a>
+            <ul class="nav-links">
+                <li><a href="/#projects">PROJECTS</a></li>
+                <li><a href="/#about">ABOUT</a></li>
+                <li><a href="/#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="app-detail-main">
+        <nav class="container breadcrumb">
+            <a href="/">Home</a> <span>/</span> VOLC PDFリーダー
+        </nav>
+
+        <section class="container app-hero">
+            <div class="app-icon-large">
+                <img src="../public/pdf_reader.png" alt="VOLC PDFリーダー Icon">
+            </div>
+            <h1 class="highlight">VOLC PDFリーダー</h1>
+            <p class="app-subtitle">どんな時でも、サッと開いてスッと読める。PDF閲覧の基本を極めた、軽量リーダー。</p>
+            <a href="https://play.google.com/store/apps/details?id=com.volc_pdf_reader" class="btn btn-primary" target="_blank">Google Play で入手</a>
+        </section>
+
+        <div class="share-btn-container" style="text-align: center; margin-top: 2rem;">
+            <button onclick="sharePage()" class="btn btn-share" aria-label="このアプリをSNSで共有する">このアプリをシェアする</button>
+        </div>
+
+        <section class="container" style="max-width: 800px; margin-top: 4rem; padding-bottom: 4rem;">
+            <h2 class="section-title">Overview</h2>
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 20px; line-height: 1.8;">
+                <p>「VOLC PDFリーダー」は、多機能ゆえに複雑になりがちなPDFビューアの常識を覆します。シニア世代の方や、とにかく手軽に資料を確認したい方のための「最も使いやすいPDFリーダー」を目指しました。</p>
+                <h3 style="color: var(--accent); margin-top: 1.5rem;">主な機能</h3>
+                <ul style="margin-left: 1.5rem; color: var(--text-secondary);">
+                    <li>ファイルリストからのクイックオープン</li>
+                    <li>滑らかなスクロールとズーム機能</li>
+                    <li>ダークモードに対応し、長時間の読書でも目に優しい</li>
+                    <li>余計な広告や複雑な設定を最小限に抑えた設計</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- MORE APPS セクション -->
+        <section class="container more-services">
+            <h2 class="more-services-title">MORE SMARTPHONE APPS</h2>
+            <div class="mini-grid">
+                <a href="qr-reader.html" class="mini-card">
+                    <img src="../public/qr_reader.png" alt="QR">
+                    <span>QRリーダー</span>
+                </a>
+                <a href="bonbon.html" class="mini-card">
+                    <img src="../public/BonBonIcon.png" alt="BonBon">
+                    <span>ボンボンアンテナ</span>
+                </a>
+                <a href="inner-compass.html" class="mini-card">
+                    <img src="../public/mbti-diagnosis-icon.png" alt="Inner Compass">
+                    <span>Inner Compass</span>
+                </a>
+                <a href="bass-booster.html" class="mini-card">
+                    <img src="../public/bass-booster-icon.png" alt="Bass Booster">
+                    <span>BASS BOOSTER</span>
+                </a>
+                <a href="star-chronicle.html" class="mini-card">
+                    <img src="../public/Star_Chronicle_icon.png" alt="Star Chronicle">
+                    <span>スタークロニクル</span>
+                </a>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="/#projects" class="view-link" style="font-size: 0.9rem;">すべてのプロジェクトを見る &rarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Volcane. <a href="privacy-policy.html" style="color: var(--text-secondary); text-decoration: underline; margin-left: 10px;">Privacy Policy</a></p>
+                <div class="social-links">
+                    <a href="https://x.com/Volcane_GD" target="_blank">X (Twitter)</a>
+                    <a href="https://github.com/VolcaneGD" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG to PNG Converter | VOLCANE</title>
+    <meta name="description" content="SVGとPNGをブラウザ上で相互に即時変換。サーバー送信なしの100%プライバシー保護で、高品質な画像変換が完全無料。">
+    <link rel="canonical" href="https://volcane.pages.dev/svg-to-png.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-svg-png.png">
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "SVG to PNG Converter",
+      "operatingSystem": "Windows, macOS, Android, iOS",
+      "applicationCategory": "MultimediaApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Converters", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 3, "name": "SVG ↔ PNG 変換"
+      }]
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles/tool-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+    <script src="../public/sidebar.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside id="sidebar-placeholder" class="sidebar"></aside>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="tools-index.html">Home</a> <span>/</span> <span>Converters</span> <span>/</span> SVG ↔ PNG 変換
+            </nav>
+
+            <div class="tool-container">
+                <header class="tool-header">
+                    <img src="../public/icon-svg-png.png" alt="SVG to PNG" class="tool-icon-large">
+                    <h1>SVG ↔ PNG Converter</h1>
+                    <p class="tool-description">SVGとPNGを相互に即時変換。サーバー送信なし、プライバシー100%保護の無料ツールです。</p>
+                </header>
+
+                <div class="workspace-surface">
+                    <div id="dropZone" class="upload-zone">
+                        <p id="dropText">SVGまたはPNGをドラッグ、またはクリックして選択</p>
+                        <input type="file" id="fileInput" accept=".svg,image/png,image/jpeg" style="display: none;">
+                    </div>
+
+                    <div id="resultArea" class="result-preview" style="text-align: center;">
+                        <canvas id="canvas" style="display: none;"></canvas>
+                        <a id="downloadBtn" class="btn-execute" style="text-decoration: none; display: inline-block;">ファイルを保存</a>
+                    </div>
+                </div>
+
+                <div class="share-btn-container" style="text-align: center;">
+                    <button onclick="sharePage()" style="background: none; border: 1px solid var(--color-border); padding: 10px 24px; border-radius: 50px; cursor: pointer; color: var(--color-text-muted); font-size: 0.9rem; font-weight: 600;">このツールをシェアする</button>
+                </div>
+            </div>
+
+            <!-- 強化された詳細コンテンツセクション -->
+            <section class="tool-footer-info">
+                <h2>SVG ↔ PNG 変換の技術と設計思想</h2>
+                <p>
+                    VOLC TOOLSのSVG ↔ PNGコンバーターは、ベクターグラフィックスとラスタグラフィックスの橋渡しを、最も安全かつ効率的に行うために開発されました。
+                    ロゴ、アイコン、イラストレーションなど、Web制作や資料作成において異なる画像形式間の変換は頻繁に発生しますが、その過程で品質を損なわず、かつプライバシーを守る環境を提供します。
+                </p>
+
+                <h3>ベクター(SVG)とラスタ(PNG)の特性</h3>
+                <p>
+                    それぞれの形式には得意とする役割があります。
+                </p>
+                <ul>
+                    <li><strong>SVG (Scalable Vector Graphics):</strong> 数式で描画されるため、どれだけ拡大しても画像が劣化（ジャギー）しません。ロゴやアイコンなど、多様な画面サイズに対応する必要がある素材に最適です。</li>
+                    <li><strong>PNG (Portable Network Graphics):</strong> ピクセルの集合体で構成され、写真のような複雑な色使いや透明度を扱うのに適しています。ほとんどすべてのソフトウェアやデバイスで表示できる高い汎用性を持ちます。</li>
+                </ul>
+
+                <h3>ブラウザ上でのレンダリングとキャプチャ</h3>
+                <p>
+                    当ツールは、SVGを変換する際に一度ブラウザのメモリ上の「仮想キャンバス」に2倍の解像度でレンダリングし、そこからピクセルデータを抽出してPNGを生成します。
+                    これにより、通常の変換よりもくっきりとした高品質な出力を実現しています。
+                    また、PNGからSVGへの変換は、画像をBase64形式にエンコードしてSVGタグ内にラップする手法を採用しており、デザインツールでの互換性を高めています。
+                </p>
+
+                <h3>サーバーレスによる絶対的な安心感</h3>
+                <p>
+                    画像変換サービスの多くは、ファイルを一度運営元のサーバーへアップロードしますが、VOLC TOOLSは**「ゼロ・サーバー・トラフィック」**を徹底しています。
+                </p>
+                <ul>
+                    <li><strong>データの機密性:</strong> 企業の機密ロゴや未公開のイラストがインターネットを介して送信されることはありません。すべての計算はあなたのデバイス内で完結します。</li>
+                    <li><strong>圧倒的なスピード:</strong> アップロードやダウンロードの待ち時間がゼロなため、インターネット回線が不安定な環境でも快適に動作します。</li>
+                </ul>
+
+                <h3>よくある質問 (FAQ)</h3>
+                <div class="faq-section" style="text-align: left; margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. SVGを拡大してPNGにできますか？</strong>
+                        <p style="font-size: 0.95rem;">A. はい。当ツールはSVGの利点を活かし、標準で2倍の解像度でレンダリングしてからPNGに変換します。これにより、拡大しても比較的きれいな画像が得られます。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. PNGからSVGへの変換はベクター化されますか？</strong>
+                        <p style="font-size: 0.95rem;">A. いいえ、現在のバージョンでは「ベクター化（トレース）」は行いません。PNGをSVG形式のコンテナに埋め込むことで、SVGしか受け付けない環境でも利用可能にするための機能です。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 透過PNGに対応していますか？</strong>
+                        <p style="font-size: 0.95rem;">A. はい。SVGの背景が透明な場合は、そのまま透明度を維持したPNGとして書き出されます。</p>
+                    </div>
+                </div>
+
+                <div class="changelog" style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+                    <h4 style="margin-bottom: 10px;">更新履歴 (Changelog)</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 5px;"><strong>2026.05.01</strong> - UIを VOLC TOOLS デザインシステムに刷新。SVGレンダリング品質を向上。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.04.15</strong> - PNG ↔ SVG の相互変換ロジックを最適化。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.03.27</strong> - SVGコンバーターとして初期公開。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <style>
+                .tool-footer-info h3 { margin-top: 32px; margin-bottom: 12px; font-size: 1.3rem; color: var(--color-text-main); }
+                .tool-footer-info ul { text-align: left; margin-bottom: 24px; }
+                .tool-footer-info li { margin-bottom: 12px; line-height: 1.6; }
+            </style>
+
+            <div id="footer-placeholder"></div>
+        </main>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const canvas = document.getElementById('canvas');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const resultArea = document.getElementById('resultArea');
+        const dropText = document.getElementById('dropText');
+
+        dropZone.onclick = () => fileInput.click();
+
+        window.addEventListener('dragover', e => e.preventDefault(), false);
+        window.addEventListener('drop', e => e.preventDefault(), false);
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-primary)";
+            dropZone.style.background = "var(--color-hover)";
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-border)";
+            dropZone.style.background = "transparent";
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.style.borderColor = "var(--color-border)";
+            dropZone.style.background = "transparent";
+            if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+        });
+
+        fileInput.onchange = (e) => {
+            if (e.target.files.length > 0) handleFile(e.target.files[0]);
+        };
+
+        function handleFile(file) {
+            if (!file) return;
+            if (file.name.endsWith('.svg')) {
+                convertToPng(file);
+            } else {
+                convertToSvg(file);
+            }
+        }
+
+        function convertToPng(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    canvas.width = img.width * 2;
+                    canvas.height = img.height * 2;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    downloadBtn.href = canvas.toDataURL('image/png');
+                    downloadBtn.download = file.name.replace('.svg', '.png');
+                    downloadBtn.textContent = "PNGを保存";
+                    resultArea.style.display = 'block';
+                    dropText.textContent = "変換完了！別のファイルを選択";
+                };
+                img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(e.target.result)));
+            };
+            reader.readAsText(file);
+        }
+
+        function convertToSvg(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="${img.width}" height="${img.height}"><image width="${img.width}" height="${img.height}" href="${e.target.result}"/></svg>`;
+                    const blob = new Blob([svgString], {type: 'image/svg+xml'});
+                    downloadBtn.href = URL.createObjectURL(blob);
+                    downloadBtn.download = file.name.replace(/\.[^/.]+$/, "") + ".svg";
+                    downloadBtn.textContent = "SVGを保存";
+                    resultArea.style.display = 'block';
+                    dropText.textContent = "変換完了！別のファイルを選択";
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>

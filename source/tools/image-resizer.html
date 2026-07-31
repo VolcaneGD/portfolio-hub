@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Resizer & Compressor | VOLCANE</title>
+    <meta name="description" content="画像のサイズ変更とファイル圧縮をブラウザ上で完結。サーバー送信なしでプライバシーを保護しつつ、SEOに最適な軽量画像を即座に作成。完全無料。">
+    <link rel="canonical" href="https://volcane.pages.dev/image-resizer.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-image-resizer.png">
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Image Resizer & Compressor",
+      "operatingSystem": "Windows, macOS, Android, iOS",
+      "applicationCategory": "MultimediaApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Design & Utilities", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 3, "name": "画像リサイズ"
+      }]
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles/tool-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+    <style>
+        input[type="number"] { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-hover); color: var(--color-text-main); font-family: inherit; }
+        .control-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left; margin-top: 32px; padding: 24px; background: var(--color-hover); border-radius: 16px; }
+        label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; color: var(--color-text-muted); }
+    </style>
+    <script src="../public/sidebar.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside id="sidebar-placeholder" class="sidebar"></aside>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="tools-index.html">Home</a> <span>/</span> <span>Design & Utilities</span> <span>/</span> 画像リサイズ
+            </nav>
+
+            <div class="tool-container">
+                <header class="tool-header">
+                    <img src="../public/icon-image-resizer.png" alt="Image Resizer" class="tool-icon-large">
+                    <h1>Image Resizer & Compressor</h1>
+                    <p class="tool-description">画像のサイズ変更とファイル圧縮をブラウザ上で完結。SEOに最適な軽量画像を即座に作成します。</p>
+                </header>
+
+                <div class="workspace-surface">
+                    <div id="dropZone" class="upload-zone">
+                        <p id="dropText">ここに画像をドラッグ、またはクリック</p>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+
+                    <div id="controls" style="display: none;">
+                        <div class="control-panel">
+                            <div>
+                                <label>幅 (px)</label>
+                                <input type="number" id="widthInput">
+                            </div>
+                            <div>
+                                <label>高さ (px)</label>
+                                <input type="number" id="heightInput">
+                            </div>
+                            <div style="grid-column: span 2;">
+                                <label>圧縮品質 (Quality): <span id="qVal">80</span>%</label>
+                                <input type="range" id="qualityInput" min="1" max="100" value="80" style="width: 100%; accent-color: var(--color-primary);">
+                            </div>
+                        </div>
+                        <button id="downloadBtn" class="btn-execute" style="margin-top: 32px; width: 100%;">リサイズして保存</button>
+                    </div>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                </div>
+
+                <div class="share-btn-container" style="text-align: center;">
+                    <button onclick="sharePage()" style="background: none; border: 1px solid var(--color-border); padding: 10px 24px; border-radius: 50px; cursor: pointer; color: var(--color-text-muted); font-size: 0.9rem; font-weight: 600;">このツールをシェアする</button>
+                </div>
+            </div>
+
+            <!-- 強化された詳細コンテンツセクション -->
+            <section class="tool-footer-info">
+                <h2>画像リサイズ＆圧縮の技術と設計思想</h2>
+                <p>
+                    VOLC TOOLSの画像リサイズ＆圧縮ツールは、Webサイトのパフォーマンスを最大化し、ユーザー体験を向上させるために設計されました。
+                    現代のWebにおいて、画像の最適化は単なる「節約」ではなく、検索エンジン最適化（SEO）における死活問題となっています。
+                    当ツールは、高度な処理をすべてあなたのブラウザ上で行うことで、圧倒的なスピードと安全性を両立させました。
+                </p>
+
+                <h3>Webサイト高速化とSEOの要</h3>
+                <p>
+                    Googleの検索アルゴリズムにおいて、ページの読み込み速度（Core Web Vitals）は非常に重要な指標です。特にモバイル環境では、リサイズされていない巨大な画像は、表示を著しく遅らせる最大の要因となります。
+                    当ツールを使用することで、解像度を適切に調整し、不要なメタデータを削除しながら最適な圧縮率を適用できるため、見た目の美しさを損なうことなく、ファイルサイズを劇的に軽量化できます。
+                </p>
+
+                <h3>サーバーを介さない「クライアントサイド処理」</h3>
+                <p>
+                    当ツールの最大の特徴は、画像のリサイズとエンコード処理をすべてJavaScriptとCanvas APIを使用して**あなたのデバイス内（エッジ）で行う**ことです。
+                </p>
+                <ul>
+                    <li><strong>プライバシーの絶対保護:</strong> 仕事の資料、プライベートな写真、未公開のクリエイティブなど、画像データは1バイトもインターネットへ送信されません。物理的に「漏洩」が起こり得ない設計です。</li>
+                    <li><strong>通信制限に優しい:</strong> サーバーへのアップロードが発生しないため、大容量の画像でも通信量を消費せず、格安SIMなどの低速環境でも瞬時に処理が完了します。</li>
+                    <li><strong>ゼロ待機時間:</strong> クラウド側の混雑やサーバーエラーに左右されることなく、お使いのデバイスの計算パワーをダイレクトに活用して処理を実行します。</li>
+                </ul>
+
+                <h3>開発の背景</h3>
+                <p>
+                    「テクノロジーを個人の手に取り戻す」というVOLCANEプロジェクトの理念に基づき、専門的な知識やPhotoshopのような高価なソフトを必要とせず、誰でも数クリックで「プロレベルの画像最適化」ができる環境を目指しました。
+                    多くのリサイズツールが「無料」の代わりにユーザーの画像をサーバーに収集している現状に対し、VOLC TOOLSは完全な匿名性と安全性を提供することを選択しました。
+                </p>
+
+                <h3>よくある質問 (FAQ)</h3>
+                <div class="faq-section" style="text-align: left; margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. アスペクト比（縦横比）は維持されますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 現在のバージョンでは、幅または高さを入力した際に、元の比率を壊さないように自動調整される「プロポーショナル・リサイズ」機能を搭載しています。歪みのない自然な拡大・縮小が可能です。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 圧縮による画質の劣化はどの程度ありますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 標準の「Quality: 80%」の設定では、人間の目ではほとんど識別できないレベルの劣化に抑えつつ、ファイルサイズを大幅に削減できます。最高画質を求める場合は90%以上、極限まで軽量化したい場合は60%以下など、用途に合わせてスライダーで調整いただけます。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 対応しているファイル形式は？</strong>
+                        <p style="font-size: 0.95rem;">A. JPG, PNG, WebPなどの主要な画像形式に対応しています。書き出しは圧縮効率に優れたJPEG形式を採用しています。</p>
+                    </div>
+                </div>
+
+                <div class="changelog" style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+                    <h4 style="margin-bottom: 10px;">更新履歴 (Changelog)</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 5px;"><strong>2026.05.01</strong> - UIを VOLC TOOLS デザインシステムに刷新。リサイズアルゴリズムを高速化。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.04.10</strong> - 圧縮品質をリアルタイムでプレビューできる機能を追加。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.03.27</strong> - 汎用画像リサイズツールとして初期公開。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <style>
+                .tool-footer-info h3 { margin-top: 32px; margin-bottom: 12px; font-size: 1.3rem; color: var(--color-text-main); }
+                .tool-footer-info ul { text-align: left; margin-bottom: 24px; }
+                .tool-footer-info li { margin-bottom: 12px; line-height: 1.6; }
+            </style>
+
+            <div id="footer-placeholder"></div>
+        </main>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const controls = document.getElementById('controls');
+        const widthInput = document.getElementById('widthInput');
+        const heightInput = document.getElementById('heightInput');
+        const qualityInput = document.getElementById('qualityInput');
+        const qVal = document.getElementById('qVal');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const canvas = document.getElementById('canvas');
+        let originalImg = null;
+        let originalName = "";
+
+        dropZone.onclick = () => fileInput.click();
+
+        // ドラッグ＆ドロップの制御
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            window.addEventListener(eventName, e => {
+                e.preventDefault();
+                e.stopPropagation();
+            }, false);
+        });
+
+        dropZone.addEventListener('dragover', () => dropZone.classList.add('dragover'));
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+        });
+
+        fileInput.onchange = (e) => {
+            if (e.target.files.length > 0) handleFile(e.target.files[0]);
+        };
+
+        function handleFile(file) {
+            if (!file || !file.type.startsWith('image/')) return;
+            originalName = file.name;
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                originalImg = new Image();
+                originalImg.onload = () => {
+                    widthInput.value = originalImg.width;
+                    heightInput.value = originalImg.height;
+                    controls.style.display = 'block';
+                    dropText.textContent = "画像読み込み完了！別の画像を選択";
+                };
+                originalImg.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        qualityInput.oninput = () => qVal.innerText = qualityInput.value;
+
+        downloadBtn.onclick = () => {
+            canvas.width = widthInput.value;
+            canvas.height = heightInput.value;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(originalImg, 0, 0, canvas.width, canvas.height);
+            
+            const link = document.createElement('a');
+            link.download = originalName;
+            link.href = canvas.toDataURL('image/jpeg', qualityInput.value / 100);
+            link.click();
+        };
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>

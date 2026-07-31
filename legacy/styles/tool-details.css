@@ -1,0 +1,211 @@
+/* VOLC TOOLS: Tool Details Shared Styles */
+@import url('./tools.css'); /* 基本のテーマ（色・サイドバー等）を継承 */
+
+/* ツール専用ワークスペース */
+.tool-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* パンくずリスト */
+.breadcrumb {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.breadcrumb a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* ツールヘッダー */
+.tool-header {
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.tool-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tool-icon-large {
+    width: 240px;
+    height: 240px;
+    border-radius: 48px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
+    object-fit: contain;
+}
+
+.tool-description {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+}
+
+/* メインワークスペース（白い操作盤） */
+.workspace-surface {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* アップロードエリア */
+.upload-zone {
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 60px 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    background: #fcfcfc;
+}
+
+.upload-zone:hover {
+    border-color: var(--color-primary);
+    background: var(--color-hover);
+}
+
+/* コントロール群（設定パネル） */
+.tool-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+}
+
+/* 実行ボタン（プライマリ） */
+.btn-execute {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 196, 204, 0.3);
+    transition: var(--transition);
+}
+
+.btn-execute:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 196, 204, 0.4);
+}
+
+.btn-execute:disabled {
+    filter: grayscale(1);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 結果プレビュー */
+.result-preview {
+    margin-top: 32px;
+    display: none; /* 処理完了まで非表示 */
+}
+
+.preview-canvas, .preview-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+}
+
+/* 下部セクション（関連ツール等） */
+.tool-footer-info {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--color-border);
+}
+
+.tool-footer-info h2 {
+    font-size: 1.25rem;
+    margin-bottom: 24px;
+    color: var(--color-text-main);
+}
+
+/* サイドバー見出しの明確化 */
+.nav-label {
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 12px 8px;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+    user-select: none;
+    display: inline-block;
+    transition: opacity 0.2s;
+}
+
+.nav-label:hover {
+    opacity: 0.7;
+}
+
+/* 共通フッター */
+.tool-footer {
+    margin-top: 80px;
+    padding: 40px 0;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+}
+
+.tool-footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.tool-footer a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.view-all-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 40px;
+    background: #fff;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(0, 196, 204, 0.1);
+}
+
+.view-all-link:hover {
+    background: var(--color-primary);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 196, 204, 0.25);
+}

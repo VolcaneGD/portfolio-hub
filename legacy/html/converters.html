@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converters - VOLC TOOLS</title>
+    <link rel="stylesheet" href="../styles/tools.css">
+    <link rel="stylesheet" href="../styles/tool-details.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <script src="../public/sidebar.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside id="sidebar-placeholder" class="sidebar"></aside>
+        <main class="main-content">
+            <nav class="breadcrumb"><a href="tools-index.html">Home</a> <span>/</span> <span>Converters</span></nav>
+            <section class="hero">
+                <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 16px;">Converters</h1>
+                <p style="color: var(--color-text-muted); font-size: 1.1rem;">ファイル形式を自由自在に。すべてブラウザ内で完結し、大容量ファイルも高速に変換します。</p>
+            </section>
+            <div class="product-grid">
+                <a href="webp-converter.html" class="tool-card">
+                    <img src="../public/icon-webp-converter.png" alt="WebPコンバーター">
+                    <h3>WebPコンバーター</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-top: 8px;">画像をWebPへ瞬時に変換。サイトの読み込みを高速化します。</p>
+                </a>
+                <a href="audio-converter.html" class="tool-card">
+                    <img src="../public/icon-audio-converter.png" alt="Audioコンバーター">
+                    <h3>Audioコンバーター</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-top: 8px;">WAVとMP3を相互変換。サーバー送信なしで安全に処理。</p>
+                </a>
+                <a href="svg-to-png.html" class="tool-card">
+                    <img src="../public/icon-svg-png.png" alt="SVG ↔ PNG">
+                    <h3>SVG ↔ PNG 変換</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-top: 8px;">ベクター画像SVGを汎用的なPNGへ、または画像をSVGへ即時変換。</p>
+                </a>
+                <a href="pdf-to-image.html" class="tool-card">
+                    <img src="../public/icon-pdf-to-image.png" alt="PDF画像変換">
+                    <h3>PDF画像変換</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-top: 8px;">PDFの各ページをPNG/JPG画像へ一括変換します。</p>
+                </a>
+            </div>
+
+            <!-- 強化された詳細コンテンツセクション -->
+            <section class="tool-footer-info" style="margin-top: 80px; text-align: left;">
+                <h2>Converters：フォーマットの壁を取り払い、Webを高速化する</h2>
+                <p>
+                    VOLC TOOLS の「Converters」カテゴリでは、画像、音声、ドキュメントなど、多様なデジタル資産の形式変換を「もっと速く、もっと安全に」行うためのソリューションを提供します。
+                    私たちは、ファイル変換を単なる作業ではなく、Webサイトのパフォーマンスを最大化し、個人のプライバシーを守るための重要なプロセスであると考えています。
+                </p>
+
+                <h3>「ゼロ・アップロード・コンバージョン」の技術的背景</h3>
+                <p>
+                    当カテゴリのツール群が一般的なオンラインコンバーターと決定的に異なる点は、<strong>ファイルをお使いのデバイスから 1 バイトも外に出さない</strong>ことです。
+                    これを実現するために、当サイトでは高度なフロントエンド技術を駆使しています。
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 24px;">
+                    <div>
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 8px;">Canvas API & Image Encoding</strong>
+                        <p style="font-size: 0.95rem;">WebPコンバーターやSVG変換では、ブラウザ標準の Canvas API を使用してビットマップを再構築し、ネイティブのエンコーダーを呼び出すことで、劣化を抑えた高速な変換を実現しています。</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 8px;">lamejs (Audio Processing)</strong>
+                        <p style="font-size: 0.95rem;">オーディオコンバーターでは、純粋な JavaScript で実装された MP3 エンコーダーを採用。WAV データをメモリ上で解析し、CPUパワーを直接使って MP3 を書き出します。</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 8px;">pdf.js & WebAssembly</strong>
+                        <p style="font-size: 0.95rem;">PDF画像変換の心臓部には、Mozilla が開発する pdf.js を採用。WebAssembly のパワーにより、複雑な PDF のレンダリングをブラウザ内でデスクトップアプリ並みの精度で実行します。</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 8px;">Vector-to-Raster Logic</strong>
+                        <p style="font-size: 0.95rem;">SVG ↔ PNG 変換では、ベクターデータの仮想キャンバスへの動的なマッピングと、Base64ラッピング技術により、デザインツールとの高い互換性を確保しています。</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 48px;">なぜローカル変換が選ばれるのか</h3>
+                <div style="overflow-x: auto; margin-bottom: 40px; background: var(--color-surface); padding: 20px; border-radius: 12px; border: 1px solid var(--color-border);">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--color-border);">
+                                <th style="padding: 12px; color: var(--color-text-main);">比較項目</th>
+                                <th style="padding: 12px; color: var(--color-primary);">VOLC Converters (ローカル)</th>
+                                <th style="padding: 12px; color: var(--color-text-muted);">一般的なサイト (クラウド型)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid var(--color-border);">
+                                <td style="padding: 12px; font-weight: 600;">セキュリティ</td>
+                                <td style="padding: 12px;"><strong>究極（漏洩リスクなし）</strong></td>
+                                <td style="padding: 12px;">リスクあり（サーバー保存）</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border);">
+                                <td style="padding: 12px; font-weight: 600;">処理速度</td>
+                                <td style="padding: 12px;"><strong>瞬時（回線速度に不依存）</strong></td>
+                                <td style="padding: 12px;">遅延あり（通信待ちが発生）</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border);">
+                                <td style="padding: 12px; font-weight: 600;">通信量（ギガ）</td>
+                                <td style="padding: 12px;"><strong>消費ゼロ</strong></td>
+                                <td style="padding: 12px;">大量消費（UP/DL分）</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border);">
+                                <td style="padding: 12px; font-weight: 600;">利用制限</td>
+                                <td style="padding: 12px;"><strong>完全無制限</strong></td>
+                                <td style="padding: 12px;">回数やサイズに制限あり</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Converters カテゴリ：よくある質問 (FAQ)</h3>
+                <div class="faq-section" style="margin-top: 20px; background: var(--color-surface); padding: 32px; border-radius: 16px; border: 1px solid var(--color-border);">
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 変換できるファイルサイズに上限はありますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 当サイト側での制限は一切ありません。ただし、お使いのデバイスのメモリ（RAM）容量に依存します。数GBを超えるような極端に巨大なファイルの場合、ブラウザがクラッシュする可能性があるため、適切な分割を推奨します。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 画質や音質は劣化しますか？</strong>
+                        <p style="font-size: 0.95rem;">A. WebPやAudioコンバーターでは、標準で高品質（バランス重視）の設定を適用しています。変換アルゴリズムは各技術の最新標準に準拠しており、視覚的・聴覚的な差異は最小限に抑えられています。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. オフラインでも使えますか？</strong>
+                        <p style="font-size: 0.95rem;">A. はい。一度ページをロードしてしまえば、以降はインターネット接続がなくても変換処理を継続できます。機密ファイルを扱う際の「物理的な切断環境」での利用も可能です。</p>
+                    </div>
+                </div>
+
+                <div class="changelog" style="margin-top: 40px; padding: 25px; background: #f8fafc; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+                    <h4 style="margin-bottom: 15px; font-size: 1rem;">Converters カテゴリ：進化の歩み (Changelog)</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 8px;"><strong>2026.05.01</strong> - UIを VOLC TOOLS デザインシステムに刷新。各コンバーターに詳細な技術解説と FAQ を追加し、透明性を向上。</li>
+                        <li style="margin-bottom: 8px;"><strong>2026.04.12</strong> - オーディオコンバーターにリアルタイムプログレスバーを実装。大規模な WAV ファイルの処理安定性を改善。</li>
+                        <li style="margin-bottom: 8px;"><strong>2026.03.27</strong> - WebP ↔ PNG 相互変換機能を追加。SEO 対策用ツールとしての実用性を強化。</li>
+                        <li style="margin-bottom: 8px;"><strong>2026.02.20</strong> - pdf.js 連携による PDF 画像変換ツールをリリース。</li>
+                        <li style="margin-bottom: 8px;"><strong>2026.01.10</strong> - VOLC TOOLS 内に Converters カテゴリを新設。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <style>
+                .tool-footer-info h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 24px; color: var(--color-text-main); }
+                .tool-footer-info h3 { margin-top: 48px; margin-bottom: 16px; font-size: 1.4rem; color: var(--color-text-main); border-left: 4px solid var(--color-primary); padding-left: 16px; }
+                .tool-footer-info p { margin-bottom: 20px; line-height: 1.8; color: var(--color-text-muted); }
+                .tool-footer-info ul { text-align: left; margin-bottom: 24px; }
+                .tool-footer-info li { margin-bottom: 12px; line-height: 1.6; }
+                
+                @media (max-width: 768px) {
+                    .tool-footer-info div[style*="grid-template-columns: 1fr 1fr"] {
+                        grid-template-columns: 1fr !important;
+                        gap: 20px;
+                    }
+                }
+            </style>
+
+            <div id="footer-placeholder"></div>
+        </main>
+    </div>
+</body>
+</html>

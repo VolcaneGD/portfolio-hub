@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字数カウント | VOLCANE</title>
+    <meta name="description" content="ブログ、レポート、SNS投稿に最適な文字数カウントツール。空白抜き文字数や行数も瞬時に計測。ブラウザ完結でプライバシーも安心。">
+    <link rel="canonical" href="https://volcane.pages.dev/character-counter.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-char-counter.png">
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "文字数計算AI",
+      "operatingSystem": "Windows, macOS, Android, iOS",
+      "applicationCategory": "MultimediaApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Design & Utilities", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 3, "name": "文字数カウント"
+      }]
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles/tool-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+    <script src="../public/sidebar.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside id="sidebar-placeholder" class="sidebar"></aside>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="tools-index.html">Home</a> <span>/</span> <span>Design & Utilities</span> <span>/</span> 文字数カウント
+            </nav>
+
+            <div class="tool-container">
+                <header class="tool-header">
+                    <img src="../public/icon-char-counter.png" alt="Character Counter" class="tool-icon-large">
+                    <h1>文字数カウント</h1>
+                    <p class="tool-description">リアルタイムで文字数、空白抜き、行数を計測。ライティングの効率を最大化します。</p>
+                </header>
+
+                <div class="workspace-surface">
+                    <textarea id="mainInput" placeholder="ここに文章を入力またはペーストしてください..." style="width: 100%; height: 320px; padding: 20px; border: 1px solid var(--color-border); border-radius: 12px; font-family: inherit; font-size: 1rem; margin-bottom: 24px; resize: vertical; outline: none; transition: border-color 0.2s;"></textarea>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                        <div style="padding: 20px; background: var(--color-hover); border-radius: 12px; text-align: center;">
+                            <span id="charCount" style="font-size: 2rem; font-weight: 800; color: var(--color-primary); display: block;">0</span>
+                            <span style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">合計文字数</span>
+                        </div>
+                        <div style="padding: 20px; background: var(--color-hover); border-radius: 12px; text-align: center;">
+                            <span id="noSpaceCount" style="font-size: 2rem; font-weight: 800; color: var(--color-primary); display: block;">0</span>
+                            <span style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">空白抜き</span>
+                        </div>
+                        <div style="padding: 20px; background: var(--color-hover); border-radius: 12px; text-align: center;">
+                            <span id="lineCount" style="font-size: 2rem; font-weight: 800; color: var(--color-primary); display: block;">0</span>
+                            <span style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">行数</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="share-btn-container" style="text-align: center;">
+                    <button onclick="sharePage()" style="background: none; border: 1px solid var(--color-border); padding: 10px 24px; border-radius: 50px; cursor: pointer; color: var(--color-text-muted); font-size: 0.9rem; font-weight: 600;">このツールをシェアする</button>
+                </div>
+            </div>
+            
+            <!-- 強化された詳細コンテンツセクション -->
+            <section class="tool-footer-info">
+                <h2>文字数カウントの技術と設計思想</h2>
+                <p>
+                    VOLC TOOLSの文字数カウントツールは、ライター、ブロガー、学生、そしてSNSユーザーまで、あらゆるテキスト作成者のニーズに応えるために開発されました。
+                    ブログ記事のSEO最適化、レポートの文字数制限遵守、SNS投稿の文字数調整など、正確な文字数把握はデジタルコンテンツ制作において不可欠です。
+                    当ツールは、入力されたテキストをリアルタイムで解析し、合計文字数、空白を除いた文字数、そして行数を瞬時に表示します。
+                </p>
+
+                <h3>なぜ「ブラウザ完結」が重要なのか</h3>
+                <p>
+                    文字数カウントは一見シンプルな機能ですが、入力されるテキストには個人情報、機密文書、未公開の原稿などが含まれる可能性があります。
+                    多くのオンライン文字数カウントツールは、入力されたテキストを一度サーバーへ送信して処理を行いますが、VOLC TOOLSは**「ゼロ・データ・トラフィック」**を徹底しています。
+                </p>
+                <ul>
+                    <li><strong>究極のプライバシー保護:</strong> あなたが入力した文章は、1バイトもインターネットへ送信されません。すべての計算はあなたのブラウザ内（ローカル環境）で完結します。</li>
+                    <li><strong>オフライン対応:</strong> 一度ページを読み込めば、インターネット接続がない状態でも文字数カウントを継続して利用できます。</li>
+                    <li><strong>圧倒的な高速性:</strong> サーバーとの通信が発生しないため、入力と同時に瞬時に結果が反映され、ストレスフリーなライティング体験を提供します。</li>
+                </ul>
+
+                <h3>リアルタイム解析のメカニズム</h3>
+                <p>
+                    当ツールは、JavaScriptのイベントリスナーを活用し、テキストエリアへの入力（`oninput`イベント）を検知するたびに、以下の3つの主要な指標を即座に計算・更新します。
+                </p>
+                <ul>
+                    <li><strong>合計文字数:</strong> テキストに含まれるすべての文字（空白、改行含む）をカウントします。</li>
+                    <li><strong>空白抜き文字数:</strong> 半角・全角の空白文字をすべて除外した文字数をカウントします。これにより、純粋な情報量としての文字数を把握できます。</li>
+                    <li><strong>行数:</strong> テキスト内の改行コード（CRLF, CR, LF）を検出し、行数をカウントします。</li>
+                </ul>
+
+                <h3>よくある質問 (FAQ)</h3>
+                <div class="faq-section" style="text-align: left; margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 「文字」の定義は何ですか？</strong>
+                        <p style="font-size: 0.95rem;">A. 当ツールでは、Unicodeで定義される1文字を1カウントとしています。絵文字や特殊記号も正確にカウントされます。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 対応している言語は？</strong>
+                        <p style="font-size: 0.95rem;">A. テキストの文字コードに依存しないため、日本語、英語、中国語、韓国語など、あらゆる言語の文字数を正確にカウントできます。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 長文でも問題なく使えますか？</strong>
+                        <p style="font-size: 0.95rem;">A. はい、ブラウザのメモリが許す限り、非常に長い文章でも問題なく処理できます。サーバーへの負荷がないため、安心してご利用いただけます。</p>
+                    </div>
+                </div>
+
+                <div class="changelog" style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+                    <h4 style="margin-bottom: 10px;">更新履歴 (Changelog)</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 5px;"><strong>2026.05.01</strong> - UIを VOLC TOOLS デザインシステムに刷新。技術解説コンテンツを追加。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.04.10</strong> - リアルタイムカウントのパフォーマンスを最適化。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.03.27</strong> - 文字数カウントツールを新規公開。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <style>
+                .tool-footer-info h3 { margin-top: 32px; margin-bottom: 12px; font-size: 1.3rem; color: var(--color-text-main); }
+                .tool-footer-info ul { text-align: left; margin-bottom: 24px; }
+                .tool-footer-info li { margin-bottom: 12px; line-height: 1.6; }
+            </style>
+
+            <div id="footer-placeholder"></div>
+        </main>
+    </div>
+    <script>
+        const input = document.getElementById('mainInput');
+        const charCount = document.getElementById('charCount');
+        const noSpaceCount = document.getElementById('noSpaceCount');
+        const lineCount = document.getElementById('lineCount');
+
+        input.oninput = () => {
+            const val = input.value;
+            charCount.innerText = val.length;
+            noSpaceCount.innerText = val.replace(/\s+/g, '').length;
+            lineCount.innerText = val ? val.split(/\r\n|\r|\n/).length : 0;
+        };
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>

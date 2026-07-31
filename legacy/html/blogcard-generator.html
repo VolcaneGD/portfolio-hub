@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogCard Generator | VOLCANE</title>
+    <meta name="description" content="ウェブサイトのリンクを瞬時に美しいブログカードに。OGP情報を自動取得し、レスポンシブなHTML/CSSを生成するブロガー・ライター向け拡張機能。">
+    <link rel="canonical" href="https://volcane.pages.dev/blogcard-generator.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-bg-remover.png">
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "BlogCard Generator",
+      "operatingSystem": "Windows, macOS, Linux",
+      "applicationCategory": "DeveloperApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/app-details.css">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+</head>
+<body class="dark-mode">
+    <header id="header">
+        <nav class="container">
+            <a href="./index.html" class="logo"><span>V</span>OLCANE</a>
+            <ul class="nav-links">
+                <li><a href="./index.html#projects">PROJECTS</a></li>
+                <li><a href="./index.html#about">ABOUT</a></li>
+                <li><a href="./index.html#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="app-detail-main">
+        <nav class="container breadcrumb">
+            <a href="./index.html">Home</a> <span>/</span> BlogCard Generator
+        </nav>
+
+        <section class="container app-hero">
+            <div class="app-icon-large">
+                <img src="../public/BlogCard_icon.png" alt="BlogCard Generator Icon">
+            </div>
+            <h1 class="highlight">BlogCard Generator</h1>
+            <p class="app-subtitle">あなたの記事を、もっと魅力的に。美しくレスポンシブなブログカードを1秒で生成。</p>
+            <div style="margin-top: 2rem;">
+                <a href="https://chromewebstore.google.com/detail/professional-blogcard-gen/nhdfkjacooiampkbhjfmedbicnjdlnai" target="_blank" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Chrome ウェブストアで入手</a>
+            </div>
+        </section>
+
+        <div class="share-btn-container" style="text-align: center; margin-top: 3rem;">
+            <button onclick="sharePage()" class="btn btn-share" aria-label="この拡張機能をSNSで共有する">この拡張機能をシェアする</button>
+        </div>
+
+        <section class="container" style="max-width: 800px; margin-top: 4rem;">
+            <h2 class="section-title">Overview</h2>
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 24px; line-height: 1.8;">
+                <p>ブログ記事を書く際、他サイトの紹介リンクを作成するのは意外と手間がかかります。「BlogCard Generator」は、現在開いているタブからタイトル、説明文、サムネイル画像（OGP情報）をワンクリックで抽出。そのままブログに貼り付けられる洗練されたデザインのコードを出力します。</p>
+                <h3 style="color: var(--accent); margin-top: 1.5rem;">主な機能</h3>
+                <ul style="margin-left: 1.5rem; color: var(--text-secondary);">
+                    <li>ワンクリックでOGP情報の自動スクレイピング</li>
+                    <li>複数のデザインテーマ（モダン、フラット、テキストのみ）を選択可能</li>
+                    <li>WordPress、はてなブログ、Noteなど主要プラットフォームに対応</li>
+                    <li>完全にレスポンシブなCSSをインラインまたは別出力で提供</li>
+                </ul>
+                <div class="app-screenshot" style="margin-top: 2rem; text-align: center;">
+                    <img src="../public/BlogCard_Screenshot.png" alt="BlogCard Generator Screenshot" style="max-width: 100%; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+                </div>
+            </div>
+        </section>
+
+        <section class="container review-section" style="margin-top: 5rem;">
+            <h2 class="section-title">ご意見・ご要望 <span class="emoji-icon">✍️</span></h2>
+            <div class="bbs-container">
+                <div id="bbs-list" class="bbs-posts-list">
+                    <div class="loading-msg">読み込み中...</div>
+                </div>
+                <form id="bbs-form" class="bbs-form">
+                    <div class="input-group">
+                        <input type="text" id="bbs-name" placeholder="お名前 (省略可)" maxlength="20">
+                    </div>
+                    <div class="input-group">
+                        <textarea id="bbs-content" placeholder="「このブログプラットフォームに対応してほしい」などのリクエストをお待ちしています。" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" id="bbs-submit" class="bbs-submit-btn">リクエストを送信</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ユーザー提供の最新 GAS URL
+            const GAS_URL = 'https://script.google.com/macros/s/AKfycbxczswtjTWXQ59P6eVqd93p14iwNI3xkAT2STYbKZj7cP08tQa-YZL4pC6yHlD9Pf-v/exec';
+            const BBS_CATEGORY = 'blogcard_ext';
+            const bbsList = document.getElementById('bbs-list');
+            const bbsForm = document.getElementById('bbs-form');
+            const submitBtn = document.getElementById('bbs-submit');
+
+            let myId = localStorage.getItem('volc_user_id') || 'user_' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('volc_user_id', myId);
+
+            /**
+             * 日付フォーマット関数
+             */
+            const formatDate = (isoString) => {
+                try {
+                    const date = new Date(isoString);
+                    return `${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
+                } catch { return '??/??'; }
+            };
+
+            /**
+             * XSS対策用エスケープ関数
+             */
+            function escapeHtml(str) {
+                if (!str) return '';
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            }
+
+            const loadPosts = async () => {
+                try {
+                    const res = await fetch(`${GAS_URL}?action=getPosts&category=${BBS_CATEGORY}`);
+                    const posts = await res.json();
+                    bbsList.innerHTML = posts.length ? posts.map(post => `
+                        <div class="bbs-post-card">
+                            <div class="post-header">
+                                <div class="post-user"><span class="user-name">${escapeHtml(post.name || '匿名')}</span></div>
+                                <div class="post-time">${formatDate(post.timestamp)}</div>
+                            </div>
+                            <div class="post-content">${escapeHtml(post.content || '')}</div>
+                        </div>
+                    `).join('') : '<div class="empty-message">現在、開発者へのリクエストを募集中です。</div>';
+                } catch (e) {
+                    bbsList.innerHTML = '<div class="empty-message">メッセージを募集中です。</div>';
+                }
+            };
+
+            bbsForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                submitBtn.disabled = true;
+                submitBtn.textContent = '送信中...';
+                try {
+                    await fetch(GAS_URL, {
+                        method: 'POST', mode: 'no-cors',
+                        body: JSON.stringify({ action: 'addPost', category: BBS_CATEGORY, name: document.getElementById('bbs-name').value || '匿名希望', content: document.getElementById('bbs-content').value, authorId: myId })
+                    });
+                    document.getElementById('bbs-content').value = '';
+                    setTimeout(loadPosts, 1500);
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'リクエストを送信';
+                }
+            });
+            loadPosts();
+        });
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>

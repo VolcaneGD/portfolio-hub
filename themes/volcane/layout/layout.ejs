@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- page.title ? page.title + ' | ' : '' %><%- config.title %></title>
+    <meta name="description" content="<%- page.description || config.description %>">
+    <meta name="keywords" content="<%- page.keywords || config.keywords %>">
+    <link rel="icon" href="<%- url_for('images/favicon.ico') %>" type="image/x-icon">
+    
+    <% if (page.layout === 'tool' || page.layout === 'tool_index' || page.path.startsWith('tools/')) { %>
+    <link rel="stylesheet" href="<%- url_for('css/tools.css') %>">
+    <link rel="stylesheet" href="<%- url_for('css/tool-details.css') %>">
+    <% } else { %>
+    <link rel="stylesheet" href="<%- url_for('css/style.css') %>">
+    <% if (page.layout === 'app_detail') { %>
+    <link rel="stylesheet" href="<%- url_for('css/app-details.css') %>">
+    <% } %>
+    <% } %>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+</head>
+<body class="<%- (page.layout === 'tool' || page.layout === 'tool_index' || page.path.startsWith('tools/')) ? 'light-mode' : 'dark-mode' %>">
+    <% if (page.layout !== 'tool' && page.layout !== 'tool_index' && !page.path.startsWith('tools/')) { %>
+    <header id="header">
+        <nav class="container">
+            <a href="<%- url_for('/') %>" class="logo"><span>V</span>OLCANE</a>
+            <ul class="nav-links">
+                <li><a href="<%- url_for('/#projects') %>">PROJECTS</a></li>
+                <li><a href="<%- url_for('/tools/') %>">TOOLS</a></li>
+                <li><a href="<%- url_for('/#about') %>">ABOUT</a></li>
+                <li><a href="<%- url_for('/#contact') %>">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <%- body %>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Volcane. <a href="<%- url_for('privacy-policy.html') %>" style="color: var(--text-secondary); text-decoration: underline; margin-left: 10px;">Privacy Policy</a></p>
+                <div class="social-links">
+                    <a href="https://x.com/Volcane_GD" target="_blank">X (Twitter)</a>
+                    <a href="https://github.com/VolcaneGD" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <% } else { %>
+    <div class="app-container">
+        <%- partial('partial/sidebar') %>
+        <main class="main-content">
+            <%- body %>
+        </main>
+    </div>
+    <% } %>
+
+    <script src="<%- url_for('js/script.js') %>"></script>
+</body>
+</html>

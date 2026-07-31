@@ -1,0 +1,106 @@
+{
+  "smartphone_apps": [
+    {
+      "title": "ボンボンアンテナ",
+      "badge": "ANDROID APP",
+      "description": "ボンボンドロップシールの販売情報を爆速でキャッチアップ。シンプルで高機能な情報リーダー。",
+      "icon": "images/BonBonIcon.png",
+      "url": "bonbon.html"
+    },
+    {
+      "title": "Inner Compass",
+      "badge": "ANDROID APP",
+      "description": "精密なアルゴリズムによる16タイプ診断。あなた自身の深層心理を紐解きます。",
+      "icon": "images/mbti-diagnosis-icon.png",
+      "url": "inner-compass.html"
+    },
+    {
+      "title": "Inner Compass Kids",
+      "badge": "ANDROID APP",
+      "description": "親子で学べる性格診断＆自己改善アプリ。子どもの可能性を広げるインナーコンパス。",
+      "icon": "images/inner-compass-kids.png",
+      "url": "inner-compass-kids.html"
+    },
+    {
+      "title": "VOLC BASS BOOSTER",
+      "badge": "ANDROID APP",
+      "description": "迫力の重低音。スマートな音質最適化ツール。",
+      "icon": "images/bass-booster-icon.png",
+      "url": "bass-booster.html"
+    },
+    {
+      "title": "VOLC BASS BOOSTER PRO",
+      "badge": "ANDROID APP",
+      "description": "プロ仕様の音響制御。広告なし、究極のリスニング体験を。",
+      "icon": "images/bass-booster-pro_icon.png",
+      "url": "bass-booster-pro.html"
+    },
+    {
+      "title": "VOLC PDFリーダー",
+      "badge": "ANDROID APP",
+      "description": "軽量・高速なPDF閲覧体験。ダークモードにも対応した目に優しいリーダー。",
+      "icon": "images/pdf-reader-icon.png",
+      "url": "pdf-reader.html"
+    },
+    {
+      "title": "VOLC QRリーダー",
+      "badge": "ANDROID APP",
+      "description": "爆速スキャン、シンプル操作。毎日使うものだからこそ、ストレスフリーな体験を。",
+      "icon": "images/qr_reader.png",
+      "url": "qr-reader.html"
+    },
+    {
+      "title": "スタークロニクル",
+      "badge": "ANDROID APP",
+      "description": "四柱推命×占星術×RPG。あなたの宿命を伝説のカードとして顕現させる新感覚鑑定アプリ。",
+      "icon": "images/Star_Chronicle_icon.png",
+      "url": "star-chronicle.html"
+    }
+  ],
+  "browser_extensions": [
+    {
+      "title": "JP Translator for Google",
+      "badge": "CHROME EXTENSION",
+      "description": "Google AI Studioなど、日本語未対応のサービスを最適に翻訳する拡張機能。",
+      "icon": "images/google-services-jp-translator.png",
+      "url": "jp-translator.html"
+    },
+    {
+      "title": "BlogCard Generator",
+      "badge": "CHROME EXTENSION",
+      "description": "ウェブサイトのリンクを瞬時に美しいブログカードに。OGP情報を自動取得するブロガー向け拡張機能。",
+      "icon": "images/BlogCard_icon.png",
+      "url": "blogcard-generator.html"
+    },
+    {
+      "title": "VOLC Bass Booster",
+      "badge": "CHROME EXTENSION",
+      "description": "ブラウザの音声を重低音強化。YouTubeやSpotifyを最高の音質で楽しむ拡張機能。",
+      "icon": "images/bass-booster-icon.png",
+      "url": "bass-booster-ext.html"
+    }
+  ],
+  "desktop_apps": [
+    {
+      "title": "Quota Glance",
+      "badge": "WINDOWS APP",
+      "description": "Codexの残りクレジット、週間使用率、次回リセットをコンパクトに確認できる常駐ユーティリティ。",
+      "icon": "images/quota-glance-icon.png",
+      "url": "quota-glance.html"
+    },
+    {
+      "title": "Volc Icon Editor",
+      "badge": "WINDOWS APP",
+      "description": "AI背景透過機能を標準搭載した高品質アイコン作成・画像加工ツール。",
+      "icon": "images/IconEditor_icon.png",
+      "url": "volc-icon-editor.html"
+    },
+    {
+      "title": "VOLC Sprite Sheet Converter",
+      "badge": "WINDOWS APP",
+      "description": "AI自動透過機能を搭載したスプライトシート変換ツール。画像の連結・分解を効率化。",
+      "icon": "images/VOLC_Sprite_Sheet_Converter_icon.png",
+      "url": "volc-sprite-converter.html"
+    }
+  ]
+}
