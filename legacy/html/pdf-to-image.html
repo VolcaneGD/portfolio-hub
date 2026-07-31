@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Image Converter | VOLCANE</title>
+    <meta name="description" content="PDFの各ページをPNGやJPG画像へ一括変換。ブラウザ完結で外部サーバーにファイルをアップロードしないため、機密文書も安全に処理できます。完全無料。">
+    <link rel="canonical" href="https://volcane.pages.dev/pdf-to-image.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-pdf-to-image.png">
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PDF to Image Converter",
+      "operatingSystem": "Windows, macOS, Android, iOS",
+      "applicationCategory": "MultimediaApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Converters", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 3, "name": "PDF画像変換"
+      }]
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles/tool-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <style>
+        .preview-list { display: flex; flex-direction: column; gap: 20px; margin-top: 20px; }
+        .page-item { background: var(--color-hover); padding: 15px; border-radius: 12px; border: 1px solid var(--color-border); }
+        canvas { max-width: 100%; border-radius: 4px; border: 1px solid #ddd; margin-bottom: 10px; }
+    </style>
+    <script src="../public/sidebar.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside id="sidebar-placeholder" class="sidebar"></aside>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="tools-index.html">Home</a> <span>/</span> <span>Converters</span> <span>/</span> PDF画像変換
+            </nav>
+
+            <div class="tool-container">
+                <header class="tool-header">
+                    <img src="../public/icon-pdf-to-image.png" alt="PDF to Image" class="tool-icon-large">
+                    <h1>PDF to Image Converter</h1>
+                    <p class="tool-description">PDFの各ページを画像(PNG/JPG)へ変換します。サーバー送信なしで高速に処理します。</p>
+                </header>
+
+                <div class="workspace-surface">
+                    <div id="dropZone" class="upload-zone">
+                        <p>PDFファイルをドラッグ、またはクリック</p>
+                        <input type="file" id="fileInput" accept="application/pdf" style="display: none;">
+                    </div>
+                    
+                    <div id="formatSelector" style="margin-top: 32px; margin-bottom: 24px; text-align: left; display: inline-block;">
+                        <label style="margin-right: 12px; font-size: 0.9rem; font-weight: 600;">出力形式:</label>
+                        <select id="outputFormat" style="padding: 8px 16px; border-radius: 8px; background: var(--color-hover); color: var(--color-text-main); border: 1px solid var(--color-border); outline: none;">
+                            <option value="image/png">PNG (高品質・透過対応)</option>
+                            <option value="image/jpeg">JPG (軽量・ファイルサイズ小)</option>
+                        </select>
+                    </div>
+
+                    <div id="status" style="margin: 10px 0; color: var(--color-primary); font-weight: 600;"></div>
+                    <div id="previewList" class="preview-list"></div>
+                </div>
+
+                <div class="share-btn-container" style="text-align: center;">
+                    <button onclick="sharePage()" style="background: none; border: 1px solid var(--color-border); padding: 10px 24px; border-radius: 50px; cursor: pointer; color: var(--color-text-muted); font-size: 0.9rem; font-weight: 600;">このツールをシェアする</button>
+                </div>
+            </div>
+
+            <!-- 強化された詳細コンテンツセクション -->
+            <section class="tool-footer-info">
+                <h2>PDF画像変換の技術と設計思想</h2>
+                <p>
+                    VOLC TOOLSのPDF画像変換ツールは、ドキュメントの利便性を高めつつ、デジタルトランスフォーメーション（DX）におけるセキュリティの懸念を払拭するために開発されました。
+                    PDFは非常に優れた閲覧用フォーマットですが、ウェブサイトへの掲載やSNSでの共有、スライド資料への貼り付けには不向きな場合があります。
+                    当ツールは、PDFの各ページを汎用性の高い画像形式（PNG/JPG）へと瞬時に、そして最高に安全な方法で変換します。
+                </p>
+
+                <h3>Mozilla開発の「pdf.js」による高精度レンダリング</h3>
+                <p>
+                    心臓部には、Mozillaがオープンソースで開発している世界標準のPDFレンダリングエンジン「pdf.js」を採用しています。
+                    これはFirefoxブラウザに内蔵されているエンジンと同じものであり、複雑なレイアウト、埋め込みフォント、ベクターグラフィックスを含むPDFでも、本来の美しさを損なうことなく正確に画像化します。
+                    最新のWebAssembly技術を活用することで、これまでブラウザには重すぎたレンダリング処理をデスクトップアプリ並みの速度で実行しています。
+                </p>
+
+                <h3>なぜ「ブラウザ完結」が絶対に必要なのか</h3>
+                <p>
+                    多くのオンラインPDFツールは、ユーザーのファイルを一度自社サーバーへアップロードし、サーバー側で処理した結果をダウンロードさせる仕組みです。
+                    しかし、PDFには銀行の明細書、契約書、社外秘の企画書、身分証明書など、**「インターネット上を流れてはならない」情報**が頻繁に含まれます。
+                </p>
+                <ul>
+                    <li><strong>100%のプライバシー保護:</strong> あなたのファイルが私たちのサーバーに届くことはありません。物理的に「アップロード」という工程を排除しています。</li>
+                    <li><strong>情報漏洩リスクのゼロ化:</strong> サーバーにデータが残らないため、将来的なハッキングや不慮の事故による流出リスクを根本から断っています。</li>
+                    <li><strong>圧倒的な利便性:</strong> アップロードやダウンロードの通信時間を待つ必要がないため、大容量のPDFでもデバイスのメモリを使い切るまで高速に処理できます。</li>
+                </ul>
+
+                <h3>よくある質問 (FAQ)</h3>
+                <div class="faq-section" style="text-align: left; margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 変換後の画質を上げることはできますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 当ツールは標準で1.5倍のスケール（高解像度）でレンダリングを行っています。これにより、通常の閲覧よりも鮮明な画像が得られます。今後のアップデートで任意の解像度（DPI）を選択できる機能を追加予定です。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. ページ数の多いPDFでも大丈夫ですか？</strong>
+                        <p style="font-size: 0.95rem;">A. はい、基本的には制限ありません。ただし、全ての処理をブラウザのメモリ上で行うため、数百ページにおよぶ極端に巨大なファイルの場合、デバイスのメモリ不足によりブラウザがリフレッシュされる可能性があります。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. パスワード保護されたPDFは扱えますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 現在のバージョンでは、セキュリティ上の理由からパスワード付きPDFのデコードには対応していません。あらかじめパスワードを解除したファイルをご利用ください。</p>
+                    </div>
+                </div>
+
+                <div class="changelog" style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+                    <h4 style="margin-bottom: 10px;">更新履歴 (Changelog)</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 5px;"><strong>2026.05.01</strong> - UIを VOLC TOOLS デザインシステムに刷新。出力形式（PNG/JPG）の選択機能を追加。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.04.15</strong> - レンダリングスケールを最適化し、文字の視認性を向上。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.03.27</strong> - pdf.js を連携させたブラウザ完結型コンバーターを公開。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <style>
+                .tool-footer-info h3 { margin-top: 32px; margin-bottom: 12px; font-size: 1.3rem; color: var(--color-text-main); }
+                .tool-footer-info ul { text-align: left; margin-bottom: 24px; }
+                .tool-footer-info li { margin-bottom: 12px; line-height: 1.6; }
+            </style>
+
+            <div id="footer-placeholder"></div>
+        </main>
+    </div>
+
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const previewList = document.getElementById('previewList');
+        const status = document.getElementById('status');
+        const formatSelect = document.getElementById('outputFormat');
+
+        dropZone.onclick = () => fileInput.click();
+
+        // 強力なドラッグ＆ドロップ制御
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            window.addEventListener(eventName, e => {
+                e.preventDefault();
+                e.stopPropagation();
+            }, false);
+        });
+
+        dropZone.addEventListener('dragover', () => dropZone.classList.add('dragover'));
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+        });
+
+        fileInput.onchange = (e) => {
+            if (e.target.files.length > 0) handleFile(e.target.files[0]);
+        };
+
+        async function handleFile(file) {
+            if (!file) return;
+            previewList.innerHTML = '';
+            status.textContent = '読み込み中...';
+
+            const arrayBuffer = await file.arrayBuffer();
+            const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+            status.textContent = `全 ${pdf.numPages} ページを処理します...`;
+
+            const format = formatSelect.value;
+            const ext = format === 'image/png' ? 'png' : 'jpg';
+
+            for (let i = 1; i <= pdf.numPages; i++) {
+                const page = await pdf.getPage(i);
+                const viewport = page.getViewport({ scale: 1.5 });
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // JPGの場合は背景を白で塗りつぶす（真っ黒になるのを防ぐ）
+                if (format === 'image/jpeg') {
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+
+                await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+
+                const pageDiv = document.createElement('div');
+                pageDiv.className = 'page-item';
+                pageDiv.innerHTML = `<p style="margin-bottom: 10px; font-weight: 600;">Page ${i}</p>`;
+                pageDiv.appendChild(canvas);
+
+                const dlBtn = document.createElement('a');
+                dlBtn.className = 'btn-execute';
+                dlBtn.style.display = 'block';
+                dlBtn.style.fontSize = '0.85rem';
+                dlBtn.textContent = `${ext.toUpperCase()} で保存`;
+                dlBtn.download = `${file.name.replace('.pdf', '')}_page_${i}.${ext}`;
+                dlBtn.href = canvas.toDataURL(format, 0.9);
+                pageDiv.appendChild(dlBtn);
+
+                previewList.appendChild(pageDiv);
+            }
+            status.textContent = '全ページの変換が完了しました。';
+        }
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>

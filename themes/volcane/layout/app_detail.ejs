@@ -1,0 +1,33 @@
+<div class="app-detail-main" style="padding-top: 80px;">
+    <nav class="container breadcrumb">
+        <a href="<%- url_for('/') %>">Home</a> <span>/</span> <%- page.title %>
+    </nav>
+
+    <section class="container app-hero">
+        <div class="app-icon-large">
+            <img src="<%- url_for(page.icon) %>" alt="<%- page.title %> Icon">
+        </div>
+        <h1 class="highlight"><%- page.title %></h1>
+        <p class="app-subtitle"><%- page.subtitle %></p>
+        <% if (page.store_url) { %>
+        <div style="margin-top: 2rem;">
+            <a href="<%- page.store_url %>" target="_blank" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;"><%- page.store_label || '入手する' %></a>
+        </div>
+        <% } %>
+    </section>
+
+    <%- page.content %>
+</div>
+
+<style>
+    .breadcrumb { margin-bottom: 2rem; color: var(--text-secondary); font-size: 0.9rem; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
+    
+    .app-hero { text-align: center; padding: 4rem 0; }
+    .app-icon-large { width: 120px; height: 120px; margin: 0 auto 2rem; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 1px solid var(--card-border); }
+    .app-icon-large img { width: 100%; height: 100%; object-fit: cover; }
+    .app-subtitle { font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 1rem auto 0; }
+    
+    .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 2rem; text-align: center; }
+</style>

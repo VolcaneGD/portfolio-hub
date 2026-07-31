@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOLC Sprite Sheet Converter | VOLCANE</title>
+    <meta name="description" content="AI自動透過機能を搭載したスプライトシート変換ツール。画像の連結・分解を効率化するWindows用デスクトップアプリ。">
+    <link rel="canonical" href="https://volcane.pages.dev/volc-sprite-converter.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/VOLC_Sprite_Sheet_Converter_icon.png">
+
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "VOLC Sprite Sheet Converter"
+      }]
+    }
+    </script>
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "VOLC Sprite Sheet Converter",
+      "operatingSystem": "Windows",
+      "applicationCategory": "DeveloperApplication",
+      "softwareVersion": "2.0"
+    }
+    </script>
+
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/app-details.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+</head>
+<body class="dark-mode">
+    <header id="header" style="background: rgba(10, 12, 16, 0.95); padding: 0.5rem 0;">
+        <nav class="container">
+            <a href="/" class="logo"><span>V</span>OLCANE</a>
+            <ul class="nav-links">
+                <li><a href="/#projects">PROJECTS</a></li>
+                <li><a href="/#about">ABOUT</a></li>
+                <li><a href="/#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="app-detail-main">
+        <nav class="container breadcrumb">
+            <a href="/">Home</a> <span>/</span> VOLC Sprite Sheet Converter
+        </nav>
+
+        <section class="container app-hero">
+            <div class="app-icon-large">
+                <img src="../public/VOLC_Sprite_Sheet_Converter_icon.png" alt="VOLC Sprite Sheet Converter">
+            </div>
+            <h1 class="highlight" style="font-size: 2.5rem;">VOLC Sprite Sheet Converter</h1>
+            <p class="app-subtitle">Ver.2.0：AI自動透過機能を新搭載。スプライトシートの作成と分解を、よりスマートに。</p>
+            
+            <div style="margin-top: 2rem;">
+                <a href="https://github.com/VolcaneGD/portfolio-hub/releases/download/2.0/VOLC.Sprite.Sheet.Converter.zip" class="btn btn-primary">
+                    <span style="margin-right: 8px;">⬇</span> Download for Windows
+                </a>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-secondary);">Ver.2.0 • Windows 10/11 対応</p>
+            </div>
+        </section>
+
+        <div class="share-btn-container" style="text-align: center; margin-top: 2rem;">
+            <button onclick="sharePage()" class="btn btn-share" aria-label="このツールをSNSで共有する">このツールをシェアする</button>
+        </div>
+
+        <!-- Screenshots Section -->
+        <section class="container" style="max-width: 1000px; margin-top: 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <img src="../public/VOLC_Sprite_Sheet_Converter_Image1.png" alt="VOLC Sprite Sheet Converter Screenshot 1" style="width: 100%; border-radius: 12px; border: 1px solid var(--card-border); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <img src="../public/VOLC_Sprite_Sheet_Converter_Image2.png" alt="VOLC Sprite Sheet Converter Screenshot 2" style="width: 100%; border-radius: 12px; border: 1px solid var(--card-border); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            </div>
+        </section>
+
+        <section class="container" style="max-width: 800px; margin-top: 4rem; padding-bottom: 4rem;">
+            <h2 class="section-title">Overview</h2>
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; line-height: 1.8;">
+                <p style="font-weight: bold; color: var(--accent); margin-bottom: 1rem;">【Ver.2.0 アップデート】AIによる背景自動透過機能を実装しました！</p>
+                <p>
+                    スプライトシート（グリッド状の画像）を、アニメーションやゲーム開発で扱いやすい「横一列（Strip）」形式に自動変換するWindowsデスクトップアプリケーションです。Ver.2.0ではAI技術を活用した強力な背景削除機能を追加し、より複雑な画像でもワンクリックで透過処理が可能になりました。
+                </p>
+
+                <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">特徴</h3>
+                <ul style="margin-left: 1.5rem; color: var(--text-secondary);">
+                    <li style="margin-bottom: 0.5rem;"><strong>カンタン操作</strong>: 画像ファイルをウィンドウにドラッグ＆ドロップするだけ。</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>プレビュー機能</strong>: 変換後の画像をリアルタイムで確認しながら、アニメーションの再生テストも可能。</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>高度な編集</strong>:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; list-style-type: circle;">
+                            <li><strong>リサイズ</strong>: 出力サイズを自由に指定。</li>
+                            <li><strong>トリミング</strong>: 余白を自動で削除。</li>
+                            <li><strong>背景透過</strong>: <span style="color: #fff; background: rgba(255,100,100,0.2); padding: 0 4px;">NEW!</span> AIによる自動透過の他、指定色や明度に基づいた透過処理（スポイト機能付き）。</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 0.5rem;"><strong>モダンなUI</strong>: ダークモード対応、目に優しいインターフェース。</li>
+                </ul>
+
+                <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">使い方</h3>
+                <ol style="margin-left: 1.5rem; color: var(--text-secondary);">
+                    <li style="margin-bottom: 0.8rem;"><strong>ファイルの読み込み</strong>:<br>アプリを起動し、変換したい画像をウィンドウにドラッグ＆ドロップします（または「参照」ボタンから選択）。</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>分割設定</strong>:<br>元の画像の「行数 (Rows)」と「列数 (Columns)」を入力します。</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>加工オプション (任意)</strong>:<br>・<strong>余白を自動削除</strong>: 画像の余分な透明部分をカットします。<br>・<strong>リサイズ</strong>: 出力する1フレームあたりのサイズを指定します。</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>プレビュー & 保存</strong>:<br>「プレビュー & 保存」ボタンを押すと、プレビューウィンドウが開きます。<br>・アニメーションの再生確認、背景透過の設定（指定色やスポイト機能）が行えます。<br>・問題なければ「この内容で保存」を押して保存します。</li>
+                </ol>
+
+                <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">動作環境</h3>
+                <p style="color: var(--text-secondary);">Windows 10 / 11</p>
+
+                <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">ライセンス</h3>
+                <p style="color: var(--text-secondary);">本ソフトウェアは現状のまま提供されます。個人的な用途、商用利用問わずご自由にお使いいただけます。</p>
+            </div>
+        </section>
+
+        <!-- MORE APPS セクション -->
+        <section class="container more-services">
+            <h2 class="more-services-title">MORE DESKTOP APPS</h2>
+            <div class="mini-grid">
+                <a href="volc-icon-editor.html" class="mini-card">
+                    <img src="../public/IconEditor_icon.png" alt="Icon Editor">
+                    <span>Volc Icon Editor</span>
+                </a>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="/#projects" class="view-link" style="font-size: 0.9rem;">すべてのプロジェクトを見る &rarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Volcane. <a href="privacy-policy.html" style="color: var(--text-secondary); text-decoration: underline; margin-left: 10px;">Privacy Policy</a></p>
+                <div class="social-links">
+                    <a href="https://x.com/Volcane_GD" target="_blank">X (Twitter)</a>
+                    <a href="https://github.com/VolcaneGD" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>

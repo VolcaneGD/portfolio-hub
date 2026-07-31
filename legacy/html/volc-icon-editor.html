@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volc Icon Editor - VOLCANE</title>
+    <meta name="description" content="AI背景透過機能を標準搭載した高品質アイコン作成・画像加工デスクトップツール「Volc Icon Editor」。Windows用デスクトップアプリとして配布中。">
+    <link rel="canonical" href="https://volcane.pages.dev/volc-icon-editor.html">
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Volc Icon Editor",
+      "operatingSystem": "Windows",
+      "applicationCategory": "DesignApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/IconEditor_icon.png">
+
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "VOLC Icon Editor"
+      }]
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles/app-details.css">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+</head>
+<body class="dark-mode">
+    <header id="header" style="background: rgba(10, 12, 16, 0.95); padding: 0.5rem 0;">
+        <nav class="container">
+            <a href="/" class="logo"><span>V</span>OLCANE</a>
+            <ul class="nav-links">
+                <li><a href="/#projects">PROJECTS</a></li>
+                <li><a href="/#about">ABOUT</a></li>
+                <li><a href="/#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="app-detail-main">
+        <nav class="container breadcrumb">
+            <a href="/">Home</a> <span>/</span> VOLC Icon Editor
+        </nav>
+
+        <section class="container app-hero">
+            <div class="app-icon-large">
+                <img src="../public/IconEditor_icon.png" alt="Volc Icon Editor Icon">
+            </div>
+            <h1 class="highlight" style="font-size: 2.5rem;">Volc Icon Editor</h1>
+            <p class="app-subtitle">高品質なアイコン作成・画像加工デスクトップツール。AI背景透過機能を標準搭載。</p>
+            
+            <div style="margin-top: 2rem;">
+                <a href="https://github.com/VolcaneGD/portfolio-hub/releases/download/1.0/VOLC.Icon.Editor.zip" class="btn btn-primary">
+                    <span style="margin-right: 8px;">⬇</span> Download for Windows
+                </a>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-secondary);">※初回実行時、AIモデル（約170MB）の自動ダウンロードが行われます。</p>
+            </div>
+        </section>
+
+        <div class="share-btn-container" style="text-align: center; margin-top: 2rem;">
+            <button onclick="sharePage()" class="btn btn-share" aria-label="このツールをSNSで共有する">このツールをシェアする</button>
+        </div>
+
+        <!-- Screenshot Section -->
+        <section class="container" style="max-width: 900px; margin-top: 2rem; text-align: center;">
+            <div style="position: relative; display: inline-block;">
+                <img src="../public/IconEditor_image1.png" alt="Volc Icon Editor Screenshot" style="width: 100%; max-width: 800px; border-radius: 12px; border: 1px solid var(--card-border); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            </div>
+        </section>
+
+        <section class="container" style="max-width: 800px; margin-top: 4rem; padding-bottom: 4rem;">
+            <h2 class="section-title">Overview</h2>
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; line-height: 1.8;">
+                <p>
+                    「VOLC Icon Editor」は、AI生成画像などをデスクトップアイコン（.ico）やWeb用素材（.png）に加工するためのツールです。背景透過、テキスト合成、位置調整を直感的なUIで行えます。
+                </p>
+
+                <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">主な機能</h3>
+                <ul style="margin-left: 1.5rem; color: var(--text-secondary);">
+                    <li style="margin-bottom: 0.5rem;"><strong>AI背景透過</strong>: rembg (U-2-Net) を使用した高精度な背景除去機能を搭載。</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>テキスト合成</strong>: フォント、色、サイズ、太字、位置を細かく設定。自由な配置が可能です。</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>カスタムフォント登録</strong>: 反映されないフォントファイルを直接指定して読み込む「自己解決機能」を搭載。</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>高度なプレビュー</strong>: ズーム機能とドラッグ移動により、細部まで確認しながら編集可能です。</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>マルチエクスポート</strong>: Windowsアイコン形式(.ico)およびPNG形式に対応。</li>
+                </ul>
+
+                <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">使い方</h3>
+                <ol style="margin-left: 1.5rem; color: var(--text-secondary);">
+                    <li style="margin-bottom: 0.8rem;"><strong>画像の読み込み</strong>: 加工したい画像を中央エリアにドラッグ＆ドロップするか、クリックしてファイルを選択します。</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>背景透過</strong>: 「背景を透過する」にチェックを入れると、AIが自動で背景を削除します。</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>テキストの追加</strong>: 入力欄に文字を入力し、「⚙️ テキスト詳細設定...」から調整後、「変更を反映」をクリックしてください。</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>保存</strong>: 右パネルの「ICOとして保存」または「PNGとしてエクスポート」を選択します。</li>
+                </ol>
+
+                <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">フォントが反映されない場合</h3>
+                <p style="color: var(--text-secondary);">
+                    インストール済みのフォントが反映されない場合は、詳細設定画面の「📁 フォントファイルを個別に登録...」から、直接フォントファイル（.ttf / .otf / .ttc）を選択してください。
+                </p>
+
+                <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">動作環境</h3>
+                <p style="color: var(--text-secondary);">Windows 10 / 11 (64bit) 推奨。Python 3.12 / Pillow / rembg 環境で動作。</p>
+            </div>
+        </section>
+
+        <!-- MORE APPS セクション -->
+        <section class="container more-services">
+            <h2 class="more-services-title">MORE DESKTOP APPS</h2>
+            <div class="mini-grid">
+                <a href="volc-sprite-converter.html" class="mini-card">
+                    <img src="../public/VOLC_Sprite_Sheet_Converter_icon.png" alt="Sprite Converter">
+                    <span>VOLC Sprite Sheet Converter</span>
+                </a>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="/#projects" class="view-link" style="font-size: 0.9rem;">すべてのプロジェクトを見る &rarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Volcane. <a href="privacy-policy.html" style="color: var(--text-secondary); text-decoration: underline; margin-left: 10px;">Privacy Policy</a></p>
+                <div class="social-links">
+                    <a href="https://x.com/Volcane_GD" target="_blank">X (Twitter)</a>
+                    <a href="https://github.com/VolcaneGD" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

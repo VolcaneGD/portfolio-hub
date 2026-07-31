@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ボンボンアンテナ | VOLCANE</title>
+    <meta name="description" content="爆速で情報をキャッチアップ。シンプルで高機能なRSS・ニュースまとめリーダー「ボンボンアンテナ」。ユーザーレビューや最新情報を掲載中。">
+    <link rel="canonical" href="https://volcane.pages.dev/bonbon.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-bg-remover.png">
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "ボンボンアンテナ",
+      "operatingSystem": "Android",
+      "applicationCategory": "NewsApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "ボンボンアンテナ"
+      }]
+    }
+    </script>
+
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/app-details.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+</head>
+<body class="dark-mode">
+    <header id="header" style="background: rgba(10, 12, 16, 0.95); padding: 0.5rem 0;">
+        <nav class="container">
+            <a href="/" class="logo"><span>V</span>OLCANE</a>
+            <ul class="nav-links">
+                <li><a href="/#projects">PROJECTS</a></li>
+                <li><a href="/#about">ABOUT</a></li>
+                <li><a href="/#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="app-detail-main">
+        <nav class="container breadcrumb">
+            <a href="/">Home</a> <span>/</span> ボンボンアンテナ
+        </nav>
+
+        <section class="container app-hero">
+            <div class="app-icon-large">
+                <img src="../public/BonBonIcon.png" alt="Bon Bon Antenna">
+            </div>
+            <h1 class="highlight">ボンボンアンテナ</h1>
+            <p class="app-subtitle">爆速で情報をキャッチアップ。シンプルで高機能なRSS・ニュースまとめリーダー。</p>
+            <a href="https://play.google.com/store/apps/details?id=com.bonbonantenna.app" class="btn btn-primary" target="_blank">Google Play で入手</a>
+        </section>
+
+        <div class="share-btn-container" style="text-align: center; margin-top: 2rem;">
+            <button onclick="sharePage()" class="btn btn-share" aria-label="このアプリをSNSで共有する">このアプリをシェアする</button>
+        </div>
+
+        <section class="container review-section">
+            <h2 class="section-title">ユーザーレビュー・口コミ <span class="emoji-icon">🍬</span></h2>
+            
+            <div class="bbs-container">
+                <div id="bbs-list" class="bbs-posts-list">
+                    <div class="loading-msg">読み込み中...</div>
+                </div>
+
+                <form id="bbs-form" class="bbs-form">
+                    <div class="input-group">
+                        <input type="text" id="bbs-name" placeholder="お名前 (省略可)" maxlength="20">
+                    </div>
+                    <div class="input-group">
+                        <textarea id="bbs-content" placeholder="ボンボンドロップシールの販売情報をお寄せください🍬" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" id="bbs-submit" class="bbs-submit-btn">投稿する</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- MORE APPS セクション -->
+        <section class="container more-services">
+            <h2 class="more-services-title">MORE SMARTPHONE APPS</h2>
+            <div class="mini-grid">
+                <a href="inner-compass.html" class="mini-card">
+                    <img src="../public/mbti-diagnosis-icon.png" alt="Inner Compass">
+                    <span>Inner Compass</span>
+                </a>
+                <a href="inner-compass-kids.html" class="mini-card">
+                    <img src="../public/inner-compass-kids.png" alt="Kids">
+                    <span>Inner Compass Kids</span>
+                </a>
+                <a href="star-chronicle.html" class="mini-card">
+                    <img src="../public/Star_Chronicle_icon.png" alt="Star Chronicle">
+                    <span>スタークロニクル</span>
+                </a>
+                <a href="bass-booster.html" class="mini-card">
+                    <img src="../public/bass-booster-icon.png" alt="Bass Booster">
+                    <span>BASS BOOSTER</span>
+                </a>
+                <a href="bass-booster-pro.html" class="mini-card">
+                    <img src="../public/bass-booster-pro_icon.png" alt="Bass Booster Pro">
+                    <span>BASS BOOSTER PRO</span>
+                </a>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="/#projects" class="view-link" style="font-size: 0.9rem;">すべてのプロジェクトを見る &rarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Volcane. <a href="privacy-policy.html" style="color: var(--text-secondary); text-decoration: underline; margin-left: 10px;">Privacy Policy</a></p>
+                <div class="social-links">
+                    <a href="https://x.com/Volcane_GD" target="_blank">X (Twitter)</a>
+                    <a href="https://github.com/VolcaneGD" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const GAS_URL = 'https://script.google.com/macros/s/AKfycbxUu04Nbj_g-hzZa4jWnwRFIO2_0PCm661knZJyowRFJF-wRDgi8Nn2jyxxWJ3V1cRHwg/exec';
+            const bbsList = document.getElementById('bbs-list');
+            const bbsForm = document.getElementById('bbs-form');
+            const submitBtn = document.getElementById('bbs-submit');
+            let myId = localStorage.getItem('bonbon_user_id');
+            if (!myId) {
+                myId = 'user_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('bonbon_user_id', myId);
+            }
+
+            const formatDate = (isoString) => {
+                try {
+                    const date = new Date(isoString);
+                    return `${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
+                } catch { return '??/??'; }
+            };
+
+            const loadPosts = async () => {
+                try {
+                    const res = await fetch(GAS_URL + '?action=getPosts');
+                    if (!res.ok) throw new Error('API Error');
+                    const posts = await res.json();
+                    
+                    if (posts.length === 0) {
+                        bbsList.innerHTML = '<div class="empty-message">まだ投稿がありません。最初の口コミを投稿してみよう！🍬</div>';
+                        return;
+                    }
+
+                    bbsList.innerHTML = posts.map(post => `
+                        <div class="bbs-post-card">
+                            <div class="post-header">
+                                <div class="post-user"><span class="user-name">${post.name}</span></div>
+                                <div class="post-time">${formatDate(post.timestamp)}</div>
+                            </div>
+                            <div class="post-content">${post.content}</div>
+                        </div>
+                    `).join('');
+                } catch (e) {
+                    bbsList.innerHTML = '<div class="empty-message error">読み込みに失敗しました。</div>';
+                }
+            };
+
+            bbsForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                submitBtn.disabled = true;
+                submitBtn.textContent = '投稿中...';
+
+                const name = document.getElementById('bbs-name').value.trim() || '匿名さん';
+                const content = document.getElementById('bbs-content').value.trim();
+
+                try {
+                    await fetch(GAS_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            action: 'addPost',
+                            name,
+                            content,
+                            authorId: myId
+                        })
+                    });
+                    
+                    document.getElementById('bbs-content').value = '';
+                    setTimeout(loadPosts, 1000); // 擬似的な待機
+                } catch (err) {
+                    alert('投稿に失敗しました。');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '投稿する';
+                }
+            });
+
+            loadPosts();
+        });
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>

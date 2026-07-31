@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Page Not Found | VOLCANE</title>
+    <meta name="description" content="お探しのページは見つかりませんでした。VOLCANEの革新的なツールやアプリのラインナップをご覧ください。">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+    <style>
+        .error-container {
+            height: calc(100vh - 160px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .error-code {
+            font-size: 8rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+        .error-message {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <header id="header">
+        <nav class="container">
+            <a href="/" class="logo"><span>V</span>OLCANE</a>
+        </nav>
+    </header>
+    <main class="error-container container">
+        <h1 class="error-code">404</h1>
+        <p class="error-message">お探しのページは見つかりませんでした。</p>
+        <a href="/" class="btn btn-primary">トップページへ戻る</a>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Volcane.</p>
+        </div>
+    </footer>
+</body>
+</html>

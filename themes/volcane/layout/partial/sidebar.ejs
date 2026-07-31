@@ -1,0 +1,65 @@
+<aside class="sidebar" id="sidebar-placeholder">
+    <div class="sidebar-brand" style="padding: 40px 24px 32px;">
+        <a href="<%- url_for('/tools/') %>" style="text-decoration: none; color: inherit; display: block; line-height: 0.8;">
+            <div style="font-size: 3.2rem; font-weight: 900; letter-spacing: -3px; color: #1e293b; text-shadow: 2px 2px 0px #fff, 5px 5px 0px rgba(0,0,0,0.06); position: relative;">
+                <span style="color: #ff3b3b; filter: drop-shadow(2px 2px 0px rgba(255,59,59,0.15));">V</span>OLC
+            </div>
+            <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 800; margin-top: 12px; letter-spacing: 0.4em; text-transform: uppercase; padding-left: 4px;">ヴォルク ツールズ</div>
+        </a>
+    </div>
+
+    <nav>
+        <div class="nav-group is-open" data-group="ai">
+            <div class="nav-header">
+                <span class="nav-label">AI Magic</span>
+                <span class="nav-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="nav-list">
+                <div class="nav-list-inner">
+                    <a href="<%- url_for('/tools/background-remover.html') %>" class="nav-item <%= page.path === 'tools/background-remover.html' ? 'active' : '' %>">背景透過AI</a>
+                    <a href="<%- url_for('/tools/image-upscaler.html') %>" class="nav-item <%= page.path === 'tools/image-upscaler.html' ? 'active' : '' %>">アップスケーラーAI</a>
+                    <a href="<%- url_for('/tools/object-remover.html') %>" class="nav-item <%= page.path === 'tools/object-remover.html' ? 'active' : '' %>">消しゴムマジックAI</a>
+                    <a href="<%- url_for('/tools/summarizer.html') %>" class="nav-item <%= page.path === 'tools/summarizer.html' ? 'active' : '' %>">感情分析・要約AI</a>
+                    <a href="<%- url_for('/tools/ocr.html') %>" class="nav-item <%= page.path === 'tools/ocr.html' ? 'active' : '' %>">画像文字起こしAI</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-group is-open" data-group="converters">
+            <div class="nav-header">
+                <span class="nav-label">File Converters</span>
+                <span class="nav-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="nav-list">
+                <div class="nav-list-inner">
+                    <a href="<%- url_for('/tools/webp-converter.html') %>" class="nav-item <%= page.path === 'tools/webp-converter.html' ? 'active' : '' %>">WebPコンバーター</a>
+                    <a href="<%- url_for('/tools/audio-converter.html') %>" class="nav-item <%= page.path === 'tools/audio-converter.html' ? 'active' : '' %>">Audioコンバーター</a>
+                    <a href="<%- url_for('/tools/svg-to-png.html') %>" class="nav-item <%= page.path === 'tools/svg-to-png.html' ? 'active' : '' %>">SVG ↔ PNG 変換</a>
+                    <a href="<%- url_for('/tools/pdf-to-image.html') %>" class="nav-item <%= page.path === 'tools/pdf-to-image.html' ? 'active' : '' %>">PDF画像変換</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-group is-open" data-group="utilities">
+            <div class="nav-header">
+                <span class="nav-label">Design & Utilities</span>
+                <span class="nav-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="nav-list">
+                <div class="nav-list-inner">
+                    <a href="<%- url_for('/tools/image-resizer.html') %>" class="nav-item <%= page.path === 'tools/image-resizer.html' ? 'active' : '' %>">画像リサイズ</a>
+                    <a href="<%- url_for('/tools/qr-generator.html') %>" class="nav-item <%= page.path === 'tools/qr-generator.html' ? 'active' : '' %>">QRコード作成</a>
+                    <a href="<%- url_for('/tools/password-generator.html') %>" class="nav-item <%= page.path === 'tools/password-generator.html' ? 'active' : '' %>">パスワード生成器</a>
+                    <a href="<%- url_for('/tools/metadata-eraser.html') %>" class="nav-item <%= page.path === 'tools/metadata-eraser.html' ? 'active' : '' %>">Metadata Eraser</a>
+                    <a href="<%- url_for('/tools/character-counter.html') %>" class="nav-item <%= page.path === 'tools/character-counter.html' ? 'active' : '' %>">文字数カウント</a>
+                    <a href="<%- url_for('/tools/color-palette.html') %>" class="nav-item <%= page.path === 'tools/color-palette.html' ? 'active' : '' %>">配色抽出</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div style="margin-top: auto; padding: 40px 24px;">
+        <a href="<%- url_for('/privacy-policy.html') %>" class="nav-item" style="font-size: 0.8rem; opacity: 0.7;">Privacy Policy</a>
+        <a href="<%- url_for('/') %>" class="nav-item" style="font-size: 0.8rem; opacity: 0.7;">Portfolio Home</a>
+    </div>
+</aside>

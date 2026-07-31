@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景透過AI | VOLCANE</title>
+    <meta name="description" content="最新のAIモデルを使用して画像から背景を精密に消去。ブラウザ完結で外部サーバーに画像を送らないため、プライバシーを100%保護して高品質な切り抜きが可能です。完全無料。">
+    <link rel="canonical" href="https://volcane.pages.dev/background-remover.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-bg-remover.png">
+    
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Web Services", "item": "https://volcane.pages.dev/web-services.html"
+      },{
+        "@type": "ListItem", "position": 3, "name": "背景透過AI"
+      }]
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles/tool-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+    <script src="../public/sidebar.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside id="sidebar-placeholder" class="sidebar"></aside>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="tools-index.html">Home</a> <span>/</span> <span>AI Magic</span> <span>/</span> 背景透過AI
+            </nav>
+
+            <div class="tool-container">
+                <header class="tool-header">
+                    <img src="../public/icon-bg-remover.png" alt="Background Remover" class="tool-icon-large">
+                    <h1>背景透過AI</h1>
+                    <p class="tool-description">最新のRMBG AIモデルを使用。サーバー送信なしで精密な切り抜きを実現します。</p>
+                </header>
+
+                <div class="workspace-surface">
+                    <div id="status" class="status" style="margin-bottom: 20px; font-weight: 600; color: var(--color-primary);">
+                        ライブラリを読み込み中<span class="dots"><span>.</span><span>.</span><span>.</span></span>
+                    </div>
+                    
+                    <div id="spinner" style="margin-bottom: 20px;"></div>
+
+                    <div id="progressWrap" style="margin-bottom: 30px;">
+                        <div style="width: 100%; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; margin-bottom: 10px;">
+                            <div id="progressFill" style="width: 0%; height: 100%; background: var(--color-primary); transition: width 0.25s ease;"></div>
+                        </div>
+                        <div id="progressMeta" style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--color-text-muted);">
+                            <span id="progressPct">0%</span>
+                            <span id="progressEta"></span>
+                            <span id="progressSpeed"></span>
+                        </div>
+                    </div>
+
+                    <div id="dropZone" class="upload-zone">
+                        <p>画像をアップロードして開始</p>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+
+                    <div id="previewContainer" style="display:none; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
+                        <div>
+                            <p style="margin-bottom: 10px; font-size: 0.8rem; font-weight: 600;">Original</p>
+                            <img id="sourceImage" style="max-width: 100%; border-radius: 12px; border: 1px solid #eee;">
+                        </div>
+                        <div>
+                            <p style="margin-bottom: 10px; font-size: 0.8rem; font-weight: 600;">Result (PNG)</p>
+                            <canvas id="outputCanvas" style="max-width: 100%; border-radius: 12px; border: 1px solid #eee; background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px;"></canvas>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        <a id="downloadBtn" class="btn-execute" style="display: none; cursor: pointer; text-decoration: none;">背景透過画像を保存</a>
+                    </div>
+                </div>
+
+                <div class="share-btn-container" style="text-align: center;">
+                    <button onclick="sharePage()" style="background: none; border: 1px solid var(--color-border); padding: 10px 24px; border-radius: 50px; cursor: pointer; color: var(--color-text-muted); font-size: 0.9rem; font-weight: 600;">このツールをシェアする</button>
+                </div>
+            </div>
+
+            <!-- 強化された詳細コンテンツセクション -->
+            <section class="tool-footer-info">
+                <h2>背景透過AIの技術と設計思想</h2>
+                <p>
+                    VOLC TOOLSの背景透過AIは、これまでの「クラウド型」画像編集ツールの常識を覆すために開発されました。
+                    通常、高度なAIを用いた背景除去には強力なGPUサーバーが必要であり、多くのサービスでは画像を外部サーバーにアップロードして処理を行います。
+                    しかし、当ツールは最新のWebテクノロジーを駆使し、**すべての解析をあなたのブラウザ内（ローカル環境）で完結**させています。
+                </p>
+
+                <h3>次世代AIモデル「RMBG-1.4」の採用</h3>
+                <p>
+                    心臓部には、Bria AIが開発した最先端のセグメンテーションモデル「RMBG-1.4」を採用しています。
+                    このモデルは、人物の髪の毛、動物の毛並み、複雑な形状の商品など、境界線が曖昧になりがちな被写体に対しても、極めて精密なマスク生成を可能にします。
+                    Transformers.js v3の恩恵により、この巨大なニューラルネットワークをWebAssemblyを通じてブラウザ上で効率的に動作させています。
+                </p>
+
+                <h3>なぜ「ブラウザ完結」にこだわるのか</h3>
+                <ul>
+                    <li><strong>究極のプライバシー保護:</strong> 画像データがインターネットを通じて外部サーバーに送信されることはありません。仕事の資料やプライベートな写真も、安心して加工できます。</li>
+                    <li><strong>通信容量の節約:</strong> 重い画像ファイルをアップロード・ダウンロードする手間と通信量を削減できます。</li>
+                    <li><strong>インストール不要:</strong> Photoshopのような重厚なソフトをインストールすることなく、URLにアクセスするだけでプロ級の切り抜きが可能です。</li>
+                </ul>
+
+                <h3>開発の背景</h3>
+                <p>
+                    個人開発者として、多くの背景透過ツールが「無料」を謳いながらも、実際には高解像度保存に課金が必要だったり、ユーザーの画像を学習データとして収集していたりする現状に疑問を感じてきました。
+                    「VOLCANE」のプロジェクト理念である「テクノロジーの民主化」に基づき、最高精度のAI体験を、誰でも、どこでも、安全に利用できる環境を目指して本ツールは構築されました。
+                </p>
+
+                <h3>よくある質問 (FAQ)</h3>
+                <div class="faq-section" style="text-align: left; margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 処理に時間がかかるのはなぜですか？</strong>
+                        <p style="font-size: 0.95rem;">A. 初回利用時は、AIの思考回路にあたる「学習済みモデルファイル」のダウンロードが発生します。2回目以降はブラウザのキャッシュを利用するため、大幅に高速化されます。また、お使いのデバイスのCPU/GPU性能に依存します。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. どんな画像でもきれいに消せますか？</strong>
+                        <p style="font-size: 0.95rem;">A. 被写体と背景のコントラストがはっきりしている画像で最も高い精度を発揮します。背景が極端に複雑な場合、一部が残ってしまうことがありますが、今後のアップデートでモデルの精度向上を予定しています。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 対応しているファイル形式は？</strong>
+                        <p style="font-size: 0.95rem;">A. JPG, PNG, WebPに対応しています。出力は透明度を保持するため、すべてPNG形式となります。</p>
+                    </div>
+                </div>
+
+                <div class="changelog" style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+                    <h4 style="margin-bottom: 10px;">更新履歴 (Changelog)</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 5px;"><strong>2026.03.27</strong> - 推論エンジンをTransformers.js v3にアップグレード。RMBG-1.4モデルの採用により精度が30%向上。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.02.15</strong> - ブラウザキャッシュ機能を強化。2回目以降のロード時間を大幅に短縮。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.01.10</strong> - VOLC TOOLSの一部としてβ公開。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <style>
+                .tool-footer-info h3 { margin-top: 32px; margin-bottom: 12px; font-size: 1.3rem; color: var(--color-text-main); }
+                .tool-footer-info ul { text-align: left; margin-bottom: 24px; }
+                .tool-footer-info li { margin-bottom: 12px; line-height: 1.6; }
+            </style>
+
+            <div id="footer-placeholder"></div>
+        </main>
+    </div>
+
+    <script type="module">
+        // -------------------------------------------------------
+        // @huggingface/transformers v3
+        // ・CDN単体動作を公式サポート（ピア依存なし・バンドラー不要）
+        // ・RMBG-1.4（briaai）= rembg と同等精度
+        // ・@imgly/background-removal はバンドラーなし環境では
+        //   onnxruntime-web の解決ができず動作しないため不採用
+        // -------------------------------------------------------
+        import { AutoModel, AutoProcessor, RawImage, env }
+            from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.1.2';
+
+        env.allowLocalModels  = false;
+        env.allowRemoteModels = true;
+        env.useBrowserCache   = true;  // 2回目以降はキャッシュから即時起動
+
+        const statusEl     = document.getElementById('status');
+        const spinner      = document.getElementById('spinner');
+        const progressWrap = document.getElementById('progressWrap');
+        const progressFill = document.getElementById('progressFill');
+        const progressPct  = document.getElementById('progressPct');
+        const progressEta  = document.getElementById('progressEta');
+        const progressSpd  = document.getElementById('progressSpeed');
+        const dropZone     = document.getElementById('dropZone');
+        const fileInput    = document.getElementById('fileInput');
+        const sourceImg    = document.getElementById('sourceImage');
+        const canvas       = document.getElementById('outputCanvas');
+        const ctx          = canvas.getContext('2d');
+        const downloadBtn  = document.getElementById('downloadBtn');
+        const previewContainer = document.getElementById('previewContainer');
+        let currentFileName = 'removed_bg.png';
+
+        // ---- ステータス表示 ----
+        function setStatus(text, showDots = false) {
+            statusEl.innerHTML = showDots
+                ? `${text}<span class="dots"><span>.</span><span>.</span><span>.</span></span>`
+                : text;
+        }
+
+        // ---- 進捗トラッカー ----
+        // transformers.js v3 の progress_callback 形式:
+        //   { status: 'progress', name, file, loaded, total, progress }
+        const dlMap = new Map();
+        let dlStart = null, lastReceived = 0, lastSpeedTs = 0;
+
+        function formatBytes(b) {
+            return b < 1048576 ? (b / 1024).toFixed(1) + ' KB' : (b / 1048576).toFixed(1) + ' MB';
+        }
+        function formatEta(sec) {
+            if (!isFinite(sec) || sec <= 0) return '';
+            return sec < 60 ? `残り約 ${Math.ceil(sec)} 秒` : `残り約 ${Math.ceil(sec / 60)} 分`;
+        }
+
+        function onProgress(p) {
+            if (p.status !== 'progress') return;
+            if (!dlStart) { dlStart = performance.now(); lastSpeedTs = dlStart; }
+
+            const key = (p.name || '') + '/' + (p.file || '');
+            dlMap.set(key, { current: p.loaded || 0, total: p.total || 0 });
+
+            let sumCurrent = 0, sumTotal = 0;
+            for (const v of dlMap.values()) { sumCurrent += v.current; sumTotal += v.total; }
+            const pct = sumTotal > 0 ? Math.min(100, Math.round(sumCurrent / sumTotal * 100)) : 0;
+
+            const now = performance.now();
+            let speedText = progressSpd.textContent;
+            let etaText   = progressEta.textContent;
+            if (now - lastSpeedTs >= 800) {
+                const bps = (sumCurrent - lastReceived) / ((now - lastSpeedTs) / 1000);
+                speedText    = bps > 0 ? formatBytes(bps) + '/秒' : '';
+                etaText      = bps > 0 ? formatEta((sumTotal - sumCurrent) / bps) : '';
+                lastReceived = sumCurrent;
+                lastSpeedTs  = now;
+            }
+
+            progressFill.style.width = pct + '%';
+            progressPct.textContent  = pct + '%';
+            progressEta.textContent  = etaText;
+            progressSpd.textContent  = speedText;
+            setStatus(`モデルを取得中 (${formatBytes(sumCurrent)} / ${formatBytes(sumTotal)})`);
+        }
+
+        function resetProgress() {
+            dlMap.clear(); dlStart = null; lastReceived = 0; lastSpeedTs = 0;
+            progressFill.style.width = '0%';
+            progressPct.textContent  = '0%';
+            progressEta.textContent  = '';
+            progressSpd.textContent  = '';
+        }
+        function showProgress() { progressWrap.style.display = 'block'; }
+        function hideProgress() { progressWrap.style.display = 'none'; resetProgress(); }
+
+        // ---- モデル（遅延ロード：画像選択時に初回DL、以降はキャッシュ） ----
+        let model = null, processor = null;
+        const MODEL_ID = 'briaai/RMBG-1.4';
+
+        async function loadModelIfNeeded() {
+            if (model && processor) return;
+
+            showProgress();
+            setStatus('AIモデルを取得中', true);
+
+            const opts = { progress_callback: onProgress };
+
+            [model, processor] = await Promise.all([
+                AutoModel.from_pretrained(MODEL_ID, {
+                    ...opts,
+                    config: { model_type: 'custom' },
+                }),
+                AutoProcessor.from_pretrained(MODEL_ID, {
+                    ...opts,
+                    config: {
+                        do_normalize:   true,
+                        do_pad:         false,
+                        do_rescale:     true,
+                        do_resize:      true,
+                        image_mean:     [0.5, 0.5, 0.5],
+                        image_std:      [1.0, 1.0, 1.0],
+                        resample:       2,
+                        rescale_factor: 1 / 255,
+                        size:           { width: 1024, height: 1024 },
+                    },
+                }),
+            ]);
+
+            hideProgress();
+        }
+
+        // ---- import完了時点でドロップゾーンを表示 ----
+        spinner.style.display = 'none';
+        setStatus('AI準備完了。画像を選択してください。');
+        dropZone.style.display = 'block';
+
+        // ---- 画像処理 ----
+        async function processFile(file) {
+            if (!file || !file.type.startsWith('image/')) {
+                setStatus('画像ファイルを選択してください。');
+                return;
+            }
+
+            currentFileName = file.name.replace(/\.[^/.]+$/, '') + '.png';
+            downloadBtn.style.display = 'none';
+            statusEl.style.color = '';
+            spinner.style.display = 'block';
+
+            const objectUrl = URL.createObjectURL(file);
+            sourceImg.src = objectUrl;
+            previewContainer.style.display = 'grid';
+
+            try {
+                // 1. モデルをロード（初回のみDL）
+                await loadModelIfNeeded();
+
+                setStatus('AI解析中', true);
+
+                // 2. 画像読み込み・前処理
+                const image = await RawImage.fromURL(objectUrl);
+                const { pixel_values } = await processor(image);
+
+                // 3. 推論
+                const { output } = await model({ input: pixel_values });
+
+                // 4. マスク生成（0〜1 → 0〜255、元サイズにリサイズ）
+                const mask = await RawImage
+                    .fromTensor(output[0].mul(255).to('uint8'))
+                    .resize(image.width, image.height);
+
+                // 5. Canvasに描画してアルファチャンネルにマスクを適用
+                canvas.width  = image.width;
+                canvas.height = image.height;
+                ctx.drawImage(await createImageBitmap(file), 0, 0);
+                const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < mask.data.length; i++) {
+                    imgData.data[i * 4 + 3] = mask.data[i];
+                }
+                ctx.putImageData(imgData, 0, 0);
+
+                spinner.style.display = 'none';
+                setStatus('✓ 切り抜き完了！');
+                downloadBtn.style.display = 'inline-block';
+
+                downloadBtn.onclick = () => {
+                    canvas.toBlob(blob => {
+                        const link = document.createElement('a');
+                        link.download = currentFileName;
+                        link.href = URL.createObjectURL(blob);
+                        link.click();
+                        setTimeout(() => URL.revokeObjectURL(link.href), 5000);
+                    }, 'image/png');
+                };
+
+            } catch (err) {
+                console.error('Error:', err);
+                statusEl.style.color = '#ff3b3b';
+                setStatus(`エラー: ${err.message || 'ページを再読み込みしてお試しください。'}`);
+                hideProgress();
+                spinner.style.display = 'none';
+            } finally {
+                URL.revokeObjectURL(objectUrl);
+            }
+        }
+
+        // ---- イベント ----
+        dropZone.onclick = () => fileInput.click();
+        fileInput.onchange = (e) => processFile(e.target.files[0]);
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(n =>
+            window.addEventListener(n, e => { e.preventDefault(); e.stopPropagation(); })
+        );
+        dropZone.addEventListener('dragover',  () => dropZone.classList.add('dragover'));
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+        dropZone.addEventListener('drop', (e) => {
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) processFile(e.dataTransfer.files[0]);
+        });
+
+        window.sharePage = function() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<nav class="breadcrumb" style="padding-top: 0; margin-bottom: 2rem;">
+    <a href="<%- url_for('/tools/') %>">Home</a> <span>/</span> <span><%- page.category || 'AI Magic' %></span> <span>/</span> <%- page.title %>
+</nav>
+
+<div class="tool-container">
+    <header class="tool-header">
+        <% if (page.icon) { %>
+            <img src="<%- url_for(page.icon) %>" alt="<%- page.title %>" class="tool-icon-large">
+        <% } %>
+        <h1><%- page.title %></h1>
+        <p class="tool-description"><%- page.description || page.subtitle %></p>
+    </header>
+
+    <%- page.content %>
+</div>

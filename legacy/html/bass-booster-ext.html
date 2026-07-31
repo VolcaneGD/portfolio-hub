@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOLC Bass Booster | VOLCANE</title>
+    <meta name="description" content="ブラウザで再生中の音声を解析し、迫力のある重低音に強化。YouTubeやSpotifyを最高の音質で楽しむためのブラウザ拡張機能。ユーザーリクエスト受付中。">
+    <link rel="canonical" href="https://volcane.pages.dev/bass-booster-ext.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-bg-remover.png">
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "VOLC Bass Booster",
+      "operatingSystem": "Windows, macOS, Linux",
+      "applicationCategory": "MultimediaApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/app-details.css">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+</head>
+<body class="dark-mode">
+    <header id="header">
+        <nav class="container">
+            <a href="./index.html" class="logo"><span>V</span>OLCANE</a>
+            <ul class="nav-links">
+                <li><a href="./index.html#projects">PROJECTS</a></li>
+                <li><a href="./index.html#about">ABOUT</a></li>
+                <li><a href="./index.html#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="app-detail-main">
+        <nav class="container breadcrumb">
+            <a href="./index.html">Home</a> <span>/</span> VOLC Bass Booster
+        </nav>
+
+        <section class="container app-hero">
+            <div class="app-icon-large">
+                <img src="../public/bass-booster-icon.png" alt="Bass Booster Icon">
+            </div>
+            <h1 class="highlight">VOLC Bass Booster</h1>
+            <p class="app-subtitle">あなたのブラウザを重低音マシンへ。音楽、動画、すべてのリスニング体験をアップグレード。</p>
+            <div style="margin-top: 2rem;">
+                <a href="https://chromewebstore.google.com/detail/volc-bass-booster/ofmbikcokpooddjmjmkpnojpdfplehdd" target="_blank" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Chrome ウェブストアで入手</a>
+            </div>
+        </section>
+
+        <section class="container" style="max-width: 800px; margin-top: 4rem;">
+            <h2 class="section-title">Overview</h2>
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 24px; line-height: 1.8;">
+                <p>「VOLC Bass Booster」は、ブラウザで出力されるすべてのオーディオストリームをリアルタイムで解析・増幅する拡張機能です。ノートPCのスピーカーや標準的なヘッドフォンでは物足りない低音域を、独自のアルゴリズムで補完・強化します。</p>
+                <h3 style="color: var(--accent); margin-top: 1.5rem;">主な機能</h3>
+                <ul style="margin-left: 1.5rem; color: var(--text-secondary);">
+                    <li>インテリジェント・バスブースト（音割れを最小限に抑えた増幅）</li>
+                    <li>サイトごとの設定保存機能（YouTube, Spotify等）</li>
+                    <li>ワンクリックでのエフェクトON/OFF切り替え</li>
+                </ul>
+                <div class="app-screenshot" style="margin-top: 2rem; text-align: center;">
+                    <img src="../public/BassBooster_Screenshot.png" alt="Bass Booster Screenshot" style="max-width: 100%; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+                </div>
+            </div>
+        </section>
+
+        <div class="share-btn-container" style="text-align: center; margin-top: 3rem;">
+            <button onclick="sharePage()" class="btn btn-share" aria-label="この拡張機能をSNSで共有する">この拡張機能をシェアする</button>
+        </div>
+
+        <section class="container review-section" style="margin-top: 5rem;">
+            <h2 class="section-title">ご意見・ご要望 <span class="emoji-icon">🎵</span></h2>
+            <div class="bbs-container">
+                <div id="bbs-list" class="bbs-posts-list">
+                    <div class="loading-msg">読み込み中...</div>
+                </div>
+                <form id="bbs-form" class="bbs-form">
+                    <div class="input-group">
+                        <input type="text" id="bbs-name" placeholder="お名前 (省略可)" maxlength="20">
+                    </div>
+                    <div class="input-group">
+                        <textarea id="bbs-content" placeholder="「このサイトでも動作するようにしてほしい」などのリクエストをお待ちしています。" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" id="bbs-submit" class="bbs-submit-btn">リクエストを送信</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Volcane. <a href="privacy-policy.html" style="color: var(--text-secondary); text-decoration: underline; margin-left: 10px;">Privacy Policy</a></p>
+                <div class="social-links">
+                    <a href="https://x.com/Volcane_GD" target="_blank">X (Twitter)</a>
+                    <a href="https://github.com/VolcaneGD" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const GAS_URL = 'https://script.google.com/macros/s/AKfycbxczswtjTWXQ59P6eVqd93p14iwNI3xkAT2STYbKZj7cP08tQa-YZL4pC6yHlD9Pf-v/exec';
+            const BBS_CATEGORY = 'bass_booster_ext';
+            const bbsList = document.getElementById('bbs-list');
+            const bbsForm = document.getElementById('bbs-form');
+            const submitBtn = document.getElementById('bbs-submit');
+
+            let myId = localStorage.getItem('volc_user_id') || 'user_' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('volc_user_id', myId);
+
+            const formatDate = (isoString) => {
+                try {
+                    const date = new Date(isoString);
+                    return `${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
+                } catch { return '??/??'; }
+            };
+
+            /**
+             * XSS対策用エスケープ関数
+             */
+            function escapeHtml(str) {
+                if (!str) return '';
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            }
+
+            const loadPosts = async () => {
+                try {
+                    const res = await fetch(`${GAS_URL}?action=getPosts&category=${BBS_CATEGORY}`);
+                    const posts = await res.json();
+                    bbsList.innerHTML = posts.length ? posts.map(post => `
+                        <div class="bbs-post-card">
+                            <div class="post-header">
+                                <div class="post-user"><span class="user-name">${escapeHtml(post.name || '匿名')}</span></div>
+                                <div class="post-time">${formatDate(post.timestamp)}</div>
+                            </div>
+                            <div class="post-content">${escapeHtml(post.content || '')}</div>
+                        </div>
+                    `).join('') : '<div class="empty-message">現在、開発者へのリクエストを募集中です。</div>';
+                } catch (e) {
+                    bbsList.innerHTML = '<div class="empty-message">メッセージを募集中です。</div>';
+                }
+            };
+
+            bbsForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                submitBtn.disabled = true;
+                submitBtn.textContent = '送信中...';
+                try {
+                    await fetch(GAS_URL, {
+                        method: 'POST', mode: 'no-cors',
+                        body: JSON.stringify({ action: 'addPost', category: BBS_CATEGORY, name: document.getElementById('bbs-name').value || '匿名希望', content: document.getElementById('bbs-content').value, authorId: myId })
+                    });
+                    document.getElementById('bbs-content').value = '';
+                    setTimeout(loadPosts, 1500);
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'リクエストを送信';
+                }
+            });
+            loadPosts();
+        });
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>

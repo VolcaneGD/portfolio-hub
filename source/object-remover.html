@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消しゴムマジックAI | VOLCANE</title>
+    <meta name="description" content="画像内の不要な通行人や電柱をAIが自然に消去。ブラウザ完結でプライバシーも安心な無料消しゴムマジックツール。">
+    <link rel="canonical" href="https://volcane.pages.dev/object-remover.html">
+    <link rel="manifest" href="../public/manifest.json">
+    <meta name="theme-color" content="#22d3ee">
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
+    <!-- iOS PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../public/icon-object-remover.png">
+
+    <!-- パンくずリスト構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 2, "name": "AI Magic", "item": "https://volcane.pages.dev/html/tools-index.html"
+      },{
+        "@type": "ListItem", "position": 3, "name": "消しゴムマジックAI"
+      }]
+    }
+    </script>
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "消しゴムマジックAI",
+      "operatingSystem": "Windows, macOS, Android, iOS",
+      "applicationCategory": "MultimediaApplication",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles/tool-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8213002078497168"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z8SR3QP16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z8SR3QP16');
+    </script>
+    <script src="../public/sidebar.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside id="sidebar-placeholder" class="sidebar"></aside>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="tools-index.html">Home</a> <span>/</span> <span>AI Magic</span> <span>/</span> 消しゴムマジックAI
+            </nav>
+
+            <div class="tool-container">
+                <header class="tool-header">
+                    <img src="../public/icon-object-remover.png" alt="Object Remover" class="tool-icon-large">
+                    <h1>消しゴムマジックAI</h1>
+                    <p class="tool-description">不要なものをなぞるだけ。周囲の風景と馴染ませて自然に消去します。</p>
+                </header>
+
+                <div class="workspace-surface">
+                    <div id="dropZone" class="upload-zone">
+                        <p>画像をアップロードして開始</p>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+
+                    <div id="status" class="status" style="margin: 20px 0; font-weight: 600; color: var(--color-primary);"></div>
+
+                    <div id="progressWrap" style="display: none; margin-bottom: 30px;">
+                        <div style="width: 100%; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; margin-bottom: 10px;">
+                            <div id="progressFill" style="width: 0%; height: 100%; background: var(--color-primary); transition: width 0.25s ease;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--color-text-muted);">
+                            <span>AIモデルをダウンロード中...</span>
+                            <span id="progressPct">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="tool-controls" id="controls" style="display: none;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <label style="font-size: 0.85rem; font-weight: 600;">ブラシサイズ:</label>
+                            <input type="range" id="brushSize" min="5" max="100" value="30" style="accent-color: var(--color-primary);">
+                        </div>
+                        <button id="resetBtn" class="btn-execute" style="padding: 8px 20px; font-size: 0.85rem; background: var(--color-hover); color: var(--color-text-main); box-shadow: none;">やり直し</button>
+                    </div>
+
+                    <div id="canvasArea" style="display: none; margin-top: 20px; background: #000; border-radius: 12px; overflow: hidden; position: relative; cursor: crosshair;">
+                        <canvas id="mainCanvas" style="max-width: 100%; display: block;"></canvas>
+                        <canvas id="maskCanvas" style="display: none;"></canvas>
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        <button id="removeBtn" class="btn-execute" style="display: none; width: 100%;">選択した範囲を消去</button>
+                    </div>
+                </div>
+
+                <div class="share-btn-container" style="text-align: center;">
+                    <button onclick="sharePage()" style="background: none; border: 1px solid var(--color-border); padding: 10px 24px; border-radius: 50px; cursor: pointer; color: var(--color-text-muted); font-size: 0.9rem; font-weight: 600;">このツールをシェアする</button>
+                </div>
+            </div>
+
+            <!-- 強化された詳細コンテンツセクション -->
+            <section class="tool-footer-info">
+                <h2>消しゴムマジックAIの技術と設計思想</h2>
+                <p>
+                    VOLC TOOLSの「消しゴムマジックAI」は、写真の中に写り込んでしまった不要な通行人、電柱、看板などを魔法のように消し去り、その背後にある景色を自然に予測して描き直す（補完する）ために開発されました。
+                    通常、このような高度な編集には高価なソフトウェアや専門的なスキルが必要でしたが、当ツールは**AIの力をあなたのブラウザ上で直接解放**します。
+                </p>
+
+                <h3>最先端インペインティングモデル「LaMa」の採用</h3>
+                <p>
+                    このツールの心臓部には、Samsung AI Centerが開発した「LaMa (Resolution-robust Large Mask Inpainting)」というニューラルネットワークモデルを採用しています。
+                    LaMaは、従来のモデルが苦手としていた「広い範囲の消去」や「複雑な構造の補完」において極めて高いパフォーマンスを発揮します。
+                    Transformers.js v3を通じて、この巨大なモデルをWebAssemblyとしてブラウザ内で動作させることで、サーバーに頼らない高速な修復体験を実現しました。
+                </p>
+
+                <h3>究極のプライバシーと「ゼロ・アップロード」</h3>
+                <p>
+                    一般的なAI編集サービスの多くは、ユーザーの画像をクラウド上の強力なGPUサーバーに送信して処理を行います。
+                    しかし、VOLC TOOLSはプライバシーを最優先事項として設計されています。
+                </p>
+                <ul>
+                    <li><strong>サーバー送信なし:</strong> あなたの画像データは1バイトもインターネットへ送信されません。加工はすべてあなたのデバイス上のメモリ内で行われます。</li>
+                    <li><strong>機密写真も安心:</strong> 家族の写真や、まだ公開前のデザイン資料など、機密性の高い素材も安心して消しゴムマジックにかけることができます。</li>
+                </ul>
+
+                <h3>開発の背景</h3>
+                <p>
+                    「テクノロジーを誰もが自由に使えるものにする」というVOLCANEプロジェクトの理念に基づき、最先端のAI機能を完全に無料で、かつ最も安全な形で提供することを目指しました。
+                    複雑なログインやサブスクリプションの壁を取り払い、URLにアクセスするだけで誰でもプロ級の画像修復が行える環境を構築しています。
+                </p>
+
+                <h3>よくある質問 (FAQ)</h3>
+                <div class="faq-section" style="text-align: left; margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 消した跡が不自然になることがあります。</strong>
+                        <p style="font-size: 0.95rem;">A. AIは周囲のピクセルから情報を推測します。背景が極端に複雑な場合（細かい幾何学模様など）は、一度で綺麗に消えないことがあります。その場合は、ブラシサイズを小さくして、少しずつなぞることで精度が向上する場合があります。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. スマートフォンで重く感じるのはなぜですか？</strong>
+                        <p style="font-size: 0.95rem;">A. AIの推論には高いCPU/GPU性能を必要とします。LaMaモデルは約170MB程度の学習済みデータを使用するため、スマートフォンの性能や空きメモリ状況によっては処理に数十秒かかることがあります。</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--color-primary); display: block; margin-bottom: 5px;">Q. 対応している画像サイズは？</strong>
+                        <p style="font-size: 0.95rem;">A. 基本的に制限はありませんが、ブラウザのメモリ制限により、極端に巨大な画像（4K以上など）は処理中にクラッシュする可能性があります。Web用の標準的な解像度での利用を推奨します。</p>
+                    </div>
+                </div>
+
+                <div class="changelog" style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+                    <h4 style="margin-bottom: 10px;">更新履歴 (Changelog)</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 5px;"><strong>2026.05.01</strong> - LaMa-fp16 モデルを採用した本物の AI Inpainting ロジックを実装。</li>
+                        <li style="margin-bottom: 5px;"><strong>2026.04.28</strong> - UIを VOLC TOOLS デザインシステムに刷新し、センターレイアウトを採用。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <style>
+                .tool-footer-info h3 { margin-top: 32px; margin-bottom: 12px; font-size: 1.3rem; color: var(--color-text-main); }
+                .tool-footer-info ul { text-align: left; margin-bottom: 24px; }
+                .tool-footer-info li { margin-bottom: 12px; line-height: 1.6; }
+            </style>
+
+            <div id="footer-placeholder"></div>
+        </main>
+    </div>
+
+    <script type="module">
+        import { pipeline, env, RawImage } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.1.2';
+
+        env.allowLocalModels = false;
+        env.useBrowserCache = true;
+
+        const canvas = document.getElementById('mainCanvas');
+        const ctx = canvas.getContext('2d');
+        const maskCanvas = document.getElementById('maskCanvas');
+        const maskCtx = maskCanvas.getContext('2d');
+        const fileInput = document.getElementById('fileInput');
+        const dropZone = document.getElementById('dropZone');
+        const status = document.getElementById('status');
+        const removeBtn = document.getElementById('removeBtn');
+        const progressWrap = document.getElementById('progressWrap');
+        const progressFill = document.getElementById('progressFill');
+        const progressPct = document.getElementById('progressPct');
+
+        let isDrawing = false;
+        let model = null;
+        let originalImage = null;
+
+        dropZone.onclick = () => fileInput.click();
+
+        fileInput.onchange = async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            originalImage = await createImageBitmap(file);
+            setupCanvas();
+            document.getElementById('canvasArea').style.display = 'block';
+            document.getElementById('controls').style.display = 'flex';
+            removeBtn.style.display = 'block';
+            dropZone.style.display = 'none';
+        };
+
+        function setupCanvas() {
+            canvas.width = maskCanvas.width = originalImage.width;
+            canvas.height = maskCanvas.height = originalImage.height;
+            ctx.drawImage(originalImage, 0, 0);
+            maskCtx.fillStyle = 'black';
+            maskCtx.fillRect(0, 0, maskCanvas.width, maskCanvas.height);
+            maskCanvas.style.display = 'block';
+        }
+
+        canvas.onmousedown = () => isDrawing = true;
+        window.onmouseup = () => isDrawing = false;
+        canvas.onmousemove = (e) => {
+            if (!isDrawing) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX - rect.left) * (canvas.width / rect.width);
+            const y = (e.clientY - rect.top) * (canvas.height / rect.height);
+            const size = document.getElementById('brushSize').value;
+
+            // メインキャンバスに半透明の赤を表示
+            ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+            ctx.beginPath(); ctx.arc(x, y, size, 0, Math.PI * 2); ctx.fill();
+
+            // マスクキャンバスに白（消去範囲）を描画
+            maskCtx.fillStyle = 'white';
+            maskCtx.beginPath(); maskCtx.arc(x, y, size, 0, Math.PI * 2); maskCtx.fill();
+        };
+
+        document.getElementById('resetBtn').onclick = () => setupCanvas();
+
+        removeBtn.onclick = async () => {
+            if (!model) {
+                status.textContent = "AIモデルをロード中...";
+                progressWrap.style.display = 'block';
+                try {
+                    // v3の仕様に合わせたインペインティング呼び出し
+                    model = await pipeline('image-to-image', 'Xenova/lama-fp16', {
+                        progress_callback: (p) => {
+                            if (p.status === 'progress') {
+                                progressFill.style.width = p.progress + '%';
+                                progressPct.textContent = Math.round(p.progress) + '%';
+                            }
+                        }
+                    });
+                } catch (err) {
+                    status.textContent = "モデルのロードに失敗しました。";
+                    return;
+                }
+                progressWrap.style.display = 'none';
+            }
+
+            status.textContent = "AIが画像を修復中...";
+            removeBtn.disabled = true;
+
+            try {
+                const imageRaw = await RawImage.fromCanvas(originalImage);
+                const maskRaw = await RawImage.fromCanvas(maskCanvas);
+                
+                const result = await model(imageRaw, maskRaw);
+                const outputImage = await result.toCanvas();
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(outputImage, 0, 0);
+                
+                // マスクをクリアして結果を反映
+                maskCtx.fillStyle = 'black';
+                maskCtx.fillRect(0, 0, maskCanvas.width, maskCanvas.height);
+                originalImage = await createImageBitmap(canvas); 
+
+                status.textContent = "✓ 消去完了！";
+            } catch (err) {
+                console.error(err);
+                status.textContent = "修復中にエラーが発生しました。";
+            } finally {
+                removeBtn.disabled = false;
+            }
+        };
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(console.error);
+            } else {
+                alert("お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。");
+            }
+        }
+    </script>
+</body>
+</html>
