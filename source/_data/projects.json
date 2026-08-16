@@ -84,7 +84,7 @@
     {
       "title": "Component Vault",
       "badge": "WINDOWS アプリ",
-      "description": "再利用可能なHTMLコンポーネントを作成・プレビュー・整理・エクスポートする、ローカルファーストのワークスペース。",
+      "description": "再利用可能なHTMLコンポーネントを作成・プレビュー・整理・エクスポートし、ライブ背景をライト／ダークで確認できるローカルファーストのワークスペース。",
       "icon": "public/component-vault-icon.png",
       "url": "component-vault.html"
     },
