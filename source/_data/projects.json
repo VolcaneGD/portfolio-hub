@@ -83,8 +83,8 @@
   "desktop_apps": [
     {
       "title": "Component Vault",
-      "badge": "WINDOWS APP",
-      "description": "A local-first workspace for creating, previewing, organizing, and exporting reusable HTML components.",
+      "badge": "WINDOWS アプリ",
+      "description": "再利用可能なHTMLコンポーネントを作成・プレビュー・整理・エクスポートする、ローカルファーストのワークスペース。",
       "icon": "public/component-vault-icon.png",
       "url": "component-vault.html"
     },
