@@ -14,9 +14,9 @@
       "name": "Component Vault",
       "operatingSystem": "Windows 10, Windows 11",
       "applicationCategory": "DeveloperApplication",
-      "softwareVersion": "1.0.0",
+      "softwareVersion": "1.0.1",
       "author": { "@type": "Organization", "name": "VOLCANE" },
-      "license": "https://opensource.org/licenses/MIT",
+      "license": "https://opensource.org/license/isc-license-txt/",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
     }
     </script>
@@ -27,29 +27,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        .component-vault-mark {
-            display: grid;
-            place-items: center;
+        .component-vault-icon {
+            display: block;
             width: 112px;
             height: 112px;
             margin: 0 auto;
             border-radius: 25px;
-            color: #f8f7ff;
-            background: #5b21b6;
-            box-shadow: 0 16px 36px rgba(91, 33, 182, 0.35);
-            font: 800 2.75rem/1 "Outfit", sans-serif;
-            letter-spacing: -0.16em;
-        }
-        .component-vault-card-mark {
-            display: grid;
-            place-items: center;
-            width: 100%;
-            height: 100%;
-            min-height: 160px;
-            color: #f8f7ff;
-            background: #5b21b6;
-            font: 800 2.4rem/1 "Outfit", sans-serif;
-            letter-spacing: -0.16em;
+            object-fit: cover;
         }
         .download-meta { margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem; }
         .checksum { overflow-wrap: anywhere; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.78rem; }
@@ -71,12 +55,12 @@
         <nav class="container breadcrumb"><a href="/">Home</a> <span>/</span> Component Vault</nav>
 
         <section class="container app-hero">
-            <div class="component-vault-mark" aria-hidden="true">&lt;/&gt;</div>
+            <img class="component-vault-icon" src="../public/component-vault-icon.png" alt="Component Vault icon: saved HTML component">
             <h1 class="highlight" style="font-size: 2.5rem;">Component Vault</h1>
             <p class="app-subtitle">A local-first Windows desktop workspace for creating, previewing, organizing, and exporting reusable HTML components.</p>
             <div style="margin-top: 2rem;">
-                <a href="https://github.com/VolcaneGD/component-vault/releases/download/v1.0.0/Component.Vault-1.0.0-x64.exe" class="btn btn-primary">Download installer for Windows</a>
-                <p class="download-meta">Windows 10/11 (64-bit) &middot; Version 1.0.0 &middot; <a href="https://github.com/VolcaneGD/component-vault/releases/download/v1.0.0/Component.Vault-1.0.0-x64.zip">Portable ZIP</a></p>
+                <a href="https://github.com/VolcaneGD/component-vault/releases/download/v1.0.1/Component.Vault-1.0.1-x64.exe" class="btn btn-primary">Download installer for Windows</a>
+                <p class="download-meta">Windows 10/11 (64-bit) &middot; Version 1.0.1 &middot; <a href="https://github.com/VolcaneGD/component-vault/releases/download/v1.0.1/Component.Vault-1.0.1-x64.zip">Portable ZIP</a></p>
             </div>
         </section>
 
@@ -93,8 +77,8 @@
                 </ul>
                 <h3 style="color: var(--accent); margin-top: 2rem;">Download verification</h3>
                 <p class="download-meta">Installer SHA-256</p>
-                <p class="checksum">bef82f983b7a89277057ddae168258de050c17501cf2ae34887bc170e36c2c0e</p>
-                <p class="download-meta">License: MIT &middot; Author: VOLCANE &middot; Updated: 2026-08-16</p>
+                <p class="checksum">c0036c9d6e4056adc8e3290efd78041bdd9bd67ba4cf6c8163d5f20ed5c74ba3</p>
+                <p class="download-meta">License: ISC &middot; Author: VOLCANE &middot; Updated: 2026-08-16</p>
                 <p class="download-meta">Windows may show a SmartScreen notice for a new unsigned application. Download only from the GitHub Release links on this page.</p>
             </div>
         </section>

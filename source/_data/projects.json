@@ -85,7 +85,7 @@
       "title": "Component Vault",
       "badge": "WINDOWS APP",
       "description": "A local-first workspace for creating, previewing, organizing, and exporting reusable HTML components.",
-      "icon": "favicon.ico",
+      "icon": "public/component-vault-icon.png",
       "url": "component-vault.html"
     },
     {
