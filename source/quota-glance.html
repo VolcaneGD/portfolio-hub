@@ -17,7 +17,7 @@
       "name": "Quota Glance",
       "operatingSystem": "Windows 10, Windows 11",
       "applicationCategory": "UtilitiesApplication",
-      "softwareVersion": "1.0.0",
+      "softwareVersion": "1.4.6",
       "author": { "@type": "Organization", "name": "VOLCANE" },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
     }
@@ -77,7 +77,7 @@
                 <a href="https://github.com/VolcaneGD/quota-glance/releases/latest/download/Quota-Glance-Windows-x64.exe" class="btn btn-primary">
                     <span style="margin-right: 8px;">⬇</span> Download for Windows
                 </a>
-                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-secondary);">Version 1.4.4 &middot; Windows 10 / 11（64bit） &middot; インストール不要。未署名のため、初回実行時にWindows SmartScreenの警告が表示される場合があります。</p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-secondary);">Version 1.4.6 &middot; Windows 10 / 11（64bit） &middot; インストール不要。未署名のため、初回実行時にWindows SmartScreenの警告が表示される場合があります。</p>
             </div>
         </section>
 
@@ -121,7 +121,7 @@
                 </ol>
 
                 <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">データについて</h3>
-                <p style="color: var(--text-secondary);">Quota GlanceはCodexの認証トークンやAPIキーを読みません。端末内のCodexセッションから利用状況に関する情報だけを読み取り、画面へ表示します。公式APIへ独自に問い合わせるアプリではないため、表示はCodexが最後にローカルへ記録した時点の情報です。リセット可能性の通知では公開JSONフィードだけを定期取得し、認証情報・セッション内容・利用量を送信することはありません。</p>
+                <p style="color: var(--text-secondary);">Quota Glanceは端末内のCodexセッションから利用状況に関する情報だけを読み取り、画面へ表示します。リセット可能性の通知はGoogleアラートRSSから生成した公開JSONフィードを既定で利用し、投稿本文・画像・作者情報は保存・配布・表示しません。必要な場合だけ、利用者自身のX API Bearer TokenをWindows暗号化ストレージへ保存して端末上で直接確認できます。このトークンはX APIへの通信以外には使用されず、VOLCANEやGitHubへ送信されません。</p>
 
                 <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">動作環境</h3>
                 <p style="color: var(--text-secondary);">Windows 10 / 11（64bit）。CodexデスクトップアプリまたはCodex CLIを利用し、ローカルセッションが保存されている環境。</p>
