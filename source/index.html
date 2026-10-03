@@ -9,6 +9,7 @@
     <link rel="icon" href="../public/favicon.ico" type="image/x-icon">
     <link rel="manifest" href="../public/manifest.json">
     <meta name="theme-color" content="#22d3ee">
+    <link rel="stylesheet" href="styles/updates.css">
 
     <!-- iOS PWA Tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -307,7 +308,7 @@
         <section id="updates" style="padding: 100px 0; background: rgba(255, 255, 255, 0.02); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);">
             <div class="container">
                 <h2 class="section-title">WHAT'S NEW</h2>
-                <div class="update-list" style="max-width: 800px; margin: 0 auto;">
+                <div id="updates-list" class="update-list" style="max-width: 800px; margin: 0 auto;">
                     <div class="update-item fade-in-up">
                         <span class="update-date">2026.10.03</span>
                         <p class="update-content"><a href="quota-glance.html">Quota Glance 1.5.1</a>を公開。5時間・週間枠の100%回復通知を改善しました。再起動後の回復検知、通知失敗時の再送、次周期の日時による取り逃しの修正と通知サウンドの明示的な有効化に対応しています。</p>
@@ -413,6 +414,14 @@
                         <p class="update-content">VOLC Sprite Sheet Converter Ver.2.0をリリース。AI自動透過機能をデスクトップアプリへ統合しました。</p>
                     </div>
                 </div>
+                <div class="updates-controls">
+                    <button id="updates-toggle" type="button" aria-expanded="false" aria-controls="updates-list">過去のお知らせを表示</button>
+                    <p id="updates-status" class="updates-status" role="status" aria-live="polite"></p>
+                    <nav id="updates-pagination" class="updates-pagination" aria-label="お知らせのページ切り替え" hidden>
+                        <button id="updates-previous" type="button" aria-controls="updates-list">前のページ</button>
+                        <button id="updates-next" type="button" aria-controls="updates-list">次のページ</button>
+                    </nav>
+                </div>
             </div>
         </section>
 
@@ -453,5 +462,6 @@
     </footer>
 
     <script src="../public/script.js"></script>
+    <script src="public/updates.js"></script>
 </body>
 </html>
