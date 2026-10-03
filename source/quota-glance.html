@@ -17,7 +17,7 @@
       "name": "Quota Glance",
       "operatingSystem": "Windows 10, Windows 11",
       "applicationCategory": "UtilitiesApplication",
-      "softwareVersion": "1.5.3",
+      "softwareVersion": "1.5.4",
       "author": { "@type": "Organization", "name": "VOLCANE" },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
     }
@@ -74,12 +74,12 @@
             <p class="app-subtitle">Codexの残りクレジットと5時間・週間の残り利用枠を小さく表示。確定リセット告知とWindows通知で、利用再開のタイミングを確認できます。</p>
 
             <div style="margin-top: 2rem;">
-                <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.3/Quota-Glance-Windows-x64.exe" class="btn btn-primary">
+                <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.4/Quota-Glance-Windows-x64.exe" class="btn btn-primary">
                     <span style="margin-right: 8px;">⬇</span> Download for Windows
                 </a>
-                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-secondary);">Version 1.5.3 &middot; 更新日 2026年10月4日 &middot; MIT License © 2026 VOLCANE &middot; Windows 10 / 11（64bit） &middot; インストール不要。未署名のため、初回実行時にWindows SmartScreenの警告が表示される場合があります。</p>
-                <p style="font-size: 0.8rem; color: var(--text-secondary);"><a href="https://github.com/VolcaneGD/quota-glance/releases/tag/v1.5.3">変更内容・GitHub Release</a> · <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.3/SHA256SUMS.txt">SHA-256チェックサム</a></p>
-                <p style="font-size:0.7rem;color:var(--text-secondary);overflow-wrap:anywhere;">EXE SHA-256: <code>c4b1359ab6cc1c4348bc26dafc666f64269fbb072a5725b716fbd56a8eff6268</code></p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-secondary);">Version 1.5.4 &middot; 更新日 2026年10月4日 &middot; MIT License © 2026 VOLCANE &middot; Windows 10 / 11（64bit） &middot; インストール不要。未署名のため、初回実行時にWindows SmartScreenの警告が表示される場合があります。</p>
+                <p style="font-size: 0.8rem; color: var(--text-secondary);"><a href="https://github.com/VolcaneGD/quota-glance/releases/tag/v1.5.4">変更内容・GitHub Release</a> · <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.4/SHA256SUMS.txt">SHA-256チェックサム</a></p>
+                <p style="font-size:0.7rem;color:var(--text-secondary);overflow-wrap:anywhere;">EXE SHA-256: <code>cbae594e85a7aebe6b628bba74f92bb1b710253c944e3cf3c9340b87972a733b</code></p>
             </div>
         </section>
 
@@ -99,6 +99,7 @@
             <h2 class="section-title">Overview</h2>
             <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; line-height: 1.8;">
                 <p><strong>1.5.3の修正</strong>: 5時間制限に達した際に別のpremium記録でCodexの利用枠情報が消える問題を修正しました。5時間0%、週間38%のように各枠を独立して表示し、片方の情報が省略されても最後の有効な値を保持します。再起動時にも記録を確認し、欠落した数値を0クレジットや残り100%と誤認しないよう改善しました。</p>
+                <p><strong>1.5.4の更新</strong>: クレジット増加時の発光演出を廃止しました。緑は5時間・週間利用枠が残り100%へ回復した時、黄色はリセット予定のWindows通知が表示された時だけに限定します。残高の揺れやチャージでは演出しません。</p>
                 <p>「Quota Glance」は、Codexがローカルに記録した残りクレジット、5時間利用上限、週間利用上限、それぞれの次回リセット日時を、コンパクトなウィンドウで確認するためのWindows向けフリーソフトです。ウィンドウは常に手前に表示でき、閉じたり最小化したりしてもタスクトレイへ常駐します。</p>
 
                 <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">主な機能</h3>
@@ -111,7 +112,7 @@
                     <li style="margin-bottom: 0.5rem;"><strong>タスクトレイ常駐</strong>: 使用率に応じたインジケータと、クリックによる再表示に対応。</li>
                     <li style="margin-bottom: 0.5rem;"><strong>確定リセット告知</strong>: 予定・実施中・実施済みを区別し、対象と日本時間の予定時刻、原典リンクを表示。相対時間は範囲で扱い、未発表の時刻を予測しません。</li>
                     <li style="margin-bottom: 0.5rem;"><strong>Windows通知</strong>: 告知検知、既定30分前・10分前、予定変更、実施済みを通知。分数を変更でき、再起動しても同じ通知を繰り返しません。</li>
-                    <li style="margin-bottom: 0.5rem;"><strong>発光演出</strong>: 利用枠回復・クレジット増加は緑、リセット予定の通知表示は黄色。操作を遮らず一度だけ通過し、重なる場合は順番に再生します。モーション軽減設定にも対応します。</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>発光演出</strong>: 利用枠の100%回復は緑、リセット予定の通知表示は黄色。クレジット増加時は演出しません。操作を遮らず一度だけ通過し、重なる場合は順番に再生します。モーション軽減設定にも対応します。</li>
                     <li style="margin-bottom: 0.5rem;"><strong>通知の個別切替</strong>: 5時間枠と週間枠のWindows通知をそれぞれ有効・無効にできます。通常のリセット時刻とローカル記録での回復にも対応します。</li>
                     <li style="margin-bottom: 0.5rem;"><strong>独立したリセットスケジュール</strong>: 週間情報とは別のカードに表示し、告知がなければ非表示。最初の取得から48時間で閉じます。予定カードは取得時点で残り100%でも表示され、利用枠の回復を検知すると閉じます。</li>
                     <li style="margin-bottom: 0.5rem;"><strong>ミニマムモード・PC状態</strong>: コンパクト表示でも残り利用枠とGPU・CPU・MEM・TEMPを確認できます。透明度やウィンドウ設定を保存します。</li>
