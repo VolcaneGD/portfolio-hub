@@ -19,7 +19,7 @@
       <div class="app-icon-large"><img src="/public/ez-backup-icon.png" alt="Volc EZ-Backupアイコン"></div>
       <h1 class="highlight" style="font-size:2.5rem">Volc EZ-Backup</h1>
       <p class="app-subtitle">Androidの大切なデータを、このPCへ。<br>写真・書類・アプリのインストール用ファイルを保存し、必要な内容を選んで復元できます。</p>
-      <div style="margin-top:2rem;"><a class="btn btn-primary" href="https://github.com/VolcaneGD/EZ-Backup/releases/download/v0.1.0/Volc-EZ-Backup-0.1.0-Windows-x64.zip"><span style="margin-right:8px;">⬇</span> Download for Windows</a><p style="margin-top:1rem;font-size:.8rem;color:var(--text-secondary);">v0.1.0 · 初期公開版 • Windows 10 / 11 x64向け • 2026年10月3日更新</p><div class="release-links"><a href="https://github.com/VolcaneGD/EZ-Backup/releases/tag/v0.1.0">リリース情報</a><a href="https://github.com/VolcaneGD/EZ-Backup">ソースコード</a></div></div>
+      <div style="margin-top:2rem;"><a class="btn btn-primary" href="https://github.com/VolcaneGD/EZ-Backup/releases/download/v0.1.1/Volc-EZ-Backup-0.1.1-Windows-x64.zip"><span style="margin-right:8px;">⬇</span> Download for Windows</a><p style="margin-top:1rem;font-size:.8rem;color:var(--text-secondary);">v0.1.1 · プレビュー版 • Windows 10 / 11 x64向け • 2026年10月4日更新</p><div class="release-links"><a href="https://github.com/VolcaneGD/EZ-Backup/releases/tag/v0.1.1">リリース情報</a><a href="https://github.com/VolcaneGD/EZ-Backup">ソースコード</a></div></div>
     </section>
     <div class="share-btn-container" style="text-align:center;margin-top:2rem;"><button onclick="sharePage()" class="btn btn-share" aria-label="このアプリを共有する">このアプリをシェアする</button></div>
     <section class="container" style="max-width:1000px;margin-top:2rem;"><img src="/public/ez-backup-screen.png" alt="ダークテーマの保存方法選択画面" style="width:100%;border:1px solid var(--card-border);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.5);"></section>
@@ -28,7 +28,8 @@
       <h3>使い方</h3>
       <p>ZIPを展開し、Volc.EzBackup.App.exeを起動してください。フォルダ内のファイル一式が必要です。実行ファイルは未署名です。</p>
       <p>アプリ内の「使い方・ヘルプ」で、保存・復元・USBデバッグ設定・トラブル対処を確認できます。</p>
-      <p class="digest">SHA-256：<code>6fecc36c1cb1f7c78c6c26049ff2d22f36fb15a113e291ed68bd4760f6728fd6</code><br><a href="https://github.com/VolcaneGD/EZ-Backup/releases/download/v0.1.0/SHA256SUMS.txt">チェックサムファイル</a></p>
+      <h3>0.1.1の更新内容</h3><p>日本語を含む保存先と深いフォルダでADB転送が失敗する問題を修正しました。失敗時の詳細表示と途中保存の容量・件数を改善し、アプリ内にWindows版Platform-Toolsの画像付きダウンロード・展開手順を追加しました。ADB選択は C:\platform-tools、フォルダがなければ C:\ を開きます。</p><p>Sony SOG14 / Android API 36で専用の試験ファイルを日本語の保存先へ転送し、SHA-256一致を確認しました。端末全体の保存完了を検証したものではありません。</p>
+      <p class="digest">SHA-256：<code>437aa1febff42ec0e72e0d6bba8f7554e9fce83e274388ae94d332955c31ee6d</code><br><a href="https://github.com/VolcaneGD/EZ-Backup/releases/download/v0.1.1/SHA256SUMS.txt">チェックサムファイル</a></p>
       <p>作者：VOLCANE / <a href="https://github.com/VolcaneGD/EZ-Backup/blob/main/LICENSE">MIT License</a></p>
       <h3>主な機能</h3><ul>
       <li>写真・動画・書類・取得可能なAPK・各アプリの書き出しファイルを保存。</li>
