@@ -7,37 +7,41 @@
   <link rel="canonical" href="https://volcane.pages.dev/ez-backup">
   <link rel="icon" href="/public/ez-backup-icon.png">
   <link rel="stylesheet" href="/styles/style.css"><link rel="stylesheet" href="/styles/app-details.css">
-  <style>.release-info{display:grid;gap:16px;padding:24px;border:1px solid var(--card-border);border-radius:12px;background:rgba(255,255,255,.04)}.release-info p{margin:0;line-height:1.8}.release-actions{display:flex;flex-wrap:wrap;gap:12px}.digest{overflow-wrap:anywhere;font-size:12px}.app-subtitle{line-height:1.8}.release-section{max-width:900px;margin:48px auto;padding:0 24px}.release-section li{margin-bottom:12px;line-height:1.8}</style>
-  <style>.release-info a:not(.btn-primary){color:#65d8f4;text-decoration:underline;text-underline-offset:4px}.release-actions .btn:not(.btn-primary){border:1px solid #3c5668;border-radius:24px;padding:12px 20px}.release-info a:focus-visible{outline:2px solid #65d8f4;outline-offset:4px}</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>.overview-panel{background:rgba(255,255,255,.05);padding:2rem;border-radius:12px;line-height:1.8}.overview-panel h3{color:var(--accent);margin:2rem 0 .5rem;font-size:1.2rem}.overview-panel p,.overview-panel li{color:var(--text-secondary)}.overview-panel ul,.overview-panel ol{margin-left:1.5rem}.overview-panel li{margin-bottom:.8rem}.overview-panel a,.release-links a{color:var(--accent);text-decoration:underline;text-underline-offset:4px}.release-links{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin-top:1rem}.digest{overflow-wrap:anywhere;font-size:.8rem}a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}</style>
 </head>
 <body class="dark-mode">
-  <header id="header" style="background:rgba(10,12,16,.95);padding:.5rem 0"><nav class="container"><a href="/" class="logo"><span>V</span>OLCANE</a><ul class="nav-links"><li><a href="/#projects">PROJECTS</a></li><li><a href="/#updates">WHAT'S NEW</a></li></ul></nav></header>
+  <header id="header" style="background:rgba(10,12,16,.95);padding:.5rem 0"><nav class="container"><a href="/" class="logo"><span>V</span>OLCANE</a><ul class="nav-links"><li><a href="/#projects">PROJECTS</a></li><li><a href="/#about">ABOUT</a></li><li><a href="/#contact">CONTACT</a></li></ul></nav></header>
   <main class="app-detail-main">
     <nav class="container breadcrumb"><a href="/">Home</a> <span>/</span> Volc EZ-Backup</nav>
     <section class="container app-hero">
       <div class="app-icon-large"><img src="/public/ez-backup-icon.png" alt="Volc EZ-Backupアイコン"></div>
       <h1 class="highlight" style="font-size:2.5rem">Volc EZ-Backup</h1>
       <p class="app-subtitle">Androidの大切なデータを、このPCへ。<br>写真・書類・アプリのインストール用ファイルを保存し、必要な内容を選んで復元できます。</p>
+      <div style="margin-top:2rem;"><a class="btn btn-primary" href="https://github.com/VolcaneGD/EZ-Backup/releases/download/v0.1.0/Volc-EZ-Backup-0.1.0-Windows-x64.zip"><span style="margin-right:8px;">⬇</span> Download for Windows</a><p style="margin-top:1rem;font-size:.8rem;color:var(--text-secondary);">v0.1.0 · 初期公開版 • Windows 10 / 11 x64向け • 2026年10月3日更新</p><div class="release-links"><a href="https://github.com/VolcaneGD/EZ-Backup/releases/tag/v0.1.0">リリース情報</a><a href="https://github.com/VolcaneGD/EZ-Backup">ソースコード</a></div></div>
     </section>
-    <section class="release-section release-info" aria-label="ダウンロード">
-      <h2>Windows版をダウンロード</h2>
-      <p><strong>v0.1.0 · 初期公開版</strong> / 更新日：2026年10月3日<br>Windows 10 / 11 x64向け（実確認はWindows 11）。.NET同梱。</p>
-      <div class="release-actions"><a class="btn btn-primary" href="https://github.com/VolcaneGD/EZ-Backup/releases/download/v0.1.0/Volc-EZ-Backup-0.1.0-Windows-x64.zip">Windows x64 ZIPをダウンロード</a><a class="btn" href="https://github.com/VolcaneGD/EZ-Backup/releases/tag/v0.1.0">リリース情報</a><a class="btn" href="https://github.com/VolcaneGD/EZ-Backup">ソースコード</a></div>
+    <div class="share-btn-container" style="text-align:center;margin-top:2rem;"><button onclick="sharePage()" class="btn btn-share" aria-label="このアプリを共有する">このアプリをシェアする</button></div>
+    <section class="container" style="max-width:1000px;margin-top:2rem;"><img src="/public/ez-backup-screen.png" alt="ダークテーマの保存方法選択画面" style="width:100%;border:1px solid var(--card-border);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.5);"></section>
+    <section class="container" style="max-width:800px;margin-top:4rem;padding-bottom:4rem;"><h2 class="section-title">Overview</h2><div class="overview-panel">
+      <p style="font-weight:bold;color:var(--accent);margin-bottom:1rem;">写真・書類の保存から選択復元まで。アプリ内ヘルプで操作を案内します。</p>
+      <h3>使い方</h3>
       <p>ZIPを展開し、Volc.EzBackup.App.exeを起動してください。フォルダ内のファイル一式が必要です。実行ファイルは未署名です。</p>
       <p>アプリ内の「使い方・ヘルプ」で、保存・復元・USBデバッグ設定・トラブル対処を確認できます。</p>
       <p class="digest">SHA-256：<code>6fecc36c1cb1f7c78c6c26049ff2d22f36fb15a113e291ed68bd4760f6728fd6</code><br><a href="https://github.com/VolcaneGD/EZ-Backup/releases/download/v0.1.0/SHA256SUMS.txt">チェックサムファイル</a></p>
       <p>作者：VOLCANE / <a href="https://github.com/VolcaneGD/EZ-Backup/blob/main/LICENSE">MIT License</a></p>
-    </section>
-    <section class="release-section"><img src="/public/ez-backup-screen.png" alt="ダークテーマの保存方法選択画面" style="width:100%;border:1px solid var(--card-border);border-radius:12px"></section>
-    <section class="release-section"><h2 class="section-title">主な機能</h2><ul>
+      <h3>主な機能</h3><ul>
       <li>写真・動画・書類・取得可能なAPK・各アプリの書き出しファイルを保存。</li>
       <li>共有ファイルの書き戻し、書き出しデータの転送、分割APKの再インストールに対応。</li>
       <li>対応端末向けに従来のADBバックアップ・復元も選択可能。</li>
       <li>開発者向けオプションの表示からUSBデバッグの有効化・PCの許可まで案内。</li>
       <li>保存名にはタイムスタンプを付け、復元時の同名ファイルは標準でスキップ。</li>
-    </ul></section>
-    <section class="release-section release-info"><h2>保存範囲と確認状況</h2><p>端末全体の複製ではありません。アプリ内部データ、SMS、通話履歴、端末設定などは標準・メーカー・各アプリのバックアップで補います。書き出しデータは端末へ転送後、元のアプリで読み込みます。</p><p>Sony SOG07 / Android 14で限定した保存と共有ファイルの実機復元を確認済みです。SHA-256一致、同名スキップ、明示上書きも確認しました。APK・従来のADB復元、すべてのメーカー・Android版への対応は未検証です。</p><p>ADBを使う場合は、<a href="https://developer.android.com/tools/releases/platform-tools">Android Platform-Tools</a>を別途入手してください。ADBは配布ZIPに含みません。</p></section>
+    </ul>
+    <h3>動作環境</h3><p>Windows 10 / 11 x64向け（実確認はWindows 11）。.NET同梱。ADBは別途入手してください。</p>
+    <h3>保存範囲と確認状況</h3><p>端末全体の複製ではありません。アプリ内部データ、SMS、通話履歴、端末設定などは標準・メーカー・各アプリのバックアップで補います。書き出しデータは端末へ転送後、元のアプリで読み込みます。</p><p>Sony SOG07 / Android 14で限定した保存と共有ファイルの実機復元を確認済みです。SHA-256一致、同名スキップ、明示上書きも確認しました。APK・従来のADB復元、すべてのメーカー・Android版への対応は未検証です。</p><p>ADBを使う場合は、<a href="https://developer.android.com/tools/releases/platform-tools">Android Platform-Tools</a>を別途入手してください。ADBは配布ZIPに含みません。</p></div></section>
+    <section class="container more-services"><h2 class="more-services-title">MORE DESKTOP APPS</h2><div class="mini-grid"><a href="volc-sprite-converter.html" class="mini-card"><img src="/public/VOLC_Sprite_Sheet_Converter_icon.png" alt="Sprite Converter"><span>VOLC Sprite Sheet Converter</span></a><a href="volc-icon-editor.html" class="mini-card"><img src="/public/IconEditor_icon.png" alt="Icon Editor"><span>Volc Icon Editor</span></a></div><div style="text-align:center;margin-top:30px;"><a href="/#projects" class="view-link" style="font-size:.9rem;">すべてのプロジェクトを見る &rarr;</a></div></section>
   </main>
-  <footer><div class="container"><p>© 2026 VOLCANE · <a href="/privacy-policy.html">Privacy Policy</a></p><p style="font-size:12px;line-height:1.8;margin-top:16px">Android is a trademark of Google LLC.<br>The Android robot is reproduced or modified from work created and shared by Google and used according to terms described in the <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Attribution License</a>.</p></div></footer>
+  <footer><div class="container"><div class="footer-content"><p>© 2026 VOLCANE. <a href="/privacy-policy.html" style="color:var(--text-secondary);text-decoration:underline;margin-left:10px;">Privacy Policy</a></p><div class="social-links"><a href="https://x.com/Volcane_GD" target="_blank" rel="noopener">X (Twitter)</a><a href="https://github.com/VolcaneGD" target="_blank" rel="noopener">GitHub</a></div></div><p style="font-size:12px;line-height:1.8;margin-top:16px;color:var(--text-secondary);">Android is a trademark of Google LLC.<br>The Android robot is reproduced or modified from work created and shared by Google and used according to terms described in the <a href="https://creativecommons.org/licenses/by/3.0/" style="color:var(--accent);">Creative Commons 3.0 Attribution License</a>.</p></div></footer>
+  <script>function sharePage(){if(navigator.share){navigator.share({title:document.title,url:window.location.href}).catch(()=>{});}else{alert('お使いのブラウザは共有機能に対応していません。URLをコピーして共有してください。');}}</script>
 </body>
 </html>
