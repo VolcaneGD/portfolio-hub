@@ -17,7 +17,7 @@
       "name": "Quota Glance",
       "operatingSystem": "Windows 10, Windows 11",
       "applicationCategory": "UtilitiesApplication",
-      "softwareVersion": "1.5.0",
+      "softwareVersion": "1.5.1",
       "author": { "@type": "Organization", "name": "VOLCANE" },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
     }
@@ -74,12 +74,12 @@
             <p class="app-subtitle">Codexの残りクレジットと5時間・週間の残り利用枠を小さく表示。確定リセット告知とWindows通知で、利用再開のタイミングを確認できます。</p>
 
             <div style="margin-top: 2rem;">
-                <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.0/Quota-Glance-Windows-x64.exe" class="btn btn-primary">
+                <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.1/Quota-Glance-Windows-x64.exe" class="btn btn-primary">
                     <span style="margin-right: 8px;">⬇</span> Download for Windows
                 </a>
-                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-secondary);">Version 1.5.0 &middot; 更新日 2026年10月3日 &middot; MIT License © 2026 VOLCANE &middot; Windows 10 / 11（64bit） &middot; インストール不要。未署名のため、初回実行時にWindows SmartScreenの警告が表示される場合があります。</p>
-                <p style="font-size: 0.8rem; color: var(--text-secondary);"><a href="https://github.com/VolcaneGD/quota-glance/releases/tag/v1.5.0">変更内容・GitHub Release</a> · <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.0/SHA256SUMS.txt">SHA-256チェックサム</a></p>
-                <p style="font-size:0.7rem;color:var(--text-secondary);overflow-wrap:anywhere;">EXE SHA-256: <code>6fd6135a67cddb672839b3d3dfef1b241ffd2f7ed4c3255d8f0d7bf2d2d189ea</code></p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-secondary);">Version 1.5.1 &middot; 更新日 2026年10月3日 &middot; MIT License © 2026 VOLCANE &middot; Windows 10 / 11（64bit） &middot; インストール不要。未署名のため、初回実行時にWindows SmartScreenの警告が表示される場合があります。</p>
+                <p style="font-size: 0.8rem; color: var(--text-secondary);"><a href="https://github.com/VolcaneGD/quota-glance/releases/tag/v1.5.1">変更内容・GitHub Release</a> · <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.1/SHA256SUMS.txt">SHA-256チェックサム</a></p>
+                <p style="font-size:0.7rem;color:var(--text-secondary);overflow-wrap:anywhere;">EXE SHA-256: <code>c791f5dd0f6f87627d816ae8ebf9c0ad7ea4c1df363f6153bd94490f53632801</code></p>
             </div>
         </section>
 
@@ -98,6 +98,7 @@
         <section class="container" style="max-width: 800px; margin-top: 4rem; padding-bottom: 4rem;">
             <h2 class="section-title">Overview</h2>
             <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; line-height: 1.8;">
+                <p><strong>1.5.1の修正</strong>: 5時間・週間枠の100%回復検知を再起動後も維持し、Windows通知の送信失敗時は最大10分間再試行します。次周期の日時による通知の取り逃しを修正し、通知サウンドを明示的に有効化しました。Windows側の通知・サウンド設定や「応答不可」の影響は受けます。</p>
                 <p>「Quota Glance」は、Codexがローカルに記録した残りクレジット、5時間利用上限、週間利用上限、それぞれの次回リセット日時を、コンパクトなウィンドウで確認するためのWindows向けフリーソフトです。ウィンドウは常に手前に表示でき、閉じたり最小化したりしてもタスクトレイへ常駐します。</p>
 
                 <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">主な機能</h3>
