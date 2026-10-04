@@ -17,7 +17,7 @@
       "name": "Quota Glance",
       "operatingSystem": "Windows 10, Windows 11",
       "applicationCategory": "UtilitiesApplication",
-      "softwareVersion": "1.5.4",
+      "softwareVersion": "1.5.5",
       "author": { "@type": "Organization", "name": "VOLCANE" },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
     }
@@ -74,12 +74,12 @@
             <p class="app-subtitle">Codexの残りクレジットと5時間・週間の残り利用枠を小さく表示。確定リセット告知とWindows通知で、利用再開のタイミングを確認できます。</p>
 
             <div style="margin-top: 2rem;">
-                <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.4/Quota-Glance-Windows-x64.exe" class="btn btn-primary">
+                <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.5/Quota-Glance-Windows-x64.exe" class="btn btn-primary">
                     <span style="margin-right: 8px;">⬇</span> Download for Windows
                 </a>
-                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-secondary);">Version 1.5.4 &middot; 更新日 2026年10月4日 &middot; MIT License © 2026 VOLCANE &middot; Windows 10 / 11（64bit） &middot; インストール不要。未署名のため、初回実行時にWindows SmartScreenの警告が表示される場合があります。</p>
-                <p style="font-size: 0.8rem; color: var(--text-secondary);"><a href="https://github.com/VolcaneGD/quota-glance/releases/tag/v1.5.4">変更内容・GitHub Release</a> · <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.4/SHA256SUMS.txt">SHA-256チェックサム</a></p>
-                <p style="font-size:0.7rem;color:var(--text-secondary);overflow-wrap:anywhere;">EXE SHA-256: <code>cbae594e85a7aebe6b628bba74f92bb1b710253c944e3cf3c9340b87972a733b</code></p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-secondary);">Version 1.5.5 &middot; 更新日 2026年10月4日 &middot; MIT License © 2026 VOLCANE &middot; Windows 10 / 11（64bit） &middot; インストール不要。未署名のため、初回実行時にWindows SmartScreenの警告が表示される場合があります。</p>
+                <p style="font-size: 0.8rem; color: var(--text-secondary);"><a href="https://github.com/VolcaneGD/quota-glance/releases/tag/v1.5.5">変更内容・GitHub Release</a> · <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.5/SHA256SUMS.txt">SHA-256チェックサム</a></p>
+                <p style="font-size:0.7rem;color:var(--text-secondary);overflow-wrap:anywhere;">EXE SHA-256: <code>910b62377cedde3c8a395fd3d78ad62ed524fdc54d921bbe48d96f8e8d791dfa</code></p>
             </div>
         </section>
 
@@ -100,19 +100,20 @@
             <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; line-height: 1.8;">
                 <p><strong>1.5.3の修正</strong>: 5時間制限に達した際に別のpremium記録でCodexの利用枠情報が消える問題を修正しました。5時間0%、週間38%のように各枠を独立して表示し、片方の情報が省略されても最後の有効な値を保持します。再起動時にも記録を確認し、欠落した数値を0クレジットや残り100%と誤認しないよう改善しました。</p>
                 <p><strong>1.5.4の更新</strong>: クレジット増加時の発光演出を廃止しました。緑は5時間・週間利用枠が残り100%へ回復した時、黄色はリセット予定のWindows通知が表示された時だけに限定します。残高の揺れやチャージでは演出しません。</p>
-                <p>「Quota Glance」は、Codexがローカルに記録した残りクレジット、5時間利用上限、週間利用上限、それぞれの次回リセット日時を、コンパクトなウィンドウで確認するためのWindows向けフリーソフトです。ウィンドウは常に手前に表示でき、閉じたり最小化したりしてもタスクトレイへ常駐します。</p>
+                <p><strong>1.5.5の更新</strong>: Codexがアイドル中でも残量を取得できるようになりました。通常リセット時刻とリセット予定の事前通知は独立タイマーで判定します。通知音を指定MP3へ変更し、緑・黄色の発光は間隔なしの0.8秒×2回に変更しました。</p>
+                <p>「Quota Glance」は、Codexの残りクレジット、5時間利用上限、週間利用上限、それぞれの次回リセット日時を、コンパクトなウィンドウで確認するためのWindows向けフリーソフトです。Codexでチャットを開始しなくても残量を取得します。ウィンドウは常に手前に表示でき、閉じたり最小化したりしてもタスクトレイへ常駐します。</p>
 
                 <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">主な機能</h3>
                 <ul style="margin-left: 1.5rem; color: var(--text-secondary);">
                     <li style="margin-bottom: 0.5rem;"><strong>クレジット残高</strong>: Codexが記録した最新の残りクレジットを表示。</li>
                     <li style="margin-bottom: 0.5rem;"><strong>5時間・週間利用上限</strong>: 残り割合とゲージを表示。緑・黄・赤の状態色で確認できます。</li>
                     <li style="margin-bottom: 0.5rem;"><strong>次回リセット</strong>: 両方の制限枠について、日本時間の日時とリセットまでの残り時間を表示。</li>
-                    <li style="margin-bottom: 0.5rem;"><strong>リアルタイム更新</strong>: 更新頻度を1〜60秒のスライダーで変更でき、設定を端末内に保存。</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>自動更新・アイドル対応</strong>: ローカル更新頻度は1〜60秒。アカウント取得は最短15秒間隔で、Codexのチャット操作を必要としません。</li>
                     <li style="margin-bottom: 0.5rem;"><strong>日本語・英語</strong>: ワンクリックで切り替え、選択内容を端末内に保存。</li>
                     <li style="margin-bottom: 0.5rem;"><strong>タスクトレイ常駐</strong>: 使用率に応じたインジケータと、クリックによる再表示に対応。</li>
                     <li style="margin-bottom: 0.5rem;"><strong>確定リセット告知</strong>: 予定・実施中・実施済みを区別し、対象と日本時間の予定時刻、原典リンクを表示。相対時間は範囲で扱い、未発表の時刻を予測しません。</li>
                     <li style="margin-bottom: 0.5rem;"><strong>Windows通知</strong>: 告知検知、既定30分前・10分前、予定変更、実施済みを通知。分数を変更でき、再起動しても同じ通知を繰り返しません。</li>
-                    <li style="margin-bottom: 0.5rem;"><strong>発光演出</strong>: 利用枠の100%回復は緑、リセット予定の通知表示は黄色。クレジット増加時は演出しません。操作を遮らず一度だけ通過し、重なる場合は順番に再生します。モーション軽減設定にも対応します。</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>発光演出・通知音</strong>: 利用枠の100%回復は緑、リセット予定の通知表示は黄色。0.8秒×2回、間隔なしで通過します。クレジット増加時は演出しません。指定MP3の通知音を一度再生し、Windows標準音や同時通知の音を重ねません。モーション軽減設定にも対応します。</li>
                     <li style="margin-bottom: 0.5rem;"><strong>通知の個別切替</strong>: 5時間枠と週間枠のWindows通知をそれぞれ有効・無効にできます。通常のリセット時刻とローカル記録での回復にも対応します。</li>
                     <li style="margin-bottom: 0.5rem;"><strong>独立したリセットスケジュール</strong>: 週間情報とは別のカードに表示し、告知がなければ非表示。最初の取得から48時間で閉じます。予定カードは取得時点で残り100%でも表示され、利用枠の回復を検知すると閉じます。</li>
                     <li style="margin-bottom: 0.5rem;"><strong>ミニマムモード・PC状態</strong>: コンパクト表示でも残り利用枠とGPU・CPU・MEM・TEMPを確認できます。透明度やウィンドウ設定を保存します。</li>
@@ -131,7 +132,8 @@
                 </ol>
 
                 <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">データについて</h3>
-                <p style="color: var(--text-secondary);">利用量はCodexが最後にローカルへ記録した値です。公式ステータスと公開フィードを60秒ごとに確認し、GoogleアラートRSSは補助情報として扱います。RSSだけで確定とは判定せず、通知は既定で確定告知のみです。週間残り100%への回復も、OpenAI全体のリセット完了とは区別します。通常のリセット時刻到達通知は、利用枠への反映を保証しません。</p>
+                <p style="color: var(--text-secondary);">インストール済みCodexのapp-serverによる読み取り専用のアカウント残量取得を最短15秒間隔で行います。更新頻度が15秒より長い場合はその間隔になります。認証はCodex自身が既存のログインで処理し、Quota Glanceは認証情報を複製せず、チャットや推論リクエストを開始しません。取得失敗時は最後の有効値を保持して再試行し、ローカル記録も併用します。時刻だけを根拠に100%へ変更しません。</p>
+                <p style="color: var(--text-secondary);">通常リセット時刻・告知の事前通知はCodexの操作とは独立した1秒タイマーで判定します。公式ステータスと公開フィードは60秒ごとに確認し、GoogleアラートRSSは補助情報として扱います。RSSだけで確定とは判定せず、通知は既定で確定告知のみです。残量回復はOpenAI全体のリセット完了と区別します。スリープ・電源OFF中は通知できず、Windowsの通知設定や応答不可によって抑制される場合があります。</p>
                 <p style="color: var(--text-secondary);">任意で自身のX API Bearer TokenをWindows暗号化ストレージに保存できます（X側の料金が発生する場合があります）。トークンはX API以外に送信しません。公開フィードには原典・作者・公開日時・予定などのメタデータを含みますが、投稿全文・画像・返信・非公開RSS URL・トークンは含めません。告知取得には情報源・Google・GitHub Actionsの配信遅延があります。Discord/Webhookは今回の版には含みません。</p>
 
                 <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.2rem;">動作環境</h3>
