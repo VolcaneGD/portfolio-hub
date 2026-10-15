@@ -17,7 +17,7 @@
       "name": "Quota Glance",
       "operatingSystem": "Windows 10, Windows 11",
       "applicationCategory": "UtilitiesApplication",
-      "softwareVersion": "1.5.5",
+      "softwareVersion": "1.5.6",
       "author": { "@type": "Organization", "name": "VOLCANE" },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
     }
@@ -74,12 +74,12 @@
             <p class="app-subtitle">Codexの残りクレジットと5時間・週間の残り利用枠を小さく表示。確定リセット告知とWindows通知で、利用再開のタイミングを確認できます。</p>
 
             <div style="margin-top: 2rem;">
-                <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.5/Quota-Glance-Windows-x64.exe" class="btn btn-primary">
+                <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.6/Quota-Glance-Windows-x64.exe" class="btn btn-primary">
                     <span style="margin-right: 8px;">⬇</span> Download for Windows
                 </a>
-                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-secondary);">Version 1.5.5 &middot; 更新日 2026年10月4日 &middot; MIT License © 2026 VOLCANE &middot; Windows 10 / 11（64bit） &middot; インストール不要。未署名のため、初回実行時にWindows SmartScreenの警告が表示される場合があります。</p>
-                <p style="font-size: 0.8rem; color: var(--text-secondary);"><a href="https://github.com/VolcaneGD/quota-glance/releases/tag/v1.5.5">変更内容・GitHub Release</a> · <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.5/SHA256SUMS.txt">SHA-256チェックサム</a></p>
-                <p style="font-size:0.7rem;color:var(--text-secondary);overflow-wrap:anywhere;">EXE SHA-256: <code>910b62377cedde3c8a395fd3d78ad62ed524fdc54d921bbe48d96f8e8d791dfa</code></p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-secondary);">Version 1.5.6 &middot; 更新日 2026年10月15日 &middot; MIT License © 2026 VOLCANE &middot; Windows 10 / 11（64bit） &middot; インストール不要。未署名のため、初回実行時にWindows SmartScreenの警告が表示される場合があります。</p>
+                <p style="font-size: 0.8rem; color: var(--text-secondary);"><a href="https://github.com/VolcaneGD/quota-glance/releases/tag/v1.5.6">変更内容・GitHub Release</a> · <a href="https://github.com/VolcaneGD/quota-glance/releases/download/v1.5.6/SHA256SUMS.txt">SHA-256チェックサム</a></p>
+                <p style="font-size:0.7rem;color:var(--text-secondary);overflow-wrap:anywhere;">EXE SHA-256: <code>219c6dc152044a8c9a4f840a241102f748445031e5fe0c27bdbfe1bdb6f3a507</code></p>
             </div>
         </section>
 
@@ -98,6 +98,7 @@
         <section class="container" style="max-width: 800px; margin-top: 4rem; padding-bottom: 4rem;">
             <h2 class="section-title">Overview</h2>
             <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; line-height: 1.8;">
+                <p><strong>1.5.6の更新</strong>: ミニマムモードの下部に、大きなカウントダウンを追加しました。左に5時間上限解除までの時間・分、右に週間上限解除までの日数を表示します。リセット予定との余白を狭め、予定がないときは上に詰めます。</p>
                 <p><strong>1.5.3の修正</strong>: 5時間制限に達した際に別のpremium記録でCodexの利用枠情報が消える問題を修正しました。5時間0%、週間38%のように各枠を独立して表示し、片方の情報が省略されても最後の有効な値を保持します。再起動時にも記録を確認し、欠落した数値を0クレジットや残り100%と誤認しないよう改善しました。</p>
                 <p><strong>1.5.4の更新</strong>: クレジット増加時の発光演出を廃止しました。緑は5時間・週間利用枠が残り100%へ回復した時、黄色はリセット予定のWindows通知が表示された時だけに限定します。残高の揺れやチャージでは演出しません。</p>
                 <p><strong>1.5.5の更新</strong>: Codexがアイドル中でも残量を取得できるようになりました。通常リセット時刻とリセット予定の事前通知は独立タイマーで判定します。通知音を指定MP3へ変更し、緑・黄色の発光は間隔なしの0.8秒×2回に変更しました。</p>
