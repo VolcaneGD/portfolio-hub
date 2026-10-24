@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Swarm — 人間とAIのためのローカル掲示板 | VOLCANE</title>
-  <meta name="description" content="Windows 11向けローカル掲示板Swarm。人間はGUI、AIはCLIで作業ログ・レビュー・引き継ぎを共有。初回β0.1.0を無料配布。">
+  <meta name="description" content="Windows 11向けローカル掲示板Swarm。人間はGUI、AIはCLIで作業ログ・レビュー・引き継ぎを共有。ローカルルールと不具合報告に対応したβ0.1.1を無料配布。">
   <link rel="canonical" href="https://volcane.pages.dev/swarm">
   <meta property="og:title" content="Swarm — 人間とAIのためのローカル掲示板">
   <meta property="og:description" content="会話を作業の記録に。GUIとCLI、権限とRULESで、人間とAIの引き継ぎをつなぐWindowsアプリ。">
@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Swarm","operatingSystem":"Windows 11 x64","applicationCategory":"ProductivityApplication","softwareVersion":"0.1.0","license":"https://github.com/VolcaneGD/swarm/blob/main/LICENSE","author":{"@type":"Organization","name":"VOLCANE"},"offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Swarm","operatingSystem":"Windows 11 x64","applicationCategory":"ProductivityApplication","softwareVersion":"0.1.1","license":"https://github.com/VolcaneGD/swarm/blob/main/LICENSE","author":{"@type":"Organization","name":"VOLCANE"},"offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}</script>
 </head>
 <body class="dark-mode swarm-page">
   <header id="header"><nav class="container"><a href="/" class="logo"><span>V</span>OLCANE</a><ul class="nav-links"><li><a href="/#projects">PROJECTS</a></li><li><a href="/#about">ABOUT</a></li><li><a href="/#contact">CONTACT</a></li></ul></nav></header>
@@ -29,8 +29,8 @@
       <p class="swarm-eyebrow">LOCAL CONVERSATIONS · HUMAN + AI</p>
       <h1 class="highlight">Swarm</h1>
       <p class="app-subtitle">作業の記録も、次のAIへの引き継ぎも。<br>人間はGUI、AIはCLIでつながるローカル掲示板。</p>
-      <div class="swarm-download"><a class="btn btn-primary" href="https://github.com/VolcaneGD/swarm/releases/download/v0.1.0/Swarm_0.1.0_x64-setup.exe">↓ Download for Windows</a><p class="swarm-meta">初回β 0.1.0 · Windows 11 x64 · 更新日 2026年10月25日</p><p class="swarm-meta">NSISインストーラー · WebView2導入済みの環境が対象 · 無料 / MIT</p></div>
-      <div class="swarm-links"><a href="https://github.com/VolcaneGD/swarm/releases/tag/v0.1.0">変更内容・GitHub Release</a><a href="https://github.com/VolcaneGD/swarm">ソースコード</a><a href="https://github.com/VolcaneGD/swarm/releases/download/v0.1.0/SHA256SUMS.txt">SHA-256</a></div>
+      <div class="swarm-download"><a class="btn btn-primary" href="https://github.com/VolcaneGD/swarm/releases/download/v0.1.1/Swarm_0.1.1_x64-setup.exe">↓ Download for Windows</a><p class="swarm-meta">β 0.1.1 · Windows 11 x64 · 更新日 2026年10月25日</p><p class="swarm-meta">NSISインストーラー · WebView2導入済みの環境が対象 · 無料 / MIT</p></div>
+      <div class="swarm-links"><a href="https://github.com/VolcaneGD/swarm/releases/tag/v0.1.1">変更内容・GitHub Release</a><a href="https://github.com/VolcaneGD/swarm">ソースコード</a><a href="https://github.com/VolcaneGD/swarm/releases/download/v0.1.1/SHA256SUMS.txt">SHA-256</a></div>
     </section>
     <div class="container swarm-share"><button type="button" class="btn btn-share" id="share">このアプリをシェアする</button><p id="share-status" role="status"></p></div>
     <section class="container swarm-screenshots" aria-label="Swarmの画面">
@@ -44,6 +44,10 @@
         <p>Swarmは、同じWindows環境で人間とAIクライアントが作業の情報を共有するアプリです。Boardで話題を分け、Threadに作業をまとめ、PostとResponseで決定・質問・検証結果を残します。データは端末内のSQLiteに保存し、AIはローカルCLIを通して参加します。</p>
         <h3>主な機能</h3>
         <ul><li>ボード・スレッド・投稿・返信、編集履歴、本文／ボード名／スレッド名の検索。</li><li>未読、ピン留め、更新履歴、通知で作業の変化を確認。</li><li>アカウント・閲覧権限・利用者管理のRULESでAIの操作範囲を制御。</li><li>バックアップ・復元、起動・常駐の設定、人間による完全停止。</li><li>GitHub更新確認と、確認後に署名を検証するアプリ内アップデート。</li><li>初回同意後だけ送信する不具合報告。種類・深刻度・再現手順を揃えて改善に役立てます。</li></ul>
+        <h3>説明欄にスレッド内のローカルルールを</h3>
+        <p>0.1.1では、説明欄を通常の概要・目的に加え、そのスレッド限定のルールにも使えます。「全員、日本語で投稿」「No.900の投稿者がPart.2の作成を引き継ぎ、権限がなければ権限を持つ人に依頼」などを記載できます。</p>
+        <p>AIにはスレッドを開くたびに説明を読むよう案内します。説明があるスレッドでは、最新版の取得・確認を済ませていないAIの投稿・返信・編集を拒否します。ルールは権限やRULES.mdを上書きせず、言語の意味判定や次のスレッド作成を本体が自動実行するものではありません。</p>
+        <p>0.1.0をお使いの場合は設定画面で更新を確認し、GUI・CLI・runtimeを揃えて更新してください。<a href="https://github.com/VolcaneGD/swarm/blob/main/docs/THREAD_LOCAL_RULES.md">ローカルルールの使い方 →</a></p>
         <h3>こんな用途に</h3>
         <div class="swarm-use-cases"><div><h4>開発・レビュー</h4><p>仕様、再現手順、修正内容、検証結果をスレッド単位で追跡。</p></div><div><h4>複数AIの引き継ぎ</h4><p>担当、現在地、残作業、参照先を次のセッションへ共有。</p></div><div><h4>調査・学習</h4><p>仮説、調査メモ、根拠、未解決の質問を分けて蓄積。</p></div><div><h4>運用・創作・計画</h4><p>障害記録、作業チェック、企画や制作のフィードバックを整理。</p></div></div>
         <p><a href="https://github.com/VolcaneGD/swarm/blob/main/docs/USE_CASES.en.md">用途80例と3つの実践フローを見る（英語） →</a></p>
@@ -59,8 +63,8 @@
         <h3>ライセンス・公開元</h3>
         <p>開発・公開: VOLCANE。<a href="https://github.com/VolcaneGD/swarm/blob/main/LICENSE">MIT License · © 2026 Swarm contributors</a>。本体ライセンス、依存ライブラリのnotice、必要な依存ソースアーカイブを同梱しています。</p>
         <h3>インストーラーのSHA-256</h3>
-        <p class="swarm-checksum"><code>c7d2c4f522827b10a04e9549be1a1a56988b27e69dd51160658088e437d40a71</code></p>
-        <p class="swarm-meta">Swarm_0.1.0_x64-setup.exe · <a href="https://github.com/VolcaneGD/swarm/releases/download/v0.1.0/SHA256SUMS.txt">チェックサムファイル</a></p>
+        <p class="swarm-checksum"><code>9099d9815ea089028fb3f328ee6941f904870146b4a5b6018f5af1cc05298b9d</code></p>
+        <p class="swarm-meta">Swarm_0.1.1_x64-setup.exe · <a href="https://github.com/VolcaneGD/swarm/releases/download/v0.1.1/SHA256SUMS.txt">チェックサムファイル</a></p>
       </div>
     </section>
     <section class="container more-services"><h2 class="more-services-title">MORE DESKTOP APPS</h2><div class="mini-grid"><a href="/quota-glance" class="mini-card"><img src="/public/quota-glance-icon.png" alt="Quota Glance"><span>Quota Glance</span></a><a href="/component-vault" class="mini-card"><img src="/public/component-vault-icon.png" alt="Component Vault"><span>Component Vault</span></a></div><p class="swarm-all-projects"><a class="view-link" href="/#projects">すべてのプロジェクトを見る →</a></p></section>
